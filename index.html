@@ -10,6 +10,41 @@
     <meta property="og:description" content="{{metaDescription}}" />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#000c20" />
+    <script>
+      // Theme before first paint, so there's no flash: a saved choice, else the system setting.
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem('theme');
+        } catch (e) {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <style>
+      /* Until the stylesheet arrives (in dev it's injected by the script),
+         the preloader covers the page and its logo waits to be drawn —
+         otherwise the raw page shows for a moment. style.css sets --styled.
+         Kept low in specificity so style.css overrides all of it. */
+      html,
+      .preloader {
+        background: #000c20;
+      }
+      html:where([data-theme='light']),
+      :where([data-theme='light']) .preloader {
+        background: #f3f5fa;
+      }
+      .preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+      }
+      .preloader__logo {
+        opacity: var(--styled, 0);
+      }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +53,10 @@
     />
   </head>
   <body>
+    <!-- The logo draws itself while the dots are prepared; its two rules are
+         the progress bar. Then the dots form the logo in its place. -->
     <div class="preloader" data-preloader aria-hidden="true">
-      <span class="preloader__count" data-preloader-count>000</span>
-      <span class="preloader__track"><span class="preloader__bar" data-preloader-bar></span></span>
+      <div class="preloader__logo" data-preloader-logo>{{loaderLogo}}</div>
     </div>
 
     <div class="field" data-field aria-hidden="true"></div>
@@ -30,24 +66,8 @@
       <span class="map-pin__address">{{addressShort}}</span>
     </p>
 
-    <div class="cursor" data-cursor aria-hidden="true">
-      <span class="cursor__dot"></span>
-      <span class="cursor__ring"></span>
-    </div>
-
-    <header class="topbar">
-      <a class="brand" href="#top" aria-label="London IT Support — back to top">
-        <span class="brand__city">London</span>
-        <span class="brand__sub">IT Support</span>
-      </a>
-      <nav class="topbar__nav" aria-label="Sections">
-        <a href="#services" data-dissolve>Services</a>
-        <a href="#results" data-dissolve>Results</a>
-        <a href="#faq" data-dissolve>FAQs</a>
-        <a href="#contact" data-dissolve>Contact</a>
-      </nav>
-      <a class="topbar__call" href="{{phoneHref}}">{{phone}}</a>
-    </header>
+    <!-- The double-brace tags with a ">" are components, rendered at build time from src/components/. -->
+    {{> header}}
 
     <main id="top">
       <section class="hero" id="hero" data-office="{{officeLonLat}}">
@@ -59,16 +79,20 @@
             <a class="button button--primary" href="#services">Explore services</a>
             <a class="button button--ghost" href="{{phoneHref}}">Speak to an expert</a>
           </div>
+          {{> accreditations}}
         </div>
         <p class="hero__scroll"><span>Scroll</span></p>
       </section>
+
+      <!-- The banner's enquiry form from london-itsupport.co.uk, step for step. -->
+      {{> enquiry id="enquiry" partners="true"}}
 
       <section class="intro" id="about">
         <p class="eyebrow">{{aboutTagline}}</p>
         <p class="statement">{{statement}}</p>
       </section>
 
-      <section class="panel" id="support">
+      <section class="panel panel--top" id="support">
         <div class="panel__text">
           <p class="eyebrow">01 — Always on</p>
           <h2 class="panel__title">{{supportTitle}}</h2>
@@ -93,17 +117,12 @@
         </div>
       </section>
 
-      <section class="dna" id="dna">
-        <div class="dna__sticky">
-          <div class="dna__head">
-            <p class="eyebrow">04 — How we work</p>
-            <p class="dna__count"><span data-pillar-index>01</span> / <span>{{pillarCount}}</span></p>
-          </div>
-          <ol class="dna__list" data-pillars>
-            {{pillarItems}}
-          </ol>
-          <div class="dna__progress"><span data-pillar-progress></span></div>
-        </div>
+      <!-- One screen: the data stream runs through the space above the pillars. -->
+      <section class="work" id="work">
+        <p class="eyebrow work__head">04 — How we work</p>
+        <ol class="work__list">
+          {{pillarItems}}
+        </ol>
       </section>
 
       <section class="services" id="services">
@@ -174,21 +193,15 @@
             <a href="{{mapUrl}}" target="_blank" rel="noopener">{{address}}</a>
           </p>
           <ul class="contact__benefits">{{assessBenefits}}</ul>
-          <a class="button button--primary" href="{{assessLink}}" target="_blank" rel="noopener">Book your free assessment ↗</a>
+          <a class="button button--primary" href="#contact-form">Book your free assessment {{iconArrow}}</a>
         </div>
       </section>
+
+      <!-- The same form again, to close the page. -->
+      {{> enquiry id="contact-form"}}
     </main>
 
-    <footer class="footer">
-      <span>
-        {{strapline}}<br />
-        <small>Map: contains National Statistics and OS data © Crown copyright and database right 2024</small>
-      </span>
-      <span>
-        © {{year}} London IT Support · Copy from <a href="{{source}}" target="_blank" rel="noopener">{{sourceHost}}</a>,
-        synced <time datetime="{{syncedIso}}">{{syncedDate}}</time>
-      </span>
-    </footer>
+    {{> footer}}
 
     <script type="module" src="/src/main.ts"></script>
   </body>

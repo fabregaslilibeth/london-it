@@ -66,6 +66,90 @@ function extract(html) {
     return { title: clean(titleEl.text), lead, text: text('.text-size-small', card) };
   });
 
+  const link = (a) => ({ label: clean(a.text), href: url(a.getAttribute('href')) });
+  const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+  // Logos are referenced where the live site hosts them. Each gets a key from
+  // its file name ("…_crest.avif" → "crest") that components pick them by.
+  const logoKey = (src) => slug(decodeURIComponent(src.split('/').pop().replace(/^[0-9a-f]+_/, '').replace(/\.\w+$/, '')));
+  // The banner's certification badges have no alt text, so they're named here.
+  const BADGE_NAMES = {
+    'iso-logo': 'ISO 9001 and ISO 27001 certified',
+    'cyber-essential': 'Cyber Essentials certified',
+    'cyber-essential-plus': 'Cyber Essentials Plus certified',
+    crest: 'CREST',
+    pentest: 'Penetration testing',
+    vonahi: 'Vonahi Security',
+  };
+  const accreditations = all('.logo-credit-wrapper img', hero).map((img) => {
+    const src = url(img.getAttribute('src'));
+    const key = logoKey(src);
+    return { key, name: BADGE_NAMES[key] ?? key, src, onDark: img.classList.contains('white') };
+  });
+  // The strip after the banner repeats its logos for the marquee; the first set will do.
+  const partners = all('.banner12_text-wrapper img', one('.banner12_marquee', one('.section_banner12'))).map((img) => {
+    const src = url(img.getAttribute('src'));
+    const name = clean(img.getAttribute('alt') ?? '').replace(/\s+(company\s+)?logo\b.*$/i, '');
+    return { key: logoKey(src).replace(/-/g, ''), name, src };
+  });
+
+  // Navbar, in order: plain links and dropdowns of links.
+  const nav = all('.navbar2_menu > *', one('.navbar2_component')).flatMap((item) => {
+    if (item.tagName === 'A') return [link(item)];
+    const toggle = item.querySelector('.w-dropdown-toggle');
+    return toggle ? [{ label: clean(toggle.text), links: all('.w-dropdown-list a', item).map(link) }] : [];
+  });
+
+  // The banner's three-step enquiry form: each step's intro and its fields.
+  // Labels aren't always tied to inputs by id, so the field's own wrapper is
+  // the fallback; checkboxes become one group under their heading.
+  const fieldsOf = (step) => {
+    const fields = [];
+    let checkboxes = null;
+    for (const input of all('input, select, textarea', step)) {
+      const type = input.tagName === 'SELECT' ? 'select' : input.tagName === 'TEXTAREA' ? 'textarea' : input.getAttribute('type') ?? 'text';
+      if (type === 'submit' || type === 'hidden') continue;
+      if (type === 'checkbox') {
+        if (!checkboxes) {
+          const heading = clean(step.querySelector('.form13_checkbox-group')?.parentNode.querySelector('div')?.text ?? 'Options');
+          checkboxes = { type: 'checkboxes', name: slug(heading.replace(/\(.*\)/, '')), label: heading, options: [] };
+          fields.push(checkboxes);
+        }
+        checkboxes.options.push(clean(input.closest('label')?.text ?? ''));
+        continue;
+      }
+      const id = input.getAttribute('id');
+      const labelEl = (id && step.querySelector(`label[for="${id}"]`)) || input.closest('.multi-form3_field-wrapper')?.querySelector('label');
+      const label = clean(labelEl?.text ?? '').replace(/\*$/, '');
+      fields.push({
+        type,
+        name: type === 'email' ? 'email' : slug(label),
+        label,
+        placeholder: input.getAttribute('placeholder') ?? '',
+        required: input.hasAttribute('required'),
+        ...(type === 'select' ? { options: all('option', input).map((o) => clean(o.text)).filter(Boolean) } : {}),
+      });
+    }
+    return fields;
+  };
+  const formSteps = all('[data-form="step"]', one('form[data-form="multistep"]'));
+
+  // Footer link columns: headings (some are links) each followed by a list.
+  const footerColumns = all('.footer1_link-column', footer).map((column) => {
+    const groups = [];
+    for (const child of column.childNodes) {
+      if (child.nodeType !== 1) continue;
+      const heading = child.querySelector('.footer-links-heading');
+      if (heading) {
+        const a = child.tagName === 'A' ? child : child.querySelector('a');
+        groups.push({ label: clean(heading.text), href: a ? url(a.getAttribute('href')) : null, links: [] });
+      } else if (child.classList.contains('footer1_link-list') && groups.length) {
+        groups[groups.length - 1].links = all('a', child).map(link);
+      }
+    }
+    return groups;
+  });
+
   return {
     source: SOURCE,
     syncedAt: new Date().toISOString(),
@@ -78,6 +162,8 @@ function extract(html) {
       title: text('h1', hero),
       intro: text('.header111_content-left p', hero),
     },
+    accreditations,
+    partners,
     about: {
       tagline: text('.text-style-tagline', about),
       title: text('h1', about),
@@ -149,6 +235,23 @@ function extract(html) {
       phoneHref: phone.getAttribute('href'),
       email: email.getAttribute('href').slice(7),
     },
+    nav,
+    enquiry: {
+      title: text('.heading-style-h4', formSteps[0]),
+      steps: formSteps.map((step) => ({
+        intro: text('.margin-top.margin-xsmall', step),
+        fields: fieldsOf(step),
+      })),
+    },
+    footer: {
+      columns: footerColumns,
+      copyright: text('.footer1_credit-text', footer),
+      // Some legal items on the site are plain text rather than links.
+      legal: all('.footer1_legal-link', footer).map((el) => ({
+        label: clean(el.text),
+        href: el.tagName === 'A' ? url(el.getAttribute('href')) : null,
+      })),
+    },
   };
 }
 
@@ -158,8 +261,13 @@ function validate(c) {
   const need = (ok, what) => ok || problems.push(what);
   need(c.hero.title, 'hero title');
   need(c.hero.intro, 'hero intro');
+  need(c.accreditations.length, 'banner certification badges');
+  need(c.partners.length && c.partners.every((p) => p.name), 'partner logos after the banner');
   need(c.about.paragraphs.length, 'about paragraphs');
   need(c.about.pillars.length, 'about pillars ("how we work")');
+  need(c.nav.some((item) => item.links?.length), 'navbar dropdowns');
+  need(c.enquiry.steps.length && c.enquiry.steps.every((s) => s.fields.length), 'enquiry form steps');
+  need(c.footer.columns.length && c.footer.columns.every((col) => col.length), 'footer link columns');
   need(c.values.items.length >= 3, 'at least 3 values');
   need(c.services.items.length >= 3, 'at least 3 services');
   need(c.services.items.every((s) => s.title && s.text), 'service titles and descriptions');

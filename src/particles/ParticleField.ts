@@ -1,11 +1,10 @@
 import * as THREE from 'three';
 import { vertexShader, fragmentShader } from './shaders';
 import type { Shapes } from './shapes';
+import type { Look } from '../config';
 
 export interface FieldOptions {
-  color: string;
-  accent: string;
-  exposure: number;
+  look: Look;
   pointSize: number;
   maxPixelRatio: number;
 }
@@ -16,24 +15,30 @@ export class ParticleField {
     uTime: { value: 0 },
     uSize: { value: 0 },
     uPixelRatio: { value: 1 },
-    uFormation: { value: 0 },
+    uDissolve: { value: 0 },
+    uScatter: { value: 0 },
     uMorphA: { value: new THREE.Vector4() },
     uMorphB: { value: new THREE.Vector4() },
     uMorphC: { value: 0 },
+    uMorphS: { value: 0 },
+    uLogo: { value: new THREE.Vector4(1, 0, 0, 0) },
+    uIntro: { value: 1 },
     uMap: { value: new THREE.Vector4(1, 0, 0, 0) },
     uMapEnd: { value: new THREE.Vector4(1, 0, 0, 0) },
-    uClock: { value: new THREE.Vector4(1, 0, 0, 0) },
-    uShield: { value: new THREE.Vector4(1, 0, 0, 0) },
+    uSignal: { value: new THREE.Vector4(1, 0, 0, 0) },
+    uCrystal: { value: new THREE.Vector4(1, 0, 0, 0) },
     uGlobe: { value: new THREE.Vector4(1, 0, 0, 0) },
     uBackdrops: { value: Array.from({ length: 4 }, () => new THREE.Vector4(1, 0, 0, 0)) },
     uTilt: { value: new THREE.Vector4() },
     uBackdropYaw: { value: 0 },
     uGlobeRot: { value: new THREE.Vector2() },
     uOffice: { value: new THREE.Vector2(0, 0) },
-    uClockHands: { value: new THREE.Vector3() },
-    uHelix: { value: new THREE.Vector4(10, 0.4, 1, 0) },
-    uHelixPose: { value: new THREE.Vector4(0, 0, 0, -4) },
-    uHelixShift: { value: new THREE.Vector2() },
+    uWork: { value: new THREE.Vector4(1, 0, 0, 0) },
+    uServices: { value: new THREE.Vector4(1, 0, 0, 0) },
+    uSilkA: { value: new THREE.Vector4() },
+    uSilkB: { value: new THREE.Vector4() },
+    uSilkPose: { value: new THREE.Vector3(0.45, 0, 0.45) },
+    uSilk: { value: new THREE.Vector2(72, 0.45) },
     uEndDim: { value: 1 },
     uBackdropDim: { value: 0.5 },
     uTurbulence: { value: 0 },
@@ -48,6 +53,8 @@ export class ParticleField {
   readonly camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
   /** Size of the z = 0 plane in world units, updated on resize. */
   readonly view = { width: 1, height: 1 };
+  /** The canvas in CSS px — the viewport minus any scrollbar, so not innerWidth. */
+  readonly screen = { width: 1, height: 1 };
 
   private readonly renderer: THREE.WebGLRenderer;
   private readonly scene = new THREE.Scene();
@@ -60,22 +67,18 @@ export class ParticleField {
     container.appendChild(this.renderer.domElement);
 
     this.camera.position.z = 3;
-    this.uniforms.uColor.value.set(options.color);
-    this.uniforms.uAccent.value.set(options.accent);
-    this.uniforms.uExposure.value = options.exposure;
 
-    // Attributes are kept few (see the vertex shader): the xyz shapes carry
-    // the scatter origin in their w slots.
+    // Attributes are kept few (see the vertex shader): xyz shapes carry a
+    // brightness in their w.
     const n = shapes.count;
-    const xyzw = (xyz: Float32Array, w: Float32Array, axis: number) => {
+    const xyzw = (xyz: Float32Array, w: Float32Array) => {
       const out = new Float32Array(n * 4);
-      for (let i = 0; i < n; i++) out.set([xyz[i * 3], xyz[i * 3 + 1], xyz[i * 3 + 2], w[i * 3 + axis]], i * 4);
+      for (let i = 0; i < n; i++) out.set([xyz[i * 3], xyz[i * 3 + 1], xyz[i * 3 + 2], w[i]], i * 4);
       return out;
     };
 
     const seed = new Float32Array(n * 4);
     const extra = new Float32Array(n * 4);
-    const luma = new Float32Array(n * 4);
     for (let i = 0; i < n; i++) {
       for (let c = 0; c < 4; c++) seed[i * 4 + c] = Math.random();
       extra[i * 4] = Math.random();
@@ -83,16 +86,15 @@ export class ParticleField {
       extra[i * 4 + 1] = 0.6 + 0.25 * Math.random() + 1.1 * Math.pow(Math.random(), 8);
       extra[i * 4 + 2] = shapes.globe.arcMeta[i * 2];
       extra[i * 4 + 3] = shapes.globe.arcMeta[i * 2 + 1];
-      luma.set([shapes.map.luma[i], shapes.clock.luma[i], shapes.shield.luma[i], shapes.globe.luma[i]], i * 4);
     }
 
     const g = this.geometry;
     g.setAttribute('position', new THREE.BufferAttribute(shapes.map.positions, 3));
-    g.setAttribute('aClock', new THREE.BufferAttribute(xyzw(shapes.clock.positions, shapes.origin, 0), 4));
-    g.setAttribute('aShield', new THREE.BufferAttribute(xyzw(shapes.shield.positions, shapes.origin, 1), 4));
-    g.setAttribute('aGlobe', new THREE.BufferAttribute(xyzw(shapes.globe.surface, shapes.origin, 2), 4));
+    g.setAttribute('aMapLuma', new THREE.BufferAttribute(shapes.map.luma, 1));
+    g.setAttribute('aLogo', new THREE.BufferAttribute(xyzw(shapes.logo.positions, shapes.logo.luma), 4));
+    g.setAttribute('aCrystal', new THREE.BufferAttribute(shapes.crystal, 4));
+    g.setAttribute('aGlobe', new THREE.BufferAttribute(xyzw(shapes.globe.surface, shapes.globe.luma), 4));
     g.setAttribute('aArcTo', new THREE.BufferAttribute(shapes.globe.arcTo, 4));
-    g.setAttribute('aLuma', new THREE.BufferAttribute(luma, 4));
     g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 4));
     g.setAttribute('aExtra', new THREE.BufferAttribute(extra, 4));
     // Shapes move far outside the base positions; never cull the cloud.
@@ -105,8 +107,8 @@ export class ParticleField {
       transparent: true,
       depthWrite: false,
       depthTest: false,
-      blending: THREE.AdditiveBlending,
     });
+    this.setLook(options.look);
 
     const points = new THREE.Points(g, this.material);
     points.frustumCulled = false;
@@ -114,8 +116,17 @@ export class ParticleField {
     this.resize();
   }
 
+  /** Dot colour and blending for a theme; the caller drives uExposure each frame. */
+  setLook(look: Look): void {
+    this.uniforms.uColor.value.set(look.color);
+    this.uniforms.uAccent.value.set(look.accent);
+    this.material.blending = look.additive ? THREE.AdditiveBlending : THREE.NormalBlending;
+  }
+
   resize(): void {
     const { width, height } = this.container.getBoundingClientRect();
+    this.screen.width = width;
+    this.screen.height = height;
     const ratio = Math.min(window.devicePixelRatio, this.options.maxPixelRatio);
     this.renderer.setPixelRatio(ratio);
     this.renderer.setSize(width, height, false);
@@ -134,7 +145,7 @@ export class ParticleField {
   /** Where a world-space point lands on screen, in CSS px. */
   project(x: number, y: number, z: number): { x: number; y: number } {
     const p = new THREE.Vector3(x, y, z).project(this.camera);
-    return { x: (p.x * 0.5 + 0.5) * window.innerWidth, y: (0.5 - p.y * 0.5) * window.innerHeight };
+    return { x: (p.x * 0.5 + 0.5) * this.screen.width, y: (0.5 - p.y * 0.5) * this.screen.height };
   }
 
   render(): void {

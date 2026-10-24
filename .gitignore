@@ -2,5 +2,10 @@ node_modules
 dist
 .DS_Store
 
+# Local settings — see .env.example
+.env
+.env.*
+!.env.example
+
 # Windows download markers copied into WSL
 *:Zone.Identifier

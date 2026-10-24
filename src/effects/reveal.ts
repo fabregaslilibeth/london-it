@@ -1,5 +1,5 @@
-/** Splits statements into words that rise in one after another on scroll. */
-export function setupReveals(elements: Iterable<HTMLElement>): void {
+/** Adds `is-in` to each element the first time enough of it scrolls into view. */
+export function revealOnScroll(elements: Iterable<Element>, threshold = 0.35): void {
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
@@ -8,10 +8,15 @@ export function setupReveals(elements: Iterable<HTMLElement>): void {
         observer.unobserve(entry.target);
       }
     },
-    { threshold: 0.35 },
+    { threshold },
   );
+  for (const el of elements) observer.observe(el);
+}
 
-  for (const el of elements) {
+/** Splits statements into words that rise in one after another on scroll. */
+export function setupReveals(elements: Iterable<HTMLElement>): void {
+  const list = Array.from(elements);
+  for (const el of list) {
     const words = (el.textContent ?? '').trim().split(/\s+/);
     el.setAttribute('aria-label', words.join(' '));
     el.textContent = '';
@@ -25,6 +30,6 @@ export function setupReveals(elements: Iterable<HTMLElement>): void {
       outer.append(inner);
       el.append(outer, ' ');
     });
-    observer.observe(el);
   }
+  revealOnScroll(list);
 }

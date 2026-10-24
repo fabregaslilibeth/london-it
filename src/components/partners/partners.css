@@ -1,0 +1,62 @@
+/* ---------- Partners: the logo strip ---------- */
+
+/* One-colour marks — white on the dark page, ink on the light one — that
+   brighten on hover. */
+.partners {
+  margin-top: clamp(32px, 5vh, 52px);
+}
+
+.partners__label {
+  margin: 0 0 16px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.partners__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.partners__list li {
+  display: flex;
+}
+
+.partners__logo {
+  display: block;
+  width: auto;
+  height: 18px;
+  filter: brightness(0) invert(1);
+  opacity: 0.62;
+  transition: opacity 0.3s ease;
+}
+
+/* Sized by eye rather than by box, so they weigh the same: the Cyber
+   Essentials mark is a badge, Fortinet a wide, heavy wordmark. */
+.partners__logo--cyberessentials2025 {
+  height: 26px;
+}
+
+.partners__logo--fortinetlogo {
+  height: 14px;
+}
+
+.partners__logo:hover {
+  opacity: 1;
+}
+
+:root[data-theme='light'] .partners__logo {
+  filter: brightness(0);
+  opacity: 0.55;
+}
+
+:root[data-theme='light'] .partners__logo:hover {
+  opacity: 0.9;
+}

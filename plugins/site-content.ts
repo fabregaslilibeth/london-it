@@ -1,40 +1,19 @@
-// Fills index.html with the copy synced from london-itsupport.co.uk
-// (content/site.json, written by `npm run sync`). The text lands in the real
-// HTML at build time, so it's there for search engines and link previews.
+// Fills the pages with the copy synced from london-itsupport.co.uk
+// (content/site.json, written by `npm run sync`): first the components
+// ({{> header}} and so on, see components.ts), then the page's own
+// {{placeholders}}. The text lands in the real HTML at build time, so it's
+// there for search engines and link previews.
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Plugin, ResolvedConfig } from 'vite';
-
-interface Titled {
-  title: string;
-  text: string;
-}
-
-interface Value extends Titled {
-  /** First line of the two-line title on the site — set as the accent. */
-  lead: string;
-}
-
-export interface SiteContent {
-  source: string;
-  syncedAt: string;
-  meta: { title: string; description: string };
-  hero: { eyebrow: string; title: string; intro: string };
-  about: { tagline: string; title: string; paragraphs: string[]; pillars: Titled[] };
-  values: { tagline: string; title: string; items: Value[] };
-  services: { tagline: string; title: string; intro: string; link: string; items: Titled[] };
-  caseStudies: { tagline: string; title: string; intro: string; items: { title: string; paragraphs: string[] }[] };
-  assessment: { tagline: string; title: string; paragraphs: string[]; benefits: string[]; link: string };
-  testimonials: { title: string; intro: string; items: { name: string; text: string; source: string }[] };
-  faq: { tagline: string; title: string; items: { question: string; answer: string }[] };
-  contact: { strapline: string; address: string; mapUrl: string; phone: string; phoneHref: string; email: string };
-}
+import { expandComponents } from './components';
+import { escapeHtml } from './html';
+import { ICONS } from './icons';
+import { loaderLogo } from './logo';
+import type { SiteContent, Titled, Value } from './types';
 
 const CONTENT_FILE = 'content/site.json';
-
-function escapeHtml(text: string): string {
-  return text.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
-}
+const LOGO_FILE = 'src/assets/logo.svg';
 
 /** Escaped text with the first occurrence of `phrase` set in the accent colour. */
 function accent(text: string, phrase: string): string {
@@ -69,7 +48,19 @@ function officeLonLat(mapUrl: string): string {
   return pin ? `${pin[2]},${pin[1]}` : '';
 }
 
-/** Slides for a sticky slider: `kind` is the BEM block ("service", "pillar"). */
+/** The "how we work" pillars, all on one screen; CSS numbers them. */
+function renderPillars(items: Titled[]): string {
+  return items
+    .map(
+      (p) => `<li class="pillar">
+            <h3 class="pillar__title">${escapeHtml(p.title)}</h3>
+            <p class="pillar__text">${escapeHtml(p.text)}</p>
+          </li>`,
+    )
+    .join('\n          ');
+}
+
+/** Slides for a sticky slider: `kind` is the BEM block ("service"). */
 function renderSlides(items: Titled[], kind: string): string {
   return items
     .map(
@@ -126,13 +117,16 @@ function renderFaq(items: SiteContent['faq']['items']): string {
     .join('\n          ');
 }
 
-function render(html: string, c: SiteContent): string {
+function render(page: string, c: SiteContent, logoFile: string): string {
   const support = pick(c.values.items, /24\/7|support/i, 0);
   const security = pick(c.values.items, /cyber|secur/i, c.values.items.length - 1);
   const cloud = pick(c.services.items, /cloud/i, 3);
-  const synced = new Date(c.syncedAt);
+  const siteRoot = new URL('/', c.source).href;
+  const html = expandComponents(page, { content: c, siteRoot, logoFile });
 
   const values: Record<string, string> = {
+    loaderLogo: loaderLogo(logoFile),
+    iconArrow: ICONS.arrow,
     metaTitle: escapeHtml(c.meta.title),
     metaDescription: escapeHtml(c.meta.description),
     heroEyebrow: escapeHtml(c.hero.eyebrow),
@@ -151,8 +145,7 @@ function render(html: string, c: SiteContent): string {
     servicesIntro: escapeHtml(c.services.intro),
     servicesLink: escapeHtml(c.services.link),
     serviceItems: renderSlides(c.services.items, 'service'),
-    pillarItems: renderSlides(c.about.pillars, 'pillar'),
-    pillarCount: String(c.about.pillars.length).padStart(2, '0'),
+    pillarItems: renderPillars(c.about.pillars),
     serviceCount: String(c.services.items.length).padStart(2, '0'),
     casesTagline: escapeHtml(c.caseStudies.tagline),
     casesTitle: escapeHtml(c.caseStudies.title),
@@ -181,21 +174,16 @@ function render(html: string, c: SiteContent): string {
     addressShort: escapeHtml(c.contact.address.replace(/,?\s*London\b.*$/i, '')),
     officeLonLat: escapeHtml(officeLonLat(c.contact.mapUrl)),
     mapUrl: escapeHtml(c.contact.mapUrl),
-    strapline: escapeHtml(c.contact.strapline),
-    source: escapeHtml(c.source),
-    sourceHost: escapeHtml(new URL(c.source).hostname.replace(/^www\./, '')),
-    syncedIso: escapeHtml(c.syncedAt),
-    syncedDate: escapeHtml(synced.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })),
-    year: String(new Date().getFullYear()),
   };
   return html.replace(/\{\{\s*(\w+)\s*\}\}/g, (token, key: string) => {
     if (key in values) return values[key];
-    throw new Error(`index.html uses unknown placeholder ${token}`);
+    throw new Error(`Page uses unknown placeholder ${token}`);
   });
 }
 
 export function siteContent(): Plugin {
   let file = '';
+  let logoFile = '';
   const read = (): SiteContent => {
     try {
       return JSON.parse(readFileSync(file, 'utf8')) as SiteContent;
@@ -209,6 +197,7 @@ export function siteContent(): Plugin {
 
     configResolved(config: ResolvedConfig) {
       file = resolve(config.root, CONTENT_FILE);
+      logoFile = resolve(config.root, LOGO_FILE);
     },
 
     configureServer(server) {
@@ -221,7 +210,7 @@ export function siteContent(): Plugin {
 
     transformIndexHtml: {
       order: 'pre',
-      handler: (html) => render(html, read()),
+      handler: (html) => render(html, read(), logoFile),
     },
   };
 }

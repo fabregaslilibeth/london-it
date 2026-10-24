@@ -1,0 +1,458 @@
+/* ---------- Topbar: a floating bar with mega-menu dropdowns ---------- */
+
+.topbar {
+  position: fixed;
+  inset: 14px var(--gutter) auto;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 1s ease 0.6s;
+}
+
+.topbar__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.6vw, 24px);
+  height: 64px;
+  padding: 0 8px 0 24px;
+}
+
+/* The glass sits on a pseudo-element: a backdrop-filter on the bar itself
+   would trap the full-screen phone menu inside it. */
+.topbar__bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid var(--line);
+  border-radius: 36px;
+  background: var(--bar);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.topbar.is-scrolled .topbar__bar::before {
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  flex: none;
+  display: block;
+  width: 128px;
+  color: var(--fg);
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.logo__n {
+  fill: var(--accent);
+}
+
+.menu {
+  margin: 0 auto;
+}
+
+.menu__list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__item {
+  position: relative;
+}
+
+.menu__item--cta {
+  display: none;
+}
+
+.menu__link,
+.menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 13px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--fg);
+  font: inherit;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menu__link:hover,
+.menu__trigger:hover,
+.menu__item.is-open > .menu__trigger {
+  background: var(--accent-wash);
+}
+
+.menu__trigger svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.menu__item.is-open > .menu__trigger svg {
+  transform: rotate(180deg);
+}
+
+.menu__panel {
+  position: absolute;
+  top: calc(100% + 16px);
+  left: 50%;
+  min-width: 300px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.25s ease, transform 0.35s var(--ease-out), visibility 0.25s;
+}
+
+/* A bridge across the gap, so moving down to the panel doesn't close it. */
+.menu__panel::before {
+  content: '';
+  position: absolute;
+  inset: -18px 0 auto;
+  height: 18px;
+}
+
+.menu__item.is-open > .menu__panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+@media (hover: hover) and (min-width: 1101px) {
+  .menu__item--dropdown:hover > .menu__panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+
+  /* Keyboard focus opens it too — not the focus a mouse click leaves on the
+     trigger, which would keep it open as the mouse moves to another. (Its
+     own rule, so browsers without :has() still get the hover above.) */
+  .menu__item--dropdown:has(:focus-visible) > .menu__panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+  }
+
+  .menu__item--dropdown:hover > .menu__trigger {
+    background: var(--accent-wash);
+  }
+}
+
+.menu__heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+  padding: 0 4px 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.menu__icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: var(--accent-wash);
+  color: var(--accent-text);
+}
+
+.menu__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.menu__links {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu__links--two {
+  grid-template-columns: repeat(2, minmax(210px, 1fr));
+  column-gap: 8px;
+}
+
+.menu__links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.menu__links a svg {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  color: var(--accent-text);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.25s var(--ease-out);
+}
+
+.menu__links a:hover,
+.menu__links a:focus-visible {
+  background: var(--accent-wash);
+}
+
+.menu__links a:hover svg,
+.menu__links a:focus-visible svg {
+  opacity: 1;
+  transform: none;
+}
+
+.topbar__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.topbar__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.25s ease;
+}
+
+.topbar__cta svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.topbar__cta:hover {
+  background: var(--accent-hover);
+}
+
+.topbar__cta:hover svg {
+  transform: translateX(3px);
+}
+
+.menu-button {
+  display: none;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Shows where it'll take you: the sun on the dark page, the moon on the light one. */
+.theme-toggle__moon,
+:root[data-theme='light'] .theme-toggle__sun {
+  display: none;
+}
+
+:root[data-theme='light'] .theme-toggle__moon {
+  display: block;
+}
+
+html,
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ---------- Phone menu ---------- */
+
+@media (max-width: 1100px) {
+  .menu-button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: none;
+    color: var(--fg);
+    cursor: pointer;
+  }
+
+  .menu-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .menu-button__close,
+  .topbar.is-menu-open .menu-button__open {
+    display: none;
+  }
+
+  .topbar.is-menu-open .menu-button__close {
+    display: block;
+  }
+
+  .topbar.is-menu-open .topbar__bar::before {
+    box-shadow: none;
+  }
+
+  /* Full screen, under the bar. */
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    margin: 0;
+    padding: 104px var(--gutter) 40px;
+    overflow-y: auto;
+    background: var(--bg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+
+  .topbar.is-menu-open .menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .menu__item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .menu__link,
+  .menu__trigger {
+    justify-content: space-between;
+    width: 100%;
+    padding: 18px 4px;
+    border-radius: 0;
+    font-family: var(--heading);
+    font-size: 20px;
+  }
+
+  .menu__link:hover,
+  .menu__trigger:hover,
+  .menu__item.is-open > .menu__trigger {
+    background: none;
+    color: var(--accent-text);
+  }
+
+  .menu__trigger svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .menu__panel {
+    position: static;
+    display: none;
+    min-width: 0;
+    padding: 0 0 14px;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .menu__panel::before,
+  .menu__heading {
+    display: none;
+  }
+
+  .menu__item.is-open > .menu__panel {
+    display: block;
+    transform: none;
+  }
+
+  .menu__links--two {
+    grid-template-columns: 1fr;
+  }
+
+  .menu__links a {
+    padding: 11px 4px;
+    color: var(--muted);
+    font-size: 16px;
+    white-space: normal;
+  }
+
+  .menu__links a svg {
+    opacity: 1;
+    transform: none;
+  }
+
+  .menu__item--cta {
+    display: block;
+    padding-top: 28px;
+    border: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .topbar__actions > .topbar__cta {
+    display: none;
+  }
+
+  .topbar__bar {
+    padding-left: 18px;
+  }
+
+  .brand {
+    width: 112px;
+  }
+}

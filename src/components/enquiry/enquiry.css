@@ -1,0 +1,500 @@
+/* ---------- Enquiry form (after the banner) ---------- */
+
+/* Editorial: the contact details as tall labelled rows; the form a pane of
+   frosted glass over the dots, with open underline fields. */
+.enquiry {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 104px);
+  /* Top-aligned, so the aside stays put as the form changes height between steps. */
+  align-items: start;
+  padding: 14vh var(--gutter);
+}
+
+/* Level with the form's step counter (the form's own padding). */
+.enquiry__aside {
+  padding-top: clamp(26px, 4vw, 52px);
+}
+
+.enquiry__contact {
+  margin: clamp(32px, 5vh, 56px) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+  list-style: none;
+}
+
+.enquiry__contact li {
+  border-bottom: 1px solid var(--line);
+}
+
+.enquiry__contact a {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 16px;
+  padding: 20px 0;
+}
+
+.enquiry__label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.enquiry__value {
+  font-family: var(--heading);
+  font-size: clamp(17px, 1.5vw, 21px);
+  font-weight: 300;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.enquiry__contact svg {
+  align-self: center;
+  width: 16px;
+  height: 16px;
+  color: var(--accent-text);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.3s ease, transform 0.45s var(--ease-out);
+}
+
+.enquiry__contact a:hover .enquiry__label,
+.enquiry__contact a:focus-visible .enquiry__label {
+  color: var(--accent-text);
+}
+
+.enquiry__contact a:hover svg,
+.enquiry__contact a:focus-visible svg {
+  opacity: 1;
+  transform: none;
+}
+
+@media (hover: none) {
+  .enquiry__contact svg {
+    opacity: 0.7;
+    transform: none;
+  }
+}
+
+.enquiry__form {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(26px, 4vw, 52px);
+  border-radius: 28px;
+  background: linear-gradient(160deg, var(--glass-strong), var(--glass) 55%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(140%);
+  box-shadow: var(--shadow);
+}
+
+/* A hairline edge: brightest at the top left, warming to amber at the far corner. */
+.enquiry__form::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(150deg, var(--glass-edge), var(--line) 38%, var(--line) 70%, rgba(255, 170, 0, 0.5));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.enquiry__head {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: clamp(22px, 3.2vh, 34px);
+}
+
+.enquiry__count {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+.enquiry__count span {
+  margin-right: 2px;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+/* One hairline per step; the current one draws in, finished ones stay amber. */
+.enquiry__progress {
+  display: flex;
+  flex: 1;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.enquiry__progress li {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 1px;
+  background: var(--line-strong);
+}
+
+.enquiry__progress li::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.enquiry__progress .is-current::after,
+.enquiry__progress .is-done::after,
+.enquiry__progress.is-complete li::after {
+  transform: none;
+}
+
+.enquiry__step {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.enquiry__intro {
+  display: block;
+  max-width: 34ch;
+  margin: 0 0 clamp(24px, 3.6vh, 38px);
+  padding: 0;
+  font-family: var(--heading);
+  font-size: clamp(19px, 1.7vw, 24px);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+  color: var(--fg);
+}
+
+.enquiry__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 30px;
+}
+
+/* An odd field out takes the whole first row rather than leaving a gap. */
+.enquiry__fields > .form-field:first-child:nth-last-child(odd) {
+  grid-column: 1 / -1;
+}
+
+/* Moving between steps, the lead and fields rise in one after another. */
+.has-moved .enquiry__step.is-active .enquiry__intro,
+.has-moved .enquiry__step.is-active .form-field {
+  animation: enquiry-in 0.7s var(--ease-out) both;
+}
+
+.has-moved .enquiry__step.is-active .form-field:nth-child(1) { animation-delay: 0.08s; }
+.has-moved .enquiry__step.is-active .form-field:nth-child(2) { animation-delay: 0.14s; }
+.has-moved .enquiry__step.is-active .form-field:nth-child(3) { animation-delay: 0.2s; }
+.has-moved .enquiry__step.is-active .form-field:nth-child(4) { animation-delay: 0.26s; }
+.has-moved .enquiry__step.is-active .form-field:nth-child(n + 5) { animation-delay: 0.32s; }
+
+@keyframes enquiry-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.form-field {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.form-field--wide {
+  grid-column: 1 / -1;
+}
+
+.form-field__label {
+  padding: 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+legend.form-field__label {
+  margin-bottom: 12px;
+}
+
+.form-field__label span {
+  color: var(--accent-text);
+}
+
+.form-field:focus-within .form-field__label {
+  color: var(--fg);
+}
+
+/* Open fields: a hairline underneath, and an amber line drawn across on focus. */
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 8px 0 12px;
+  border: 0;
+  border-bottom: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: linear-gradient(var(--accent), var(--accent)) left bottom / 0 2px no-repeat border-box;
+  color: var(--fg);
+  font: inherit;
+  font-size: 17px;
+  transition: background-size 0.6s var(--ease-out);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.55;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  background-size: 100% 2px;
+  outline: none;
+}
+
+.form-field input:user-invalid,
+.form-field select:user-invalid,
+.form-field textarea:user-invalid {
+  border-bottom-color: var(--danger);
+}
+
+/* Autofill keeps the page's colours instead of the browser's pale box. */
+.form-field input:-webkit-autofill {
+  -webkit-text-fill-color: var(--fg);
+  caret-color: var(--fg);
+  transition: background-size 0.6s var(--ease-out), background-color 600000s 0s;
+}
+
+.form-field select {
+  appearance: none;
+  padding-right: 28px;
+  background:
+    linear-gradient(var(--accent), var(--accent)) left bottom / 0 2px no-repeat border-box,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2395a1b9' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E") right 2px center / 13px no-repeat;
+  cursor: pointer;
+}
+
+.form-field select:focus {
+  background-size: 100% 2px, 13px;
+}
+
+/* Nothing chosen yet reads like a placeholder. */
+.form-field select:has(option[value='']:checked) {
+  color: var(--muted);
+}
+
+.form-field select option {
+  background: var(--panel);
+  color: var(--fg);
+}
+
+.form-field textarea {
+  min-height: 96px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Checkbox groups as chips with a tick that fills amber. */
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.check {
+  position: relative;
+}
+
+.check input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.check span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 10px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.check span::before {
+  content: '';
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: center / 12px no-repeat;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.check:hover span {
+  border-color: var(--muted);
+}
+
+.check input:checked + span {
+  border-color: var(--accent);
+  background-color: var(--accent-wash);
+}
+
+.check input:checked + span::before {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23001b41' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5'/%3E%3C/svg%3E");
+}
+
+.check input:focus-visible + span {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.enquiry__error {
+  margin: 22px 0 0;
+  color: var(--danger);
+  font-size: 14px;
+}
+
+.enquiry__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: clamp(30px, 4.4vh, 44px);
+}
+
+.enquiry__actions .button svg {
+  transition: transform 0.45s var(--ease-out);
+}
+
+.enquiry__actions .button:hover svg {
+  transform: translateX(3px);
+}
+
+.enquiry__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+  padding: 10px 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.enquiry__back svg {
+  width: 14px;
+  height: 14px;
+  transform: scaleX(-1);
+  transition: transform 0.45s var(--ease-out);
+}
+
+.enquiry__back:hover {
+  color: var(--fg);
+}
+
+.enquiry__back:hover svg {
+  transform: scaleX(-1) translateX(3px);
+}
+
+.enquiry__done {
+  outline: none;
+}
+
+.enquiry__done-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 14px;
+  font-family: var(--heading);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.enquiry__done-title::before {
+  content: '';
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent) center / 22px no-repeat
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23001b41' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5'/%3E%3C/svg%3E");
+}
+
+.enquiry__done p:last-child {
+  max-width: 44ch;
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+@media (max-width: 819px) {
+  .enquiry,
+  .enquiry__fields {
+    grid-template-columns: 1fr;
+  }
+
+  .enquiry {
+    padding-top: 10vh;
+  }
+
+  .enquiry__aside {
+    padding-top: 0;
+  }
+
+  .enquiry__contact a {
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+    gap: 12px;
+  }
+
+  .enquiry__actions .button {
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-moved .enquiry__step.is-active .enquiry__intro,
+  .has-moved .enquiry__step.is-active .form-field {
+    animation: none;
+  }
+}

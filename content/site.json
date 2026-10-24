@@ -1,6 +1,6 @@
 {
   "source": "https://www.london-itsupport.co.uk/",
-  "syncedAt": "2026-10-24T07:18:18.484Z",
+  "syncedAt": "2026-10-24T13:25:10.728Z",
   "meta": {
     "title": "London IT Support | Business IT & Cybersecurity Solution",
     "description": "Discover London IT Support, your trusted partner for business IT support, cyber security, and cloud services in London. Personalised solutions for your success."
@@ -10,6 +10,66 @@
     "title": "London’s Trusted IT Support for Growing Businesses",
     "intro": "Fast, reliable, and proactive IT support for SMEs across London. We keep your systems secure, stable, and ready for growth without the cost of an internal IT team."
   },
+  "accreditations": [
+    {
+      "key": "iso-logo",
+      "name": "ISO 9001 and ISO 27001 certified",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6970ec2d252de06a2dc1b185_iso-logo.avif",
+      "onDark": false
+    },
+    {
+      "key": "cyber-essential",
+      "name": "Cyber Essentials certified",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6970ec2ddf3fc48c6ef253a1_cyber-essential.avif",
+      "onDark": false
+    },
+    {
+      "key": "cyber-essential-plus",
+      "name": "Cyber Essentials Plus certified",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6970ec2dbf825ca6c11dd466_cyber-essential-plus.avif",
+      "onDark": false
+    },
+    {
+      "key": "crest",
+      "name": "CREST",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6970ec2d5a2126d3210347c9_crest.avif",
+      "onDark": true
+    },
+    {
+      "key": "pentest",
+      "name": "Penetration testing",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6970ec2d1ee887ed2a900a1f_pentest.avif",
+      "onDark": true
+    },
+    {
+      "key": "vonahi",
+      "name": "Vonahi Security",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6970ec2d998cb87dd937f020_vonahi.avif",
+      "onDark": true
+    }
+  ],
+  "partners": [
+    {
+      "key": "cyberessentials2025",
+      "name": "Cyber Essentials",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6925d3c2660c63dc7358beac_cyberEssentials2025.avif"
+    },
+    {
+      "key": "microsoft365logo",
+      "name": "Microsoft 365",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6925d3c13c265560606fa69c_Microsoft_365_logo.avif"
+    },
+    {
+      "key": "delllogo",
+      "name": "Dell",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6925d3c128ff762be92f171f_Dell_Logo.avif"
+    },
+    {
+      "key": "fortinetlogo",
+      "name": "Fortinet",
+      "src": "https://cdn.prod.website-files.com/692455c918fe3e8d852e111e/6925d3c1061c325d2e4eda89_Fortinet_Logo.avif"
+    }
+  ],
   "about": {
     "tagline": "Who are we?",
     "title": "About London IT Support",
@@ -203,5 +263,318 @@
     "phone": "0203 988 6905",
     "phoneHref": "tel:02039886905",
     "email": "hello@london-itsupport.co.uk"
+  },
+  "nav": [
+    {
+      "label": "Home",
+      "href": "https://www.london-itsupport.co.uk/"
+    },
+    {
+      "label": "About Us",
+      "href": "https://www.london-itsupport.co.uk/about-us"
+    },
+    {
+      "label": "IT Services",
+      "links": [
+        {
+          "label": "Managed IT Support",
+          "href": "https://www.london-itsupport.co.uk/managed-it-support"
+        },
+        {
+          "label": "Backup & Continuity",
+          "href": "https://www.london-itsupport.co.uk/backup-and-continuity"
+        },
+        {
+          "label": "IT Consulting Services",
+          "href": "https://www.london-itsupport.co.uk/it-consulting-services"
+        },
+        {
+          "label": "Managed Cybersecurity",
+          "href": "https://www.london-itsupport.co.uk/managed-cybersecurity"
+        },
+        {
+          "label": "Cyber Essentials",
+          "href": "https://www.london-itsupport.co.uk/cyber-essentials"
+        },
+        {
+          "label": "Cyber Essentials Assessors",
+          "href": "https://www.london-itsupport.co.uk/cyber-essentials-assessor-london"
+        },
+        {
+          "label": "Microsoft 365",
+          "href": "https://www.london-itsupport.co.uk/microsoft-365"
+        }
+      ]
+    },
+    {
+      "label": "Connectivity",
+      "links": [
+        {
+          "label": "Business Broadband",
+          "href": "https://www.london-itsupport.co.uk/business-broadband"
+        },
+        {
+          "label": "Leased Lines",
+          "href": "https://www.london-itsupport.co.uk/leased-lines"
+        },
+        {
+          "label": "Mobile Internet",
+          "href": "https://www.london-itsupport.co.uk/business-mobile-internet"
+        },
+        {
+          "label": "Guest Wifi",
+          "href": "https://www.london-itsupport.co.uk/guest-wifi-london"
+        }
+      ]
+    },
+    {
+      "label": "Mobile",
+      "links": [
+        {
+          "label": "Sim Only",
+          "href": "https://www.london-itsupport.co.uk/business-sim-only"
+        },
+        {
+          "label": "Mobile with Handset",
+          "href": "https://www.london-itsupport.co.uk/business-mobile-phones"
+        }
+      ]
+    },
+    {
+      "label": "Telecoms",
+      "links": [
+        {
+          "label": "Cloud Phone System",
+          "href": "https://www.london-itsupport.co.uk/cloud-phone-system"
+        },
+        {
+          "label": "Contact Centre",
+          "href": "https://www.london-itsupport.co.uk/contact"
+        },
+        {
+          "label": "Microsoft Teams",
+          "href": "https://www.london-itsupport.co.uk/microsoft-teams"
+        }
+      ]
+    }
+  ],
+  "enquiry": {
+    "title": "Get in Touch",
+    "steps": [
+      {
+        "intro": "Filling out this form will only take 2 minutes and we'll get back to you by the end of the day.",
+        "fields": [
+          {
+            "type": "text",
+            "name": "full-name",
+            "label": "Full Name",
+            "placeholder": "Enter your full name here",
+            "required": true
+          },
+          {
+            "type": "email",
+            "name": "email",
+            "label": "Enter your email",
+            "placeholder": "email@test.com",
+            "required": true
+          },
+          {
+            "type": "tel",
+            "name": "phone-number",
+            "label": "Phone Number",
+            "placeholder": "00000 000 000",
+            "required": true
+          }
+        ]
+      },
+      {
+        "intro": "Thanks for telling us about yourself, please now tell us about your company.",
+        "fields": [
+          {
+            "type": "text",
+            "name": "company-name",
+            "label": "Company Name",
+            "placeholder": "Company Name",
+            "required": true
+          },
+          {
+            "type": "select",
+            "name": "company-size",
+            "label": "Company Size",
+            "placeholder": "",
+            "required": false,
+            "options": [
+              "0-30",
+              "31-50",
+              "51-100",
+              "101-200",
+              "201-300",
+              "300+"
+            ]
+          },
+          {
+            "type": "text",
+            "name": "company-postcode",
+            "label": "Company Postcode",
+            "placeholder": "",
+            "required": true
+          },
+          {
+            "type": "text",
+            "name": "your-job-title",
+            "label": "Your Job Title",
+            "placeholder": "Job Title here",
+            "required": true
+          }
+        ]
+      },
+      {
+        "intro": "You’re almost done! By providing more information we can get back to you with the correct solution.",
+        "fields": [
+          {
+            "type": "checkboxes",
+            "name": "technical-platforms",
+            "label": "Technical Platforms (tick all that apply)",
+            "options": [
+              "Windows",
+              "Mac",
+              "Others",
+              "MS 365",
+              "GSuite"
+            ]
+          },
+          {
+            "type": "textarea",
+            "name": "message",
+            "label": "Message",
+            "placeholder": "Type your message...",
+            "required": true
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "columns": [
+      [
+        {
+          "label": "Home",
+          "href": "https://www.london-itsupport.co.uk/",
+          "links": []
+        },
+        {
+          "label": "About Us",
+          "href": "https://www.london-itsupport.co.uk/about-us",
+          "links": []
+        },
+        {
+          "label": "Mobile",
+          "href": "https://www.london-itsupport.co.uk/business-mobile-internet",
+          "links": [
+            {
+              "label": "Sim Only",
+              "href": "https://www.london-itsupport.co.uk/business-sim-only"
+            },
+            {
+              "label": "Mobile with Handset",
+              "href": "https://www.london-itsupport.co.uk/business-mobile-phones"
+            }
+          ]
+        },
+        {
+          "label": "Telecoms",
+          "href": "https://www.london-itsupport.co.uk/",
+          "links": [
+            {
+              "label": "Cloud Phone System",
+              "href": "https://www.london-itsupport.co.uk/cloud-phone-system"
+            },
+            {
+              "label": "Contact Centre",
+              "href": "https://www.london-itsupport.co.uk/contact"
+            },
+            {
+              "label": "Microsoft Teams",
+              "href": "https://www.london-itsupport.co.uk/microsoft-teams"
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "label": "IT Services",
+          "href": "https://www.london-itsupport.co.uk/",
+          "links": [
+            {
+              "label": "Managed IT Support",
+              "href": "https://www.london-itsupport.co.uk/managed-it-support"
+            },
+            {
+              "label": "Backup & Continuity",
+              "href": "https://www.london-itsupport.co.uk/backup-and-continuity"
+            },
+            {
+              "label": "IT Consulting Services",
+              "href": "https://www.london-itsupport.co.uk/it-consulting-services"
+            },
+            {
+              "label": "Managed Cybersecurity",
+              "href": "https://www.london-itsupport.co.uk/managed-cybersecurity"
+            },
+            {
+              "label": "Cyber Essentials",
+              "href": "https://www.london-itsupport.co.uk/cyber-essentials"
+            },
+            {
+              "label": "Cyber Essentials Assessor",
+              "href": "https://www.london-itsupport.co.uk/cyber-essentials-assessor-london"
+            }
+          ]
+        }
+      ],
+      [
+        {
+          "label": "Connectivity",
+          "href": "https://www.london-itsupport.co.uk/",
+          "links": [
+            {
+              "label": "Microsoft 365",
+              "href": "https://www.london-itsupport.co.uk/microsoft-365"
+            },
+            {
+              "label": "Business Broadband",
+              "href": "https://www.london-itsupport.co.uk/business-broadband"
+            },
+            {
+              "label": "Leased Lines",
+              "href": "https://www.london-itsupport.co.uk/leased-lines"
+            },
+            {
+              "label": "Mobile Internet",
+              "href": "https://www.london-itsupport.co.uk/business-mobile-internet"
+            },
+            {
+              "label": "Guest Wifi",
+              "href": "https://www.london-itsupport.co.uk/guest-wifi-london"
+            }
+          ]
+        }
+      ]
+    ],
+    "copyright": "© 2025 London IT Support. All rights reserved.",
+    "legal": [
+      {
+        "label": "Privacy Policy",
+        "href": "https://www.london-itsupport.co.uk/privacy-policy"
+      },
+      {
+        "label": "Terms of Service",
+        "href": null
+      },
+      {
+        "label": "Cookies Settings",
+        "href": null
+      }
+    ]
   }
 }

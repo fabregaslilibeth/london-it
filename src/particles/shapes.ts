@@ -3,6 +3,7 @@ import type { Topology, GeometryCollection } from 'topojson-specification';
 import type { Geometry, Position } from 'geojson';
 import land110 from 'world-atlas/land-110m.json';
 import london from '../data/london.json';
+import logoSvg from '../assets/logo.svg?raw';
 import { blur, distanceField, reliefFromMask, sampleRaster, sortByHeight, type PointCloud, type Raster } from './sampler';
 
 /**
@@ -19,36 +20,42 @@ export interface GlobeCloud {
   luma: Float32Array;
 }
 
+/** Luma above this marks an amber dot (the logo's N and rules); the shader subtracts it back off. */
+export const AMBER_FLAG = 2;
+
 export interface Shapes {
   count: number;
+  /** The London IT Support logo the drawn one dissolves into. Amber dots carry AMBER_FLAG in luma. */
+  logo: PointCloud;
+  /** Raster height ÷ the logo's own height (the raster is padded). */
+  logoPad: number;
   /** Greater London: the 33 boroughs with the Thames cut through them. */
   map: PointCloud;
   mapAspect: number;
   /** The office, in the map's own coordinates (null if the site gave no location). */
   office: [number, number] | null;
-  /** Clock dial, unit height; the hands are drawn in the shader. */
-  clock: PointCloud;
-  shield: PointCloud;
-  shieldAspect: number;
+  /**
+   * "Protected": a dotted crystal, xyz + brightness per dot (unit radius).
+   * Dots of the inner crystal and core carry INNER_FLAG in w so the shader
+   * can turn them the other way. ("Always on" is built in the shader.)
+   */
+  crystal: Float32Array;
   globe: GlobeCloud;
-  /** Scattered start positions the particles swirl in from. */
-  origin: Float32Array;
 }
 
 /** `office` is [lon, lat] from the site's map link. */
 export function buildShapes(count: number, office: [number, number] | null): Shapes {
   const map = londonRaster(office);
-  const shield = shieldRaster();
+  const logo = logoCloud(count);
   return {
     count,
+    logo: logo.cloud,
+    logoPad: logo.pad,
     map: sortByHeight(sampleRaster(map.raster, count, 0.05)),
     mapAspect: map.raster.width / map.raster.height,
     office: map.office,
-    clock: sortByHeight(sampleRaster(clockRaster(), count, 0.03)),
-    shield: sortByHeight(sampleRaster(shield, count, 0.18)),
-    shieldAspect: shield.width / shield.height,
+    crystal: crystalCloud(count),
     globe: globeCloud(count),
-    origin: scatter(count),
   };
 }
 
@@ -123,7 +130,6 @@ function drawingRaster(ctx: CanvasRenderingContext2D, o: RasterOptions): Raster 
 }
 
 const LIT = '#ffffff';
-const SOFT = '#bcbcbc';
 
 /**
  * Greater London, like the reference site's map of Italy: the boroughs
@@ -185,133 +191,131 @@ function londonRaster(office: [number, number] | null): { raster: Raster; office
   return { raster, office: officeLocal };
 }
 
-const ROMAN = ['I', 'II', 'III', 'IIII', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
-
-/** A clock face in the Elizabeth Tower style: rings, ticks, Roman numerals and tracery. */
-function clockRaster(): Raster {
-  const S = 900;
-  const C = S / 2;
-  const ctx = canvas2d(S, S);
-  const ring = (r: number, color: string, width: number) => {
-    ctx.strokeStyle = color;
-    ctx.lineWidth = width;
-    ctx.beginPath();
-    ctx.arc(C, C, r, 0, Math.PI * 2);
-    ctx.stroke();
-  };
-
-  ctx.fillStyle = '#141414';
-  ctx.beginPath();
-  ctx.arc(C, C, 424, 0, Math.PI * 2);
-  ctx.fill();
-  ring(418, LIT, 14);
-  ring(392, '#b0b0b0', 3);
-  ring(222, '#7a7a7a', 2.5);
-  ring(122, '#5a5a5a', 1.6);
-
-  ctx.lineCap = 'round';
-  for (let i = 0; i < 60; i++) {
-    const a = (i / 60) * Math.PI * 2;
-    const hour = i % 5 === 0;
-    const inner = hour ? 338 : 372;
-    ctx.strokeStyle = hour ? LIT : SOFT;
-    ctx.lineWidth = hour ? 11 : 3;
-    ctx.beginPath();
-    ctx.moveTo(C + Math.sin(a) * inner, C - Math.cos(a) * inner);
-    ctx.lineTo(C + Math.sin(a) * 386, C - Math.cos(a) * 386);
-    ctx.stroke();
-  }
-  // Gothic tracery behind the hands.
-  ctx.strokeStyle = '#5a5a5a';
-  ctx.lineWidth = 1.6;
-  for (let i = 0; i < 24; i++) {
-    const a = (i / 24) * Math.PI * 2;
-    ctx.beginPath();
-    ctx.moveTo(C + Math.sin(a) * 40, C - Math.cos(a) * 40);
-    ctx.lineTo(C + Math.sin(a) * 222, C - Math.cos(a) * 222);
-    ctx.stroke();
+/**
+ * The logo in dots, drawn from the same SVG as the preloader so the two line
+ * up exactly. Letters are body grey with bright edges; dots on the N and
+ * the rules (amber in the drawn logo) are flagged amber.
+ */
+function logoCloud(count: number): { cloud: PointCloud; pad: number } {
+  const svg = new DOMParser().parseFromString(logoSvg, 'image/svg+xml').documentElement;
+  const [, , vw, vh] = (svg.getAttribute('viewBox') ?? '0 0 1321 403').split(/[\s,]+/).map(Number);
+  const pad = 24;
+  const W = Math.ceil(vw) + pad * 2;
+  const H = Math.ceil(vh) + pad * 2;
+  const ctx = canvas2d(W, H);
+  const amber = canvas2d(W, H);
+  for (const c of [ctx, amber]) c.translate(pad, pad);
+  // A touch fattened, so dots on the thin rules' edges count too.
+  amber.fillStyle = amber.strokeStyle = '#fff';
+  amber.lineWidth = 2;
+  for (const el of Array.from(svg.querySelectorAll('path, rect'))) {
+    const shape = new Path2D();
+    if (el.tagName === 'rect') {
+      const n = (attr: string) => Number(el.getAttribute(attr) ?? 0);
+      shape.rect(n('x'), n('y'), n('width'), n('height'));
+    } else {
+      shape.addPath(new Path2D(el.getAttribute('d') ?? ''));
+    }
+    const isN = el.classList.contains('logo__n');
+    ctx.fillStyle = isN ? '#d8d8d8' : '#a0a0a0';
+    ctx.fill(shape);
+    if (isN || el.tagName === 'rect') {
+      amber.fill(shape);
+      amber.stroke(shape);
+    }
   }
 
-  ctx.fillStyle = '#e6e6e6';
-  ctx.font = '600 60px Georgia, "Times New Roman", serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ROMAN.forEach((numeral, i) => {
-    const a = ((i + 1) / 12) * Math.PI * 2;
-    ctx.save();
-    ctx.translate(C + Math.sin(a) * 284, C - Math.cos(a) * 284);
-    ctx.rotate(a);
-    ctx.fillText(numeral, 0, 0);
-    ctx.restore();
-  });
-
-  ctx.fillStyle = LIT;
-  ctx.beginPath();
-  ctx.arc(C, C, 16, 0, Math.PI * 2);
-  ctx.fill();
-
-  return drawingRaster(ctx, { fill: 0.4, edge: 1.3, edgeWidth: 5, relief: 8 });
+  const raster = drawingRaster(ctx, { fill: 0.5, edge: 1.5, edgeWidth: 3, relief: 4 });
+  const cloud = sortByHeight(sampleRaster(raster, count, 0.04));
+  // Flag the amber dots (back from normalised to pixel coords).
+  const mask = amber.getImageData(0, 0, W, H).data;
+  for (let i = 0; i < count; i++) {
+    const px = Math.min(W - 1, Math.max(0, Math.floor(cloud.positions[i * 3] * H + W / 2)));
+    const py = Math.min(H - 1, Math.max(0, Math.floor(H / 2 - cloud.positions[i * 3 + 1] * H)));
+    if (mask[(py * W + px) * 4 + 3] > 127) cloud.luma[i] = Math.max(cloud.luma[i], 0.9) + AMBER_FLAG;
+  }
+  return { cloud, pad: H / vh };
 }
 
-/** A shield with a padlock at its heart. */
-function shieldRaster(): Raster {
-  const W = 760;
-  const H = 900;
-  const ctx = canvas2d(W, H);
-  const outline = (scale: number) => {
-    const p = new Path2D();
-    const cx = 380;
-    const cy = 450;
-    const pt = (x: number, y: number): [number, number] => [cx + (x - cx) * scale, cy + (y - cy) * scale];
-    p.moveTo(...pt(380, 48));
-    p.lineTo(...pt(696, 160));
-    p.lineTo(...pt(696, 420));
-    p.bezierCurveTo(...pt(696, 640), ...pt(560, 796), ...pt(380, 856));
-    p.bezierCurveTo(...pt(200, 796), ...pt(64, 640), ...pt(64, 420));
-    p.lineTo(...pt(64, 160));
-    p.closePath();
-    return p;
-  };
+/** Marks the crystal's inner layer (inner crystal and core) in its w. */
+export const INNER_FLAG = 2;
 
-  ctx.lineJoin = 'round';
-  ctx.lineCap = 'round';
-  const shell = outline(1);
-  ctx.fillStyle = '#1e1e1e';
-  ctx.fill(shell);
-  ctx.strokeStyle = LIT;
-  ctx.lineWidth = 30;
-  ctx.stroke(shell);
-  ctx.strokeStyle = '#8a8a8a';
-  ctx.lineWidth = 5;
-  ctx.stroke(outline(0.86));
+/**
+ * "Protected", without a padlock: a crystal of dots. An icosahedron's edges
+ * and vertices in bright dots, its faces faintly filled, around a smaller
+ * one and a soft core that turn the other way.
+ */
+function crystalCloud(count: number): Float32Array {
+  const rand = mulberry32(11);
+  const phi = (1 + Math.sqrt(5)) / 2;
+  const verts = [
+    [-1, phi, 0], [1, phi, 0], [-1, -phi, 0], [1, -phi, 0],
+    [0, -1, phi], [0, 1, phi], [0, -1, -phi], [0, 1, -phi],
+    [phi, 0, -1], [phi, 0, 1], [-phi, 0, -1], [-phi, 0, 1],
+  ].map((v) => {
+    const l = Math.hypot(v[0], v[1], v[2]);
+    return v.map((c) => c / l);
+  });
+  const dist = (a: number[], b: number[]) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+  // Neighbours sit ~1.05 apart on the unit sphere; the next nearest ~1.7.
+  const near = (i: number, j: number) => dist(verts[i], verts[j]) < 1.2;
+  const edges: [number, number][] = [];
+  const faces: [number, number, number][] = [];
+  for (let i = 0; i < 12; i++) {
+    for (let j = i + 1; j < 12; j++) {
+      if (!near(i, j)) continue;
+      edges.push([i, j]);
+      for (let k = j + 1; k < 12; k++) if (near(i, k) && near(j, k)) faces.push([i, j, k]);
+    }
+  }
+  const lerp = (a: number[], b: number[], t: number) => a.map((c, i) => c + (b[i] - c) * t);
+  const jitter = (p: number[], r: number) => p.map((c) => c + (rand() - 0.5) * r);
 
-  // Padlock: shackle, body, keyhole.
-  ctx.strokeStyle = LIT;
-  ctx.lineWidth = 32;
-  ctx.beginPath();
-  ctx.moveTo(290, 470);
-  ctx.lineTo(290, 398);
-  ctx.arc(380, 398, 90, Math.PI, 0);
-  ctx.lineTo(470, 470);
-  ctx.stroke();
-  ctx.fillStyle = '#d2d2d2';
-  ctx.beginPath();
-  ctx.roundRect(246, 452, 268, 236, 30);
-  ctx.fill();
-  ctx.strokeStyle = LIT;
-  ctx.lineWidth = 6;
-  ctx.stroke();
-  ctx.fillStyle = '#1e1e1e';
-  ctx.beginPath();
-  ctx.arc(380, 548, 30, 0, Math.PI * 2);
-  ctx.moveTo(364, 566);
-  ctx.lineTo(396, 566);
-  ctx.lineTo(408, 634);
-  ctx.lineTo(352, 634);
-  ctx.closePath();
-  ctx.fill();
+  const out = new Float32Array(count * 4);
+  for (let i = 0; i < count; i++) {
+    const k = i / count;
+    let p: number[];
+    let luma: number;
+    let inner = 0;
+    if (k < 0.4) {
+      const [a, b] = edges[Math.floor(rand() * edges.length)];
+      p = jitter(lerp(verts[a], verts[b], rand()), 0.012);
+      luma = 0.75 + 0.25 * rand();
+    } else if (k < 0.48) {
+      const v = verts[Math.floor(rand() * 12)];
+      p = jitter(v, 0.05);
+      luma = 1;
+    } else if (k < 0.66) {
+      const [a, b, c] = faces[Math.floor(rand() * faces.length)];
+      // Uniform over the triangle.
+      const r1 = Math.sqrt(rand());
+      const r2 = rand();
+      p = verts[a].map((x, d) => x * (1 - r1) + verts[b][d] * r1 * (1 - r2) + verts[c][d] * r1 * r2);
+      luma = 0.1 + 0.08 * rand();
+    } else if (k < 0.88) {
+      const [a, b] = edges[Math.floor(rand() * edges.length)];
+      p = jitter(lerp(verts[a], verts[b], rand()), 0.01).map((c) => c * 0.46);
+      luma = 0.5 + 0.2 * rand();
+      inner = 1;
+    } else {
+      // Soft core: dense at the centre, thinning out.
+      const r = Math.pow(rand(), 2.2) * 0.22;
+      const u = rand() * 2 - 1;
+      const a = rand() * Math.PI * 2;
+      const s = Math.sqrt(1 - u * u);
+      p = [Math.cos(a) * s * r, u * r, Math.sin(a) * s * r];
+      luma = 0.45 + 0.4 * (1 - r / 0.22);
+      inner = 1;
+    }
+    out.set([p[0], p[1], p[2], luma + inner * INNER_FLAG], i * 4);
+  }
 
-  return drawingRaster(ctx, { fill: 0.36, edge: 1.5, edgeWidth: 7, relief: 14 });
+  // Top-to-bottom order, like the other shapes, so morphs flow.
+  const keys = Array.from({ length: count }, (_, i) => out[i * 4 + 1] + (rand() - 0.5) * 0.04);
+  const order = Array.from({ length: count }, (_, i) => i).sort((a, b) => keys[b] - keys[a]);
+  const sorted = new Float32Array(count * 4);
+  order.forEach((src, dst) => sorted.set(out.subarray(src * 4, src * 4 + 4), dst * 4));
+  return sorted;
 }
 
 /** Cloud regions the arcs fly to from London, as [lon, lat]. */
@@ -493,27 +497,4 @@ function globeCloud(count: number): GlobeCloud {
     sorted.luma[dst] = luma[src];
   });
   return sorted;
-}
-
-/** A thick spherical shell around the scene, kept clear of the camera. */
-function scatter(count: number): Float32Array {
-  const out = new Float32Array(count * 3);
-  for (let i = 0; i < count; i++) {
-    let x = 0, y = 0, z = 0, l = 0;
-    do {
-      x = Math.random() * 2 - 1;
-      y = Math.random() * 2 - 1;
-      z = Math.random() * 2 - 1;
-      l = Math.hypot(x, y, z);
-    } while (l === 0 || l > 1);
-    const r = (2.2 + 4.3 * Math.random()) / l;
-    x *= r;
-    y *= r;
-    z *= r;
-    if (z > 1.6) z = -z;
-    out[i * 3] = x;
-    out[i * 3 + 1] = y;
-    out[i * 3 + 2] = z;
-  }
-  return out;
 }
