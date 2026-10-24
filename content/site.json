@@ -1,0 +1,207 @@
+{
+  "source": "https://www.london-itsupport.co.uk/",
+  "syncedAt": "2026-10-24T07:18:18.484Z",
+  "meta": {
+    "title": "London IT Support | Business IT & Cybersecurity Solution",
+    "description": "Discover London IT Support, your trusted partner for business IT support, cyber security, and cloud services in London. Personalised solutions for your success."
+  },
+  "hero": {
+    "eyebrow": "Get fast support • Reduce downtime • Strengthen cybersecurity",
+    "title": "London’s Trusted IT Support for Growing Businesses",
+    "intro": "Fast, reliable, and proactive IT support for SMEs across London. We keep your systems secure, stable, and ready for growth without the cost of an internal IT team."
+  },
+  "about": {
+    "tagline": "Who are we?",
+    "title": "About London IT Support",
+    "paragraphs": [
+      "At London IT Support, we are proud to be a trusted IT support provider in London, delivering reliable technology and telecom solutions to help local businesses grow. Our mission is simple: to provide fast, proactive, and secure IT services that keep your business running without interruption. We offer a carefully selected range of services tailored for modern SMEs, including managed IT support, cybersecurity, Microsoft 365 support, and business telecom solutions. Whether you need day-to-day helpdesk support or long-term IT strategy, our team ensures your systems stay stable, secure, and ready for growth. From proactive monitoring and maintenance to fully managed telecom and VoIP solutions, we make sure your operations and communications run smoothly so you can focus on what matters most: running and growing your business."
+    ],
+    "pillars": [
+      {
+        "title": "Personalised IT Solutions",
+        "text": "Your business deserves technology that matches its ambition. At London IT Support, we don’t believe in one-size-fits-all IT. We take the time to understand how your organisation operates, then design tailored, high-performance IT solutions that genuinely support your people, enhance productivity and drive growth."
+      },
+      {
+        "title": "Comprehensive IT & Cybersecurity Services",
+        "text": "With our proactive monitoring and expert support, you can rely on a secure, high-performing IT environment and enjoy complete peace of mind while you focus on your business."
+      },
+      {
+        "title": "Our Mission",
+        "text": "At London IT Support, our mission is to deliver expert, reliable and personalised technology services that genuinely help London businesses succeed. Whether you’re an SME, a growing team, or a multi-site organisation, we work closely with you to provide the tools, guidance and long-term IT strategy you need to reach your objectives. We’re committed to being the trusted partner you can depend on for stability, security and growth."
+      }
+    ]
+  },
+  "values": {
+    "tagline": "Our Core Values",
+    "title": "Why Choose London IT Support?",
+    "items": [
+      {
+        "title": "24/7 Support Availability",
+        "lead": "24/7",
+        "text": "We’re available around the clock, offering continuous support and monitoring to ensure your business stays running smoothly, no matter the time."
+      },
+      {
+        "title": "Your Dedicated IT Team",
+        "lead": "Your Dedicated",
+        "text": "We’re not just an IT provider; we’re an extension of your team, your dedicated IT department, committed to your success."
+      },
+      {
+        "title": "Going the Extra Mile",
+        "lead": "Going",
+        "text": "We don’t believe in saying \"it can’t be done.\" We take pride in going above and beyond to find the right IT solutions that work for you."
+      },
+      {
+        "title": "Support for Small Businesses",
+        "lead": "Support",
+        "text": "As a small business ourselves, we understand your unique challenges and are passionate about helping other businesses thrive with managed IT services."
+      },
+      {
+        "title": "Clear Communication",
+        "lead": "Clear",
+        "text": "No Tech Jargon. We believe in clear, straightforward communication, using simple, everyday language, no confusing tech terms."
+      },
+      {
+        "title": "Certified Cybersecurity Experts",
+        "lead": "Certified",
+        "text": "Our team holds top-tier cybersecurity certifications, ensuring your business is safeguarded against ever-evolving threats."
+      }
+    ]
+  },
+  "services": {
+    "tagline": "Our Services",
+    "title": "Smart secure IT delivering unstoppable business performance.",
+    "intro": "From fully managed support to targeted expertise, we tailor solutions around your exact needs and build a bespoke, scalable package for your London business.",
+    "link": "https://www.london-itsupport.co.uk/it-services",
+    "items": [
+      {
+        "title": "All-in-One IT & Management Solutions",
+        "text": "End-to-end IT and management support tailored to your business, delivering seamless operations, stronger efficiency, and complete peace of mind across your entire organisation."
+      },
+      {
+        "title": "IT Support Services",
+        "text": "Professional, fully managed IT support in London including 24/7 monitoring, proactive maintenance, and fast issue resolution to keep your business running without disruption."
+      },
+      {
+        "title": "Cybersecurity",
+        "text": "Advanced cybersecurity protection powered by certified experts, securing your business against threats with industry-leading defense tools and ongoing monitoring."
+      },
+      {
+        "title": "Cloud Services",
+        "text": "Scalable, secure, and cost-effective cloud solutions enabling flexible storage, backup, and collaboration for modern businesses that need performance and mobility."
+      },
+      {
+        "title": "Broadband & VoIP",
+        "text": "High-performance broadband and VoIP solutions designed to improve communication, enhance call quality, and keep your teams reliably connected across every location."
+      },
+      {
+        "title": "Custom IT Solutions",
+        "text": "Bespoke IT solutions tailored to your exact requirements from system design to full implementation giving your business the right technology foundation to grow."
+      }
+    ]
+  },
+  "caseStudies": {
+    "tagline": "CASE STUDIES",
+    "title": "Proven Results. Real Business Impact.",
+    "intro": "See how Intouch Tech helps organisations improve performance, strengthen security and simplify IT with real-world solutions that deliver measurable results.",
+    "items": [
+      {
+        "title": "Aristone – Scalable VoIP & Connectivity with Intouch Communications",
+        "paragraphs": [
+          "Intouch Communications quickly set up Aristone on our scalable Hosted Communicator VoIP platform, providing local Luton numbers, call recording, remote apps and unlimited support under one simple license.",
+          "We recommended Virgin Media for faster broadband, putting the client’s needs first. Since then, Aristone has doubled in size and continues to benefit from a reliable, future-ready communications setup."
+        ]
+      },
+      {
+        "title": "Transforming Patient Communication at Stoneleigh Surgery",
+        "paragraphs": [
+          "InTouch provided a cloud phone system with five times more call capacity, real-time queue updates and separate lines for outbound clinical calls.",
+          "We arranged urgent FTTP broadband installation through BT, delivering speeds ten times faster than their previous setup.",
+          "Staff can now work securely from any device, and all calls are logged and recorded for improved patient communication."
+        ]
+      },
+      {
+        "title": "The Regis School Upgrades to a Cost-Saving Cloud Phone System",
+        "paragraphs": [
+          "The Regis School was struggling with an outdated on-site ISDN phone system that was costly, space-consuming and difficult to maintain.",
+          "After speaking with Intouch, they upgraded to a 3CX Cloud Phone System. This removed the need for in-house maintenance, reduced costs and simplified setup.",
+          "Since the switch, the school has saved £3,000 per year and now benefits from a flexible, modern system that supports staff, students and parents effectively."
+        ]
+      }
+    ]
+  },
+  "assessment": {
+    "tagline": "Speak with our London-based IT specialists today.",
+    "title": "Claim Your Free IT Assessment",
+    "paragraphs": [
+      "We’ll review your current setup, identify vulnerabilities, and provide a clear, actionable roadmap to improve your security, performance, and reliability. Whether you're looking to upgrade your IT, tighten cybersecurity, or switch from an underperforming provider, our team is ready to help."
+    ],
+    "benefits": [
+      "Boost speed and performance across your entire IT environment",
+      "Eliminate downtime and keep your team working at full productivity",
+      "See exactly where your current provider is falling short",
+      "Uncover hidden security risks before they become costly problems",
+      "Get a tailored, expert improvement plan designed to strengthen your business"
+    ],
+    "link": "https://www.london-itsupport.co.uk/#Assessment"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "intro": "What People Says About Us",
+    "items": [
+      {
+        "name": "Ottilia Gatsi",
+        "text": "The level of expertise they demonstrated was impressive, and their customer service was top-notch.I would highly recommend their services to anyone in need of reliable IT support in London.",
+        "source": "Google Reviews"
+      },
+      {
+        "name": "Darcy",
+        "text": "I cannot recommend London IT Support enough. Their team of experts is incredibly knowledgeable and responsive to our needs. They are always available to help us when we need it, and their expertise has been invaluable to us. I would highly recommend London IT Support to any business in need of IT support services.",
+        "source": "Google Review"
+      },
+      {
+        "name": "Tom",
+        "text": "London IT support came through in my time of need. Couldn't have started my small streaming community without their knowledge and support, my growing OSRS community and myself are thankful and should I hit any more problems down the road I'll certainly be back.",
+        "source": "Google Review"
+      },
+      {
+        "name": "Kelvin",
+        "text": "I'm so thankful to Luke and his team for IT support. They’re always friendly, quick to resolve any issues, and have helped me with everything from software installations to setting up my office network. Luke is incredibly professional and knowledgeable. By far, the best IT support company I’ve worked with in London!",
+        "source": "Google Review"
+      }
+    ]
+  },
+  "faq": {
+    "tagline": "FAQs",
+    "title": "Questions about our London IT support services?",
+    "items": [
+      {
+        "question": "How quickly can you respond to a support request?",
+        "answer": "Our standard support hours are Monday to Friday, 9 AM to 5 PM. We also offer 24/7 support packages for businesses that require round-the-clock assistance. Please contact us for more details on our 24/7 support options. If you contact us, we usually respond within the hour!"
+      },
+      {
+        "question": "How do you handle cybersecurity?",
+        "answer": "Cybersecurity is a top priority for us. Our range of cybersecurity solutions helps businesses of all sizes protect against cyberattacks. We'll make sure your business has the right measures in place to defend against threats and provide staff training on how to spot potential risks."
+      },
+      {
+        "question": "How do you handle data backup and recovery?",
+        "answer": "We offer complete data backup solutions that include regular backups, secure storage, and fast recovery options. Our backup systems are monitored 24/7 and can scale to handle any amount of data. If data loss occurs, our team is ready to restore your data quickly, minimizing any disruption to your business."
+      },
+      {
+        "question": "What makes your IT support services different from other providers?",
+        "answer": "We focus on providing personalized service, fast response times, and a strong understanding of your business. We don’t just solve problems—we work with you to develop an IT strategy that supports your business goals. Our experienced team uses the latest technology to deliver reliable, secure, and efficient IT solutions."
+      },
+      {
+        "question": "What IT support services do you offer?",
+        "answer": "We provide a full range of IT support services, including help desk support, network management, cybersecurity solutions, data backup and recovery, cloud services, hardware and software procurement, and IT consulting. Each service is customized to fit the unique needs of your business."
+      }
+    ]
+  },
+  "contact": {
+    "strapline": "Managed IT Support and Solutions for businesses in and around London.",
+    "address": "4, 12 Regent St., St. James’S, London SW1Y 4PE",
+    "mapUrl": "https://www.google.com/maps/place/Intouch+IT+Support/@51.508445,-0.1358054,17z/data=!3m1!5s0x48742d1cd0f170cf:0x140993e756ff3e04!4m16!1m9!3m8!1s0x487604d16b5e2537:0x9a5c754ed24aa07b!2s4,+12+Regent+St.,+London+SW1Y+4PE,+UK!3b1!8m2!3d51.5084417!4d-0.1332305!10e3!16s%2Fg%2F11mcfv5mby!3m5!1s0x487605e91b262d57:0x5d6267949c0d6f8e!8m2!3d51.5084876!4d-0.1331921!16s%2Fg%2F11khzp3_h1?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D",
+    "phone": "0203 988 6905",
+    "phoneHref": "tel:02039886905",
+    "email": "hello@london-itsupport.co.uk"
+  }
+}

@@ -1,0 +1,195 @@
+<!doctype html>
+<!-- Double-brace placeholders are filled from content/site.json (synced from london-itsupport.co.uk) by plugins/site-content.ts -->
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{metaTitle}}</title>
+    <meta name="description" content="{{metaDescription}}" />
+    <meta property="og:title" content="{{metaTitle}}" />
+    <meta property="og:description" content="{{metaDescription}}" />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#000c20" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="preloader" data-preloader aria-hidden="true">
+      <span class="preloader__count" data-preloader-count>000</span>
+      <span class="preloader__track"><span class="preloader__bar" data-preloader-bar></span></span>
+    </div>
+
+    <div class="field" data-field aria-hidden="true"></div>
+
+    <p class="map-pin" data-map-pin aria-hidden="true">
+      <span class="map-pin__label">Our office</span>
+      <span class="map-pin__address">{{addressShort}}</span>
+    </p>
+
+    <div class="cursor" data-cursor aria-hidden="true">
+      <span class="cursor__dot"></span>
+      <span class="cursor__ring"></span>
+    </div>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="London IT Support — back to top">
+        <span class="brand__city">London</span>
+        <span class="brand__sub">IT Support</span>
+      </a>
+      <nav class="topbar__nav" aria-label="Sections">
+        <a href="#services" data-dissolve>Services</a>
+        <a href="#results" data-dissolve>Results</a>
+        <a href="#faq" data-dissolve>FAQs</a>
+        <a href="#contact" data-dissolve>Contact</a>
+      </nav>
+      <a class="topbar__call" href="{{phoneHref}}">{{phone}}</a>
+    </header>
+
+    <main id="top">
+      <section class="hero" id="hero" data-office="{{officeLonLat}}">
+        <div class="hero__copy">
+          <p class="eyebrow eyebrow--accent">{{heroEyebrow}}</p>
+          <h1 class="hero__title">{{heroTitle}}</h1>
+          <p class="hero__intro">{{heroIntro}}</p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#services">Explore services</a>
+            <a class="button button--ghost" href="{{phoneHref}}">Speak to an expert</a>
+          </div>
+        </div>
+        <p class="hero__scroll"><span>Scroll</span></p>
+      </section>
+
+      <section class="intro" id="about">
+        <p class="eyebrow">{{aboutTagline}}</p>
+        <p class="statement">{{statement}}</p>
+      </section>
+
+      <section class="panel" id="support">
+        <div class="panel__text">
+          <p class="eyebrow">01 — Always on</p>
+          <h2 class="panel__title">{{supportTitle}}</h2>
+          <p class="panel__sub">{{supportText}}</p>
+          <p class="panel__live"><span class="panel__pulse"></span>London <time data-london-time>--:--:--</time></p>
+        </div>
+      </section>
+
+      <section class="panel" id="security">
+        <div class="panel__text">
+          <p class="eyebrow">02 — Protected</p>
+          <h2 class="panel__title">{{securityTitle}}</h2>
+          <p class="panel__sub">{{securityText}}</p>
+        </div>
+      </section>
+
+      <section class="panel" id="cloud">
+        <div class="panel__text">
+          <p class="eyebrow">03 — Anywhere</p>
+          <h2 class="panel__title">{{cloudTitle}}</h2>
+          <p class="panel__sub">{{cloudText}}</p>
+        </div>
+      </section>
+
+      <section class="dna" id="dna">
+        <div class="dna__sticky">
+          <div class="dna__head">
+            <p class="eyebrow">04 — How we work</p>
+            <p class="dna__count"><span data-pillar-index>01</span> / <span>{{pillarCount}}</span></p>
+          </div>
+          <ol class="dna__list" data-pillars>
+            {{pillarItems}}
+          </ol>
+          <div class="dna__progress"><span data-pillar-progress></span></div>
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="services__sticky">
+          <div class="services__head">
+            <div>
+              <p class="eyebrow">{{servicesTagline}}</p>
+              <h2 class="services__title">{{servicesTitle}}</h2>
+            </div>
+            <p class="services__count"><span data-service-index>01</span> / <span>{{serviceCount}}</span></p>
+          </div>
+          <ol class="services__list" data-services>
+            {{serviceItems}}
+          </ol>
+          <div class="services__foot">
+            <div class="services__progress"><span data-service-progress></span></div>
+            <a class="services__more" href="{{servicesLink}}" target="_blank" rel="noopener" data-dissolve>Explore our services ↗</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="results" id="results">
+        <div class="results__head">
+          <p class="eyebrow">{{casesTagline}}</p>
+          <h2 class="section-title">{{casesTitle}}</h2>
+          <p class="section-sub">{{casesIntro}}</p>
+        </div>
+        <ol class="cases">
+          {{caseItems}}
+        </ol>
+      </section>
+
+      <section class="values" id="values">
+        <p class="eyebrow">{{valuesTagline}}</p>
+        <h2 class="section-title">{{valuesTitle}}</h2>
+        <ul class="values__grid">
+          {{valueItems}}
+        </ul>
+      </section>
+
+      <section class="voices" id="voices">
+        <p class="eyebrow">{{voicesTitle}}</p>
+        <h2 class="section-title">{{voicesIntro}}</h2>
+        <ul class="voices__list">
+          {{voiceItems}}
+        </ul>
+      </section>
+
+      <section class="faq" id="faq">
+        <div class="faq__head">
+          <p class="eyebrow">{{faqTagline}}</p>
+          <h2 class="section-title">{{faqTitle}}</h2>
+        </div>
+        <div class="faq__list">
+          {{faqItems}}
+        </div>
+      </section>
+
+      <!-- The particles form the London map again in the right-hand column. -->
+      <section class="contact" id="contact">
+        <div class="contact__copy">
+          <p class="eyebrow">{{assessTagline}}</p>
+          <h2 class="contact__title">{{assessTitle}}</h2>
+          {{assessText}}
+          <a class="contact__phone" href="{{phoneHref}}">{{phone}}</a>
+          <p class="contact__alt">
+            <a href="mailto:{{email}}" data-dissolve>{{email}}</a>
+            <a href="{{mapUrl}}" target="_blank" rel="noopener">{{address}}</a>
+          </p>
+          <ul class="contact__benefits">{{assessBenefits}}</ul>
+          <a class="button button--primary" href="{{assessLink}}" target="_blank" rel="noopener">Book your free assessment ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>
+        {{strapline}}<br />
+        <small>Map: contains National Statistics and OS data © Crown copyright and database right 2024</small>
+      </span>
+      <span>
+        © {{year}} London IT Support · Copy from <a href="{{source}}" target="_blank" rel="noopener">{{sourceHost}}</a>,
+        synced <time datetime="{{syncedIso}}">{{syncedDate}}</time>
+      </span>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
