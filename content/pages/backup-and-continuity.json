@@ -1,0 +1,113 @@
+{
+  "slug": "backup-and-continuity",
+  "url": "https://www.london-itsupport.co.uk/backup-and-continuity",
+  "meta": {
+    "title": "Backup and Continuity London | London IT Support",
+    "description": "Protect your business with expert backup and continuity in London. Secure data, minimise downtime, and ensure operations run smoothly with London IT Support."
+  },
+  "hero": {
+    "title": "Backup & Disaster Recovery Solutions in London",
+    "subtitle": "Secure SME Backup & Fast Disaster Recovery Services",
+    "buttons": [
+      {
+        "label": "Why Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "tagline": "Protect your data. Maintain continuity. Stay operational.",
+      "title": "Reliable SME Backup & Business Continuity Services in London",
+      "text": [
+        "As SMEs become increasingly dependent on IT, even short disruptions can result in lost revenue, reputational damage, and regulatory risk. London IT delivers managed backup and business continuity services for London businesses, protecting your data with secure, resilient disaster recovery solutions.",
+        "Our London-based IT support team strengthens your operational resilience, allowing you to focus on growth while we safeguard your systems, data, and compliance.",
+        "Robust backup and continuity planning is critical to keeping your business operational during outages, cyber incidents, or data loss.With London IT, you benefit from:",
+        "Our SME backup and disaster recovery solutions in London are designed to minimise downtime and protect business-critical data.Key advantages include:"
+      ],
+      "items": [
+        {
+          "title": "Why Backup & Continuity Are Essential",
+          "text": "Robust backup and continuity planning is critical to keeping your business operational during outages, cyber incidents, or data loss.With London IT, you benefit from: • Predictable, fixed monthly pricing for managed backup services • Full support for servers, endpoints, and cloud platforms • Proactive monitoring and rapid recovery under a clear SLA • Reduced operational risk and improved compliance"
+        },
+        {
+          "title": "How Backup Solutions Empower Your SME",
+          "text": "Our SME backup and disaster recovery solutions in London are designed to minimise downtime and protect business-critical data.Key advantages include: • Fast data restoration to keep your business running • Scalable plans that grow with your organisation • Reduced recovery costs through automated processes • GDPR-aligned data protection to avoid fines and disruption"
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "24/7 monitoring and management"
+        },
+        {
+          "title": "Regular backup testing for reliability"
+        },
+        {
+          "title": "Support for all operating systems (Windows, Mac, Linux, Android, iOS)"
+        },
+        {
+          "title": "Fast data and system restoration"
+        },
+        {
+          "title": "Data replication to UK data centres"
+        },
+        {
+          "title": "Protection against system failures and data loss"
+        },
+        {
+          "title": "Full image and data-level backups"
+        },
+        {
+          "title": "Scalable solutions for any data volume"
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "title": "Why Choose London IT for Managed Backups",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Comprehensive Backup Support",
+          "text": "We protect your business data across servers, PCs, laptops and cloud platforms. Our managed backup service is built for rapid recovery and business continuity, so you stay operational even when things go wrong."
+        },
+        {
+          "title": "Flexible, Transparent Pricing for SMEs",
+          "text": "Get straightforward monthly pricing tailored to your needs and data volume. No hidden costs just scalable managed backups that grow with your business."
+        },
+        {
+          "title": "24/7 Monitoring & Proactive Protection",
+          "text": "Your backups are monitored around the clock to catch failures early and keep recovery points reliable. With proactive alerts and continuous oversight, your data stays secure, available, and protected."
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "tagline": "PROACTIVE IT SUPPORT",
+      "title": "How we ensure your technology is always working",
+      "items": [
+        {
+          "title": "MONITOR",
+          "text": "We proactively monitor your devices, servers, network and Microsoft 365 to spot issues early before they cause downtime or disrupt your team."
+        },
+        {
+          "title": "OPTIMISE",
+          "text": "We improve performance and reliability with patching, updates and best-practice settings keeping everything fast, stable and secure as your business grows."
+        },
+        {
+          "title": "SUPPORT",
+          "text": "When you need help, you reach our in-house UK support team with fast response, clear communication, and fixes that stick not temporary workarounds."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

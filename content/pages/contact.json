@@ -1,0 +1,180 @@
+{
+  "slug": "contact",
+  "url": "https://www.london-itsupport.co.uk/contact",
+  "meta": {
+    "title": "Contact Centre Solutions London | London IT Support",
+    "description": "Reliable contact centre solutions in London. Streamline customer communication, improve service, and boost efficiency with expert support from our team."
+  },
+  "hero": {
+    "title": "Smarter Contact Centre Experiences for London Businesses",
+    "subtitle": "Unified omnichannel and multi-channel contact centre solutions built to improve service, efficiency, and performance.",
+    "buttons": [
+      {
+        "label": "Book A Demo",
+        "href": "https://www.london-itsupport.co.uk/contact-us"
+      },
+      {
+        "label": "Speak to a Contact Centre Expert",
+        "href": "tel:02039886905"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "prose",
+      "title": "Multi-Channel Contact Centre Solutions for London SMEs",
+      "text": [
+        "Power your customer communications with London IT’s cloud-based contact centre solutions. Manage calls, email, live chat, and digital channels from one unified platform built for growing London businesses that need reliability, performance, and control."
+      ],
+      "blocks": [
+        {
+          "h": "Contact Centre Overview"
+        },
+        {
+          "p": "Our London contact centre solutions centralise every customer interaction into a single, intelligent system. Designed specifically for SMEs, they deliver enterprise-grade functionality without enterprise-level cost improving response times, visibility, and agent productivity."
+        },
+        {
+          "h": "Benefits for Small & Growing Businesses"
+        },
+        {
+          "p": "London IT’s cloud contact centre solutions give London SMEs the power to scale without complexity or heavy infrastructure."
+        },
+        {
+          "p": "Key benefits include:"
+        },
+        {
+          "ul": [
+            "Easily scale to handle increasing call volumes and demand",
+            "Reduce operational costs with a fully cloud-based platform",
+            "Seamless CRM and business system integration",
+            "Built-in support for remote and hybrid teams",
+            "Clear reporting and real-time performance insights"
+          ]
+        },
+        {
+          "p": "With London IT, your contact centre becomes a growth driver, not just a call-handling tool."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Key Features for SMEs",
+      "items": [
+        {
+          "title": "Intelligent Inbound Call Routing",
+          "text": "Ensure every call reaches the right agent, first time. Our intelligent inbound call routing uses real-time availability, CRM data, and customer history to reduce wait times and improve customer experience. Key capabilities include: • Smart Agent Matching – Automatically connect callers to the most suitable agent based on skills, priority, or interaction history • CRM-Linked Softphone – Instantly surface customer records and notes for faster, more informed conversations • Reduced Wait Times – Optimised call distribution to available agents to minimise hold times • Flexible Routing Rules – Customise call flows by urgency, call type, time of day, or business rules"
+        },
+        {
+          "title": "Connect With Customers on Every Channel",
+          "text": "Deliver a consistent customer experience across voice, digital, and automated channels. Our omnichannel contact centre solutions help London businesses engage customers seamlessly and equip agents to perform at their best. Omnichannel Customer Identity - Maintain a single customer profile across calls, chat, bots, and digital touchpoints giving agents full context for faster, more personalised service. Intelligent Channel Routing - Route conversations smoothly between agents, self-service, and automation without losing context so customers always reach the right place. Smarter Queuing & Automated Callbacks- Reduce wait times and abandonment with skill-based routing and automated callbacks by language, expertise, or channel. Unified Agent Workspace - One interface for all interactions, accessible on desktop or mobile enabling efficient, consistent support from anywhere."
+        },
+        {
+          "title": "Keep Agents Engaged, Productive, and Performing at Their Best",
+          "text": "Empower your teams with intelligent contact centre tools designed to improve performance, morale, and service quality. London IT’s contact centre solutions help you plan smarter, coach more effectively, and optimise agent output in real time so your customers get consistently better experiences. Smart Agent Scheduling – Plan staffing intelligently around demand, holidays, and training. Maintain the right coverage at the right time while reducing agent burnout and inefficiencies. Quality Monitoring & Coaching – Monitor calls and screens with fair, data-driven scoring. Identify coaching opportunities quickly and maintain consistently high service standards across your team. Real-Time Performance Insight – Track live KPIs, sentiment, and trends to improve customer experience and drive continuous improvement across your contact centre operations."
+        },
+        {
+          "title": "Keep Every Customer Conversation in One Place",
+          "text": "Eliminate silos and resolve issues faster with centralised communication and collaboration across your contact centre. London IT’s contact centre solutions bring people, conversations, and expertise together so teams work smarter and customers get answers faster. Unified Expert Collaboration - Instantly connect agents with internal experts using shared directories, presence indicators, and built-in conferencing no delays, no hand-offs. Remote & Hybrid Team Enablement - Support coaching, training, and collaboration for remote and hybrid agents with tools designed for flexible working environments. Automated Stakeholder Updates - Keep teams and decision-makers informed with real-time alerts, notifications, and messaging improving visibility and accountability."
+        },
+        {
+          "title": "Tailored Customer Profiles for Smarter Conversations",
+          "text": "Give agents instant visibility into every customer interaction. London IT’s CRM-integrated contact centre solutions surface customer history, preferences, and previous interactions in real time enabling faster responses and more personalised service. By unifying customer data across all channels, your team delivers smarter conversations, higher first-contact resolution, and a consistently professional customer experience."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Omnichannel support across phone, chat, and email"
+        },
+        {
+          "title": "Intelligent call routing for efficient connections"
+        },
+        {
+          "title": "Real-time analytics for performance insights"
+        },
+        {
+          "title": "Scalable cloud technology for business call centre services"
+        },
+        {
+          "title": "Remote agent tools for flexible working"
+        },
+        {
+          "title": "CRM integration to streamline operations"
+        },
+        {
+          "title": "24/7 support from contact centre London experts"
+        },
+        {
+          "title": "Automated updates for system reliability"
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "tagline": "Why Choose Us",
+      "title": "Your Trusted IT Support Provider in London",
+      "text": [
+        "London IT delivers fully managed IT support for London businesses that demand reliability, security, and performance. We combine proactive service, modern technology, and local expertise to become a long-term IT partner not just a support desk."
+      ],
+      "columns": 4,
+      "items": [
+        {
+          "title": "Smarter Service",
+          "text": "We monitor, automate, and secure your IT environment around the clock. Using data-led insights, we prevent issues before they impact your business keeping systems reliable, secure, and future-ready."
+        },
+        {
+          "title": "Company Collaboration",
+          "text": "We unify email, voice, cloud applications, and collaboration tools into one secure IT environment. Your teams work efficiently from anywhere while maintaining consistent performance and business continuity."
+        },
+        {
+          "title": "Empowered Agents",
+          "text": "Our experienced engineers use proven tools and structured processes to resolve issues quickly and effectively. Faster response times, higher service quality, and minimal disruption every time."
+        },
+        {
+          "title": "Performance Insights",
+          "text": "Advanced monitoring, reporting, and cybersecurity insights give you full visibility into your IT estate. We identify risks early, optimise performance, and support informed decisions keeping your business secure and compliant."
+        }
+      ]
+    },
+    {
+      "type": "stats",
+      "tagline": "Stats",
+      "title": "The Business Value of Contact Centre",
+      "items": [
+        {
+          "value": "48",
+          "unit": "%",
+          "text": "Increase in customer satisfaction"
+        },
+        {
+          "value": "46",
+          "unit": "%",
+          "text": "Increase in revenue growth rate"
+        },
+        {
+          "value": "53",
+          "unit": "%",
+          "text": "Increase in employee satisfaction"
+        },
+        {
+          "value": "43",
+          "unit": "%",
+          "text": "Increase in first contact resolution"
+        },
+        {
+          "value": "25",
+          "unit": "%",
+          "text": "Increase in average revenue per agent"
+        },
+        {
+          "value": "30",
+          "unit": "%",
+          "text": "Decrease in cost to serve"
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:33:09.926Z"
+}

@@ -1,0 +1,60 @@
+/* ---------- FAQ: questions as an accordion ---------- */
+
+.faq {
+  padding: 18vh var(--gutter);
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.faq__list {
+  border-top: 1px solid var(--line);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__item summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0;
+  font-family: var(--heading);
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 1.35;
+  list-style: none;
+}
+
+.faq__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq__item summary::after {
+  content: '+';
+  flex: none;
+  color: var(--accent-text);
+  font-size: 22px;
+  line-height: 1;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.faq__item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq__item p {
+  margin: -6px 0 26px;
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (max-width: 819px) {
+  .faq {
+    grid-template-columns: 1fr;
+  }
+}

@@ -54,6 +54,53 @@ export interface Logo {
   onDark?: boolean;
 }
 
+/** A button on a live page: a link, or the site's phone number. */
+export type Button = { label: string; href: string; phone?: never } | { phone: true; label?: never; href?: never };
+
+/** A card, step, stat, plan, point or question in a page section. */
+export interface PageItem {
+  title?: string;
+  text?: string;
+  tagline?: string;
+  /** Stats. */
+  value?: string;
+  unit?: string;
+  /** Plans. */
+  price?: string;
+  features?: string[];
+  buttons?: Button[];
+}
+
+/** Prose, in order: a heading, a paragraph or a list. */
+export type Block = { h: string; tagline?: boolean } | { p: string } | { ul: string[] };
+
+/** One section of an inner page, as scripts/pages.mjs extracts it; `type` picks its component. */
+export interface PageSection {
+  type: 'intro' | 'benefits' | 'cards' | 'process' | 'stats' | 'plans' | 'cta' | 'prose' | 'faq' | 'partners';
+  /** An anchor the live page links to, e.g. "why-choose-us". */
+  id?: string;
+  tagline?: string;
+  title?: string;
+  text?: string[];
+  items?: PageItem[];
+  blocks?: Block[];
+  buttons?: Button[];
+  /** Cards: how many across. */
+  columns?: number;
+  /** Call-to-action: a ticked list. */
+  list?: string[];
+}
+
+/** An inner page of the live site (content/pages/<slug>.json). */
+export interface PageContent {
+  slug: string;
+  url: string;
+  syncedAt: string;
+  meta: { title: string; description: string };
+  hero: { title: string; subtitle?: string; buttons?: Button[] };
+  sections: PageSection[];
+}
+
 export interface SiteContent {
   source: string;
   syncedAt: string;

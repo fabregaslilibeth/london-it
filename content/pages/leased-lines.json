@@ -1,0 +1,225 @@
+{
+  "slug": "leased-lines",
+  "url": "https://www.london-itsupport.co.uk/leased-lines",
+  "meta": {
+    "title": "Leased Line Internet London | Reliable Business Connectivity",
+    "description": "Superfast leased line internet in London for SMEs. Dedicated, secure, and scalable connections to keep your business online and productive 24/7."
+  },
+  "hero": {
+    "title": "Super Fast Leased Line Internet",
+    "subtitle": "Simple, smart, and affordable with instant setup, ideal for freelancers, start-ups & small businesses.",
+    "buttons": [
+      {
+        "label": "Why Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "What Is a Leased Line Internet Connection?",
+      "text": [
+        "A leased line is a dedicated, business-grade internet connection built exclusively for your organisation. Unlike standard broadband, it delivers symmetrical upload and download speeds, guaranteed bandwidth, and an uncontended connectionmeaning you never share capacity with other users.",
+        "For London SMEs, this means rock-solid reliability, crystal-clear video calls, faster cloud access, and an internet connection that performs consistently, even during peak hours.",
+        "Modern businesses depend on uninterrupted internet for video conferencing, VoIP, cloud applications, and file sharing. A business leased line in London removes performance drops and downtime, giving your team a stable connection that keeps operations running smoothly without disruption.",
+        "Ideal for businesses that cannot afford slow speeds, outages, or unreliable connectivity."
+      ],
+      "items": [
+        {
+          "title": "Reliable Connectivity for Day-to-Day Business Operations",
+          "text": "Modern businesses depend on uninterrupted internet for video conferencing, VoIP, cloud applications, and file sharing. A business leased line in London removes performance drops and downtime, giving your team a stable connection that keeps operations running smoothly without disruption. Ideal for businesses that cannot afford slow speeds, outages, or unreliable connectivity."
+        },
+        {
+          "title": "Scalable Speeds That Grow With Your Business",
+          "text": "As your business scales, so do your connectivity demands. Leased line broadband is fully scalable, allowing you to increase bandwidth as required without changing infrastructure.Perfect for growing SMEs adopting remote working, cloud software, Microsoft 365, VoIP phone systems, and data-heavy applications."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "tagline": "Reliable, High-Speed Internet for Your Business",
+      "title": "Dedicated Business & Leased Line Internet in London",
+      "text": [
+        "In 2025, a fast and consistent internet connection is no longer optional, it’s critical. At London IT, we deliver business leased line solutions in London that provide guaranteed speeds, enterprise-level reliability, and carrier-grade performance.",
+        "Say goodbye to slow connections, contention, and interruptions. With a dedicated leased line, your business stays connected, productive, and ready to grow no matter how demanding your workload becomes."
+      ],
+      "buttons": [
+        {
+          "label": "Get a Leased Line Quote",
+          "href": "https://www.london-itsupport.co.uk/contact-us"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "tagline": "Benefit From Our Trusted ISP Partnerships",
+      "title": "Best-in-Class Connectivity Partnerships",
+      "text": [
+        "Our strategic carrier partnerships allow us to deliver reliable, high-performance business internet and leased line solutions across London with faster provisioning, stronger SLAs, and dependable long-term performance.",
+        "As your London-based IT and connectivity partner, we manage the full lifecycle of your connection, from initial recommendation and installation through to monitoring, optimisation, and fault management. This ensures your business benefits from enterprise-grade connectivity without the complexity of dealing with multiple providers.",
+        "The result? Stable, scalable internet built for modern SMEs, backed by proven UK infrastructure and expert local support."
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Symmetrical upload & download speeds for seamless performance"
+        },
+        {
+          "title": "Guaranteed bandwidth with zero contention from other users"
+        },
+        {
+          "title": "Ultra-low latency for smooth video calls and VoIP telephony"
+        },
+        {
+          "title": "Scalable speeds to match your growing business needs"
+        },
+        {
+          "title": "Dedicated connection for enhanced security and reliability"
+        },
+        {
+          "title": "24/7 monitoring and proactive technical support"
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "tagline": "Why Choose Us",
+      "title": "Leased Line Internet for London SMEs",
+      "text": [
+        "Here are three key reasons London SMEs trust London IT Support for business-critical leased line connectivity:"
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "Expertly Managed Service. End to End",
+          "text": "We manage everything from site survey and installation to ongoing monitoring and fault resolution. One provider. One SLA. Zero hassle."
+        },
+        {
+          "title": "Flexible, SME-Friendly Pricing",
+          "text": "Our leased line packages are designed for growing businesses, with scalable bandwidth and pricing that evolves as your connectivity needs increase."
+        },
+        {
+          "title": "Trusted Local Provider with Transparent Costs",
+          "text": "No hidden fees, no surprise charges – just reliable leased line internet backed by clear, predictable pricing."
+        }
+      ]
+    },
+    {
+      "type": "plans",
+      "tagline": "PACKAGES",
+      "title": "Super Fast Leased Line Internet",
+      "text": [
+        "Dedicated, uncontended fibre connectivity built for performance-driven businesses that rely on cloud platforms, VoIP, Microsoft Teams, and mission-critical systems."
+      ],
+      "items": [
+        {
+          "tagline": "Ideal for 20-60 users",
+          "title": "100Mb/s",
+          "price": "£229 monthly",
+          "features": [
+            "Your own dedicated fibre circuit",
+            "100Mb/s download & upload",
+            "Uncontended bandwidth",
+            "24/7/365 proactive monitoring",
+            "4-hour premium fault SLA",
+            "Unlimited usage with Business-grade uptime guarantees"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 60-100 users",
+          "title": "500Mb/s",
+          "price": "£339 monthly",
+          "features": [
+            "Dedicated fibre pipe direct to your premises",
+            "500Mb/s symmetrical speeds",
+            "Designed for VoIP, Teams, cloud workloads & hybrid teams",
+            "24/7/365 uptime monitoring",
+            "4-hour premium fault SLA",
+            "Fully scalable bandwidth"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 100+ users",
+          "title": "1000Mb/s",
+          "price": "£449 monthly",
+          "features": [
+            "Fully dedicated, uncontended fibre",
+            "1Gbps upload & download speeds",
+            "Ultra-low latency for real-time applications",
+            "Carrier-grade SLA with priority fault resolution",
+            "Built for multi-site, data-heavy, and high-availability environments"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "plans",
+      "title": "Need SomethingEven Faster?",
+      "text": [
+        "Enterprise-grade leased lines up to 10Gbps built for high-demand London operations."
+      ],
+      "items": [
+        {
+          "tagline": "Ideal for large enterprises",
+          "title": "10Gbps Leased Line (10,000Mb/s)",
+          "price": "POA (Site-Specific Pricing)",
+          "features": [
+            "Dedicated fibre circuit (uncontended)",
+            "0Gbps symmetrical speeds (upLOAD/downLOAD)",
+            "24/7/365 proactive monitoring",
+            "4-hour premium fault SLA",
+            "Unlimited usage",
+            "low latency"
+          ],
+          "buttons": [
+            {
+              "label": "Get 10Gbps Quote",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

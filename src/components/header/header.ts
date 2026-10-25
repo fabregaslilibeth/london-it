@@ -1,8 +1,8 @@
 import { setupMenu } from './menu';
 import { setupTheme } from './theme';
 
-/** Wires one header: its menu and the light/dark toggle. */
+/** Wires one header: its menu and the theme switch. */
 export function initHeader(root: HTMLElement): void {
   setupMenu(root);
-  setupTheme(root.querySelector<HTMLButtonElement>('[data-theme-toggle]'));
+  setupTheme(root.querySelector<HTMLElement>('[data-theme-switch]'));
 }

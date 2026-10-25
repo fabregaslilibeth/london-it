@@ -1,0 +1,119 @@
+/* ---------- Plans: packages and prices ---------- */
+
+.plans__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plans__grid--single {
+  grid-template-columns: minmax(0, 640px);
+}
+
+.plan {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(26px, 2.6vw, 36px);
+  border-radius: 24px;
+  background: linear-gradient(160deg, var(--glass-strong), var(--glass) 55%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+}
+
+/* The same hairline edge as the enquiry form, warming to amber at the corner. */
+.plan::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(150deg, var(--glass-edge), var(--line) 38%, var(--line) 70%, rgba(255, 170, 0, 0.45));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.plan__for {
+  margin: 0 0 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.plan__name {
+  margin: 0;
+  font-size: clamp(20px, 1.7vw, 24px);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.plan__price {
+  margin: 20px 0 0;
+  font-family: var(--heading);
+  font-size: clamp(38px, 3.4vw, 50px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.plan__price span {
+  margin-left: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.plan__price .plan__price-text {
+  margin: 0;
+  font-size: 20px;
+  color: var(--fg);
+}
+
+.plan__features {
+  flex: 1;
+  margin: 24px 0 0;
+  padding: 20px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.plan__features li {
+  position: relative;
+  padding: 7px 0 7px 26px;
+  color: var(--text-soft);
+  font-size: 14.5px;
+  line-height: 1.5;
+}
+
+.plan__features li::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 2px;
+  width: 12px;
+  height: 7px;
+  border-bottom: 1.5px solid var(--accent);
+  border-left: 1.5px solid var(--accent);
+  transform: rotate(-45deg);
+}
+
+/* Stacked, full width: side by side they're too narrow in a card. */
+.plan__actions {
+  flex-direction: column;
+  margin-top: 26px;
+}
+
+.plan__actions .button {
+  width: 100%;
+}

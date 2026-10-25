@@ -1,5 +1,6 @@
 // Look-and-feel defaults. The copy lives in content/site.json, synced from
 // london-itsupport.co.uk (`npm run sync`).
+import type { Theme } from './components/header/theme';
 
 /** How the dots are drawn in one theme. */
 export interface Look {
@@ -12,6 +13,8 @@ export interface Look {
   additive: boolean;
   /** Extra dimming for dots that sit behind copy (backdrops, the closing map on phones); ink reads heavier than light. */
   behindText: number;
+  /** Mix only: a backdrop behind a see-through light sheet is dimmed less, as the sheet dims it already. */
+  behindSheet?: number;
 }
 
 export const config = {
@@ -22,7 +25,9 @@ export const config = {
   looks: {
     dark: { color: '#e9eefb', accent: '#ffaa00', exposure: 0.36, additive: true, behindText: 1 },
     light: { color: '#0e2a5e', accent: '#f29a00', exposure: 0.5, additive: false, behindText: 0.65 },
-  } satisfies Record<'light' | 'dark', Look>,
+    // As dark, a little brighter for the navy.
+    mix: { color: '#e9eefb', accent: '#ffaa00', exposure: 0.42, additive: true, behindText: 1, behindSheet: 1.4 },
+  } satisfies Record<Theme, Look>,
 
   /**
    * The intro, in seconds: the logo draws itself (at least `loaderSeconds`),
@@ -45,6 +50,8 @@ export const config = {
     { name: 'pleated folds', a: [0.05, 1, 0, 0], b: [1, 0, 0, 0], tilt: 0.42, yaw: 0.08, depth: 0.28 },
     { name: 'a saddle', a: [0.06, 1.1, 0, 0], b: [0, 1, 0, 0], tilt: 0.45, yaw: -0.05, depth: 0.32 },
   ],
+  /** Particles behind an inner page (it's only the dot sea, so fewer will do). */
+  pageCount: 30000,
   /** Base point size; the shader divides it by distance to the camera. */
   pointSize: 7,
   /** The clock shows the time here. */

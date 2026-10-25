@@ -4,6 +4,8 @@
    brighten on hover. */
 .partners {
   margin-top: clamp(32px, 5vh, 52px);
+  /* The logos rearrange by the strip's own width (below). */
+  container-type: inline-size;
 }
 
 .partners__label {
@@ -29,6 +31,16 @@
   display: flex;
 }
 
+/* Too narrow for the four in one row: two neat rows of two rather than
+   three and a straggler. */
+@container (max-width: 445px) {
+  .partners__list {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 40px;
+  }
+}
+
 .partners__logo {
   display: block;
   width: auto;
@@ -52,11 +64,13 @@
   opacity: 1;
 }
 
-:root[data-theme='light'] .partners__logo {
+:root[data-theme='light'] .partners__logo,
+:root[data-theme='mix'] [data-tone='light'] .partners__logo {
   filter: brightness(0);
   opacity: 0.55;
 }
 
-:root[data-theme='light'] .partners__logo:hover {
+:root[data-theme='light'] .partners__logo:hover,
+:root[data-theme='mix'] [data-tone='light'] .partners__logo:hover {
   opacity: 0.9;
 }

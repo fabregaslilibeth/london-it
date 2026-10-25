@@ -4,8 +4,8 @@ import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import { siteContent } from './plugins/site-content';
 
-// Every .html page in the project root is built, so a new page just needs
-// its file (see README: "Components").
+// Every hand-written .html page in the project root is built (the synced
+// inner pages are added by plugins/site-content.ts; see README: "Pages").
 const root = fileURLToPath(new URL('.', import.meta.url));
 const pages = Object.fromEntries(
   readdirSync(root)

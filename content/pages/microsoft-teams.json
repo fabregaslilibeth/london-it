@@ -1,0 +1,115 @@
+{
+  "slug": "microsoft-teams",
+  "url": "https://www.london-itsupport.co.uk/microsoft-teams",
+  "meta": {
+    "title": "Microsoft Teams Support London | London IT Support",
+    "description": "Expert Microsoft Teams support in London. Enable seamless collaboration, secure communication, and productivity for your business with London IT Support."
+  },
+  "hero": {
+    "title": "Conversations Made Better with Microsoft Teams in London",
+    "subtitle": "Bring enterprise-grade cloud telephony into Microsoft Teams and keep your teams connected anywhere.",
+    "buttons": [
+      {
+        "label": "Why Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "title": "Enhance SME Collaboration with Microsoft Teams Cloud Telephony",
+      "text": [
+        "Our Microsoft Teams solutions help London SMEs work smarter with integrated messaging, video, and business calling. Built for modern, flexible working, Teams cloud telephony improves communication, productivity, and collaboration wherever your team is based."
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "Seamless Team Collaboration",
+          "text": "Collaborate easily with colleagues and external partners. Share files and emails directly in Teams to keep everyone aligned and informed."
+        },
+        {
+          "title": "Flexible Video Meetings",
+          "text": "Host secure, high-quality video meetings with screen sharing and recordings supporting effective communication from any location."
+        },
+        {
+          "title": "Business Calling Built into Teams",
+          "text": "Make and receive calls through Microsoft Teams with voicemail, call forwarding, and auto-attendant features delivering secure, professional calling from anywhere."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Seamless remote calling via cloud telephony"
+        },
+        {
+          "title": "Integrated messaging and file sharing for teamwork"
+        },
+        {
+          "title": "Real-time task management with Microsoft Planner"
+        },
+        {
+          "title": "High-quality video conferencing with recording options"
+        },
+        {
+          "title": "Scalable plans tailored to business collaboration tools needs"
+        },
+        {
+          "title": "24/7 support from Microsoft Teams London experts"
+        },
+        {
+          "title": "User-friendly interface for easy adoption"
+        },
+        {
+          "title": "Reliable uptime with cloud-based reliability"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "buttons": [
+        {
+          "label": "Boost Your SME with Microsoft Teams Now",
+          "href": "https://www.london-itsupport.co.uk/contact-us"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "tagline": "Why Choose Us",
+      "title": "Your Microsoft Teams Partner in London",
+      "text": [
+        "Here are three key reasons London businesses trust London IT Support to deliver and support Microsoft Teams cloud telephony and collaboration :"
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "Fixed Monthly Pricing",
+          "text": "Enjoy predictable monthly pricing for Microsoft Teams solutions. Your calling and collaboration tools are fully supported under a clear Service Level Agreement (SLA), giving you control and certainty over costs."
+        },
+        {
+          "title": "Flexible Plans for SMEs",
+          "text": "We offer simple, scalable Microsoft Teams plans tailored to your business needs so you can grow, adapt, and add users or features without complexity."
+        },
+        {
+          "title": "Transparent Pricing No Hidden Fees",
+          "text": "What you see is what you pay. Our Microsoft Teams support comes with complete transparency, ensuring no hidden charges or unexpected costs."
+        }
+      ]
+    },
+    {
+      "type": "partners",
+      "title": "Our Partners"
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

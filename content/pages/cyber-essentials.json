@@ -1,0 +1,313 @@
+{
+  "slug": "cyber-essentials",
+  "url": "https://www.london-itsupport.co.uk/cyber-essentials",
+  "meta": {
+    "title": "Cyber Essentials Certification London | London IT Support",
+    "description": "Achieve Cyber Essentials certification with London IT Support. Protect your business from cyber threats with expert guidance, compliance, and 24/7 support."
+  },
+  "hero": {
+    "title": "Cyber Essentials London",
+    "subtitle": "Pass Your Cyber Essentials With London IT Support",
+    "buttons": [
+      {
+        "label": "Contact Us",
+        "href": "https://www.london-itsupport.co.uk/contact-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "prose",
+      "tagline": "About",
+      "title": "What Is Cyber Security for London SMEs?",
+      "text": [
+        "Cyber security for SMEs is the process of protecting business systems, networks, and data from cyber threats. For organisations operating in London, cyber security is no longer optional it is a critical requirement for protecting sensitive data, maintaining compliance, and ensuring business continuity.",
+        "London IT delivers cyber security services for SMEs in London, combining essential protections such as firewalls, antivirus software, encryption, and access controls with a proactive, managed approach. This ensures your business stays secure as threats evolve and technology changes."
+      ],
+      "blocks": [
+        {
+          "h": "Understanding Cyber Security Threats Facing London Businesses"
+        },
+        {
+          "p": "As London SMEs rely more heavily on cloud services, remote working, and digital communication, the risk of cyber attacks continues to increase. Common threats include phishing, ransomware, malware, and data breaches, all of which can disrupt operations and damage reputation."
+        },
+        {
+          "p": "Cyber security focuses on protecting your networks, devices, and business data from unauthorised access, misuse, or loss. By working with a trusted cyber security provider in London, SMEs can reduce risk, minimise downtime, and stay resilient in an increasingly hostile digital environment."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "title": "What Is Cyber Essentials for SMEs?",
+      "text": [
+        "Cyber Essentials is a UK government-backed cyber security certification designed to help SMEs protect against the most common cyber threats. It provides a recognised baseline of cyber security suitable for organisations of all sizes.",
+        "The scheme focuses on five key security controls which, when correctly implemented, can prevent around 80% of common cyber attacks . For many London SMEs, Cyber Essentials certification is essential for compliance, securing contracts, and working with larger organisations or public-sector bodies.",
+        "London IT supports SMEs with Cyber Essentials certification in London , helping businesses meet requirements, improve security posture, and demonstrate a clear commitment to cyber security best practice."
+      ],
+      "blocks": [
+        {
+          "h": "What Is Cyber Essentials?"
+        },
+        {
+          "p": "Cyber Essentials is the UK government-backed cyber security certification that proves your business is protected against common cyber threats. For London SMEs, it’s no longer just a “nice to have” it’s often a commercial and compliance requirement."
+        },
+        {
+          "p": "By implementing the five essential security controls, Cyber Essentials can prevent up to 80% of common cyber attacks. London IT helps SMEs achieve Cyber Essentials certification in London quickly, efficiently, and with minimal disruption to day-to-day operations."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Why Cyber Essentials Matters for London Businesses",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Stronger Cyber Security Protection",
+          "text": "Cyber Essentials significantly strengthens your defence against phishing, malware, ransomware, and unauthorised access. With London IT managing the process, your systems, devices, and data are protected to a recognised national standard."
+        },
+        {
+          "title": "GDPR-Aligned Data Protection",
+          "text": "Cyber Essentials supports GDPR compliance by enforcing baseline security controls around access, patching, and data protection. This reduces regulatory risk and demonstrates that your business takes data security seriously."
+        },
+        {
+          "title": "Increased Trust & Commercial Advantage",
+          "text": "Cyber Essentials certification signals credibility. It reassures customers, partners, and suppliers that your business meets recognised cyber security standards and it is often mandatory for public-sector contracts and larger organisations."
+        }
+      ]
+    },
+    {
+      "type": "intro",
+      "tagline": "Certification Levels",
+      "title": "Differences Between Cyber Essentials and Cyber Essentials Plus",
+      "text": [
+        "THE FOUNDATIONAL LEVEL Cyber Essentials is the entry-level cyber security certification designed to protect organisations against the most common cyber threats. It focuses on implementing the five essential security controls required by the UK government.",
+        "ASSESSMENT REQUIREMENTS:",
+        "BENEFITS Cost-Effective: Ideal for SMEs starting their cyber security journey Baseline Protection: Defends against up to 80% of common cyber attacks Contract Ready: Meets minimum requirements for many public-sector and supply-chain contracts.",
+        "ADVANCE ASSURANCE Cyber Essentials Plus provides higher assurance through an independent, hands-on technical audit. It is designed for businesses that handle sensitive data or need to prove their cyber security controls are fully implemented and effective.",
+        "ASSESSMENT REQUIREMENTS:",
+        "BENEFITS Enhanced Assurance: Confirms that security controls are actively working Increased Trust: Builds confidence with clients, partners, and regulators Reduced Risk: Identifies weaknesses before attackers do."
+      ],
+      "items": [
+        {
+          "title": "Cyber Essentials",
+          "text": "THE FOUNDATIONAL LEVEL Cyber Essentials is the entry-level cyber security certification designed to protect organisations against the most common cyber threats. It focuses on implementing the five essential security controls required by the UK government. ASSESSMENT REQUIREMENTS: • Completion of a self-assessment questionnaire by your organisation. • Independent review by an accredited certification body BENEFITS Cost-Effective: Ideal for SMEs starting their cyber security journey Baseline Protection: Defends against up to 80% of common cyber attacks Contract Ready: Meets minimum requirements for many public-sector and supply-chain contracts."
+        },
+        {
+          "title": "Cyber Essentials Plus",
+          "text": "ADVANCE ASSURANCE Cyber Essentials Plus provides higher assurance through an independent, hands-on technical audit. It is designed for businesses that handle sensitive data or need to prove their cyber security controls are fully implemented and effective. ASSESSMENT REQUIREMENTS: • Independent technical audit by a certified assessor • Verification of security controls through vulnerability scans and simulated attacks • In-depth testing of workstations, servers, and mobile devices BENEFITS Enhanced Assurance: Confirms that security controls are actively working Increased Trust: Builds confidence with clients, partners, and regulators Reduced Risk: Identifies weaknesses before attackers do."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "title": "Which Certification Is Right for Your Business?",
+      "blocks": [
+        {
+          "ul": [
+            "Cyber Essentials is ideal for SMEs seeking baseline protection and compliance.",
+            "Cyber Essentials Plus is best for organisations needing greater assurance, stronger credibility, and reduced cyber risk"
+          ]
+        },
+        {
+          "p": "London IT provides end-to-end Cyber Essentials and Cyber Essentials Plus consultancy in London, handling preparation, remediation, assessment, and certification.Get certified. Reduce risk. Win more contracts."
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "tagline": "Achieving Your Certification",
+      "title": "Achieve Cyber Essentials & Cyber Essentials Plus With London IT",
+      "text": [
+        "Cyber Essentials is a government-backed cyber security certification that protects your business from up to 80% of common cyber threats. Designed by the UK Government, it helps organisations reduce cyber risk while meeting the security requirements of government supply chains and commercial contracts.",
+        "London IT provides end-to-end Cyber Essentials and Cyber Essentials Plus support in London, guiding you through preparation, remediation, assessment, and certification with minimal disruption to your business.By achieving Cyber Essentials, you demonstrate a clear commitment to cyber security. It’s a cost-effective, practical solution that strengthens your defences, protects sensitive data, and reassures clients, partners, and stakeholders.",
+        "For businesses across London and the surrounding areas, Cyber Essentials is more than a smart choice, it’s a competitive advantage. Certification strengthens compliance, builds trust, and helps you win contracts where cyber security standards are mandatory.",
+        "Get certified. Reduce risk. Stay compliant."
+      ]
+    },
+    {
+      "id": "Assessment",
+      "type": "cta",
+      "tagline": "Speak with our London-based IT specialists today.",
+      "title": "Claim Your Free IT Assessment",
+      "text": [
+        "We’ll review your current setup, identify vulnerabilities, and provide a clear, actionable roadmap to improve your security, performance, and reliability.",
+        "Whether you're looking to upgrade your IT, tighten cybersecurity, or switch from an underperforming provider, our team is ready to help."
+      ],
+      "list": [
+        "Boost speed and performance across your entire IT environment",
+        "Eliminate downtime and keep your team working at full productivity",
+        "See exactly where your current provider is falling short",
+        "Uncover hidden security risks before they become costly problems",
+        "Get a tailored, expert improvement plan designed to strengthen your business"
+      ],
+      "buttons": [
+        {
+          "label": "Claim your free IT assessment",
+          "href": "#contact-form"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "tagline": "Your Path to Secure Certification",
+      "title": "Cyber Essentials Support in London",
+      "text": [
+        "Choosing between Cyber Essentials and Cyber Essentials Plus depends on your organisation’s size, the sensitivity of the data you handle, and your compliance requirements. For businesses beginning their cyber security journey, Cyber Essentials provides a strong foundation. For organisations that need higher assurance or handle sensitive data, Cyber Essentials Plus offers deeper validation.",
+        "London IT delivers expert Cyber Essentials support in London, providing step-by-step guidance from initial assessment through to certification. Whether you require Cyber Essentials or Cyber Essentials Plus, our consultants ensure your organisation meets the required standards quickly, efficiently, and with minimal disruption.",
+        "Achieving certification demonstrates a clear commitment to cyber security while strengthening trust with clients, partners, and stakeholders. It also aligns your business with recognised UK standards and helps you compete for contracts where cyber security certification is mandatory."
+      ]
+    },
+    {
+      "type": "cta",
+      "tagline": "Need help passing your Cyber Essentials assessment?",
+      "title": "Get in touch with our London-based cyber security experts today.",
+      "buttons": [
+        {
+          "label": "Start Your Cyber Essentials Assessment",
+          "href": "https://www.london-itsupport.co.uk/cyber-essentials-assessor-london"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "type": "prose",
+      "tagline": "Steps to Achieve Cyber Essentials Certification",
+      "title": "Cyber Essentials Certification for London SMEs",
+      "text": [
+        "Over 80% of UK businesses are exposed to preventable cyber security risks. That’s why Cyber Essentials has become the baseline cyber security standard for organisations across the UK. It provides a proven framework to protect against common cyber threats and demonstrate compliance.",
+        "London IT makes Cyber Essentials certification in London straightforward. The process is simpler than many businesses expect and focuses on five essential technical controls that significantly reduce cyber risk.",
+        "As a London-based cyber security provider, we guide you through every step: Identifying gaps, implementing controls, and ensuring your organisation meets certification requirements efficiently.",
+        "The Five Cyber Essentials Controls Cyber Essentials focuses on the following core areas:"
+      ],
+      "blocks": [
+        {
+          "ul": [
+            "Access Control – Ensuring only authorised users can access systems and data",
+            "Firewalls & Routers – Protecting networks from unauthorised access",
+            "Malware Protection – Defending against viruses, ransomware, and malicious software",
+            "Secure Configuration – Removing unnecessary services and default settings",
+            "Software Updates – Keeping systems patched against known vulnerabilities"
+          ]
+        },
+        {
+          "p": "Together, these controls protect against the most common cyber attacks including phishing, malware, and unauthorised access. Get Cyber Essentials certified with confidence."
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Contact Our London Office to Get Certified Now",
+          "href": "https://www.london-itsupport.co.uk/contact-us"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "tagline": "100% Managed Cyber Essentials Service",
+      "title": "We Handle Everything for You!",
+      "text": [
+        "Take the stress out of Cyber Essentials. With London IT’s fully managed, done-for-you Cyber Essentials service, we take care of the entire process, from assessment and remediation to submission and certification.",
+        "No guesswork. No disruption. Just a faster, simpler path to certification so you can focus on running and growing your business with confidence."
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "Save Time",
+          "text": "We manage the full Cyber Essentials process on your behalf, freeing you from technical complexity and paperwork."
+        },
+        {
+          "title": "Total Peace of Mind",
+          "text": "Your cyber security is handled by experienced London-based specialists who know exactly what assessors are looking for."
+        },
+        {
+          "title": "100% Proven Results",
+          "text": "Our managed approach is designed to get you certified first time, every time with no unnecessary delays."
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Start Your Certification Today",
+          "href": "https://www.london-itsupport.co.uk/contact-us"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "type": "intro",
+      "title": "Why Is Cyber Essentials Certification Crucial for Your Business?",
+      "text": [
+        "Every business faces cyber risks but not every business understands them. Cyber Essentials helps you identify and control the most common threats targeting UK organisations, from phishing and malware to unauthorised access.",
+        "By addressing these risks proactively, you reduce the likelihood of cyber incidents, protect sensitive data, and build a stronger, more resilient foundation for business growth.",
+        "Effective cyber security starts with visibility. Cyber Essentials requires you to assess vulnerabilities across your systems, devices, and networks highlighting weak points before attackers can exploit them.",
+        "This structured approach enables your business to take targeted action, improve security posture, and stay ahead of evolving cyber threats.",
+        "Cyber Essentials focuses on practical, proven security controls that make a real difference including access control, secure configuration, malware protection, firewalls, and software updates.",
+        "Cyber Essentials focuses on practical, proven security controls that make a real difference including access control, secure configuration, malware protection, firewalls, and software updates.",
+        "Cyber Essentials is more than a certification, it’s the foundation of a stronger cyber security strategy. It supports compliance, reduces risk, and demonstrates your commitment to protecting client and business data.",
+        "For London SMEs, this builds trust, strengthens credibility, and supports long-term success in an increasingly security-conscious marketplace.",
+        "London IT provides expert Cyber Essentials support in London, guiding SMEs through assessment, remediation, and certification with minimal disruption. Reduce risk. Meet requirements. Protect your business."
+      ],
+      "items": [
+        {
+          "title": "Managing Cyber Security Risk",
+          "text": "Every business faces cyber risks but not every business understands them. Cyber Essentials helps you identify and control the most common threats targeting UK organisations, from phishing and malware to unauthorised access. By addressing these risks proactively, you reduce the likelihood of cyber incidents, protect sensitive data, and build a stronger, more resilient foundation for business growth."
+        },
+        {
+          "title": "Assessing Your Cyber Security Exposure",
+          "text": "Effective cyber security starts with visibility. Cyber Essentials requires you to assess vulnerabilities across your systems, devices, and networks highlighting weak points before attackers can exploit them. This structured approach enables your business to take targeted action, improve security posture, and stay ahead of evolving cyber threats."
+        },
+        {
+          "title": "Implementing Essential Security Measures",
+          "text": "Cyber Essentials focuses on practical, proven security controls that make a real difference including access control, secure configuration, malware protection, firewalls, and software updates. Cyber Essentials focuses on practical, proven security controls that make a real difference including access control, secure configuration, malware protection, firewalls, and software updates."
+        },
+        {
+          "title": "Investing in Long-Term Cyber Security Solutions",
+          "text": "Cyber Essentials is more than a certification, it’s the foundation of a stronger cyber security strategy. It supports compliance, reduces risk, and demonstrates your commitment to protecting client and business data. For London SMEs, this builds trust, strengthens credibility, and supports long-term success in an increasingly security-conscious marketplace."
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "tagline": "FAQs",
+      "title": "Questions about Cyber Essentials certification?",
+      "text": [
+        "Still have questions?",
+        "Unsure of your IT support needs or don't know if we provide the service?"
+      ],
+      "items": [
+        {
+          "title": "What IT support services do you offer?",
+          "text": "We provide a full range of IT support services, including help desk support, network management, cybersecurity solutions, data backup and recovery, cloud services, hardware and software procurement, and IT consulting. Each service is customized to fit the unique needs of your business."
+        },
+        {
+          "title": "How quickly can you respond to a support request?",
+          "text": "Our standard support hours are Monday to Friday, 9 AM to 5 PM. We also offer 24/7 support packages for businesses that require round-the-clock assistance. Please contact us for more details on our 24/7 support options. If you contact us, we usually respond within the hour!"
+        },
+        {
+          "title": "How do you handle cybersecurity?",
+          "text": "Cybersecurity is a top priority for us. Our range of cybersecurity solutions helps businesses of all sizes protect against cyberattacks. We'll make sure your business has the right measures in place to defend against threats and provide staff training on how to spot potential risks."
+        },
+        {
+          "title": "How do you handle data backup and recovery?",
+          "text": "We offer complete data backup solutions that include regular backups, secure storage, and fast recovery options. Our backup systems are monitored 24/7 and can scale to handle any amount of data. If data loss occurs, our team is ready to restore your data quickly, minimizing any disruption to your business."
+        },
+        {
+          "title": "What makes your IT support services different from other providers?",
+          "text": "We focus on providing personalized service, fast response times, and a strong understanding of your business. We don’t just solve problems—we work with you to develop an IT strategy that supports your business goals. Our experienced team uses the latest technology to deliver reliable, secure, and efficient IT solutions."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

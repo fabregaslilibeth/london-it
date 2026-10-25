@@ -1,0 +1,101 @@
+{
+  "slug": "business-mobile-phones",
+  "url": "https://www.london-itsupport.co.uk/business-mobile-phones",
+  "meta": {
+    "title": "Mobile With Handset | London IT Support",
+    "description": "Get business mobile with handset solutions in London. Flexible packages, latest devices, and 24/7 expert support for SMEs."
+  },
+  "hero": {
+    "title": "Business Mobile Plans With Handsets Included",
+    "subtitle": "Everything your team needs in one solution. Handsets, data, and support tailored to your business.",
+    "buttons": [
+      {
+        "label": "Get A Mobile Quote",
+        "href": "https://www.london-itsupport.co.uk/contact"
+      },
+      {
+        "label": "Speak to a Mobile Expert",
+        "href": "tel:02039886905"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "How Business Mobile With Handset Supports Businesses",
+      "text": [
+        "Business mobile with handset gives your team the latest devices paired with tailored voice and data plans all in one simple solution. Unlike SIM-only options, the handset is included, removing the need to source hardware separately and simplifying mobile management across your business.",
+        "For SMEs, this means reliable connectivity, streamlined operations, and expert support in one package. Whether your team is office-based, on the move, or working remotely, business mobile with handset ensures everyone stays connected, productive, and ready to perform."
+      ],
+      "items": [
+        {
+          "title": "Flexible Packages Built Around Your Business",
+          "text": "Whether you need one handset or hundreds, we deliver tailored business mobile packages that scale with your team. Through partnerships with leading UK networks, we help you choose the right mix of devices, voice, and data keeping your business connected without unnecessary costs."
+        },
+        {
+          "title": "Expert Guidance With Dedicated Support",
+          "text": "Our business mobile specialists provide personalised advice and ongoing support, backed by a dedicated account manager. From setup to day-to-day management, we ensure a smooth, reliable mobile experience for your business."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Reliable Voice & Data Performance"
+        },
+        {
+          "title": "Latest Business-Grade Handsets"
+        },
+        {
+          "title": "Flexible Packages for SMEs"
+        },
+        {
+          "title": "Dedicated Account Management & 24/7 Support"
+        },
+        {
+          "title": "Fast Setup & Seamless Integration"
+        },
+        {
+          "title": "Scalable Solutions Built for Growth"
+        },
+        {
+          "title": "Access to Cloud & Collaboration Tools"
+        },
+        {
+          "title": "Unified Mobile Communications"
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Everything You Need And More...",
+      "columns": 2,
+      "items": [
+        {
+          "title": "Instant, Hassle-Free Access",
+          "text": "Customers connect in seconds from any device. No passwords. No friction. Just fast, reliable WiFi."
+        },
+        {
+          "title": "Attract More Customers. Increase Sales.",
+          "text": "Free, high-speed internet keeps customers engaged longer helping drive footfall, repeat visits, and revenue."
+        }
+      ]
+    },
+    {
+      "type": "intro",
+      "tagline": "Work From Anywhere. Stay Fully Connected",
+      "title": "Seamless Communication on the Move",
+      "text": [
+        "Switch effortlessly between desk phones, mobiles, and softphones with a single tap. One-click video conferencing keeps conversations flowing without disruption wherever your team is working.",
+        "Make HD voice calls, send SMS and messages, host video meetings, share files, and access cloud tools all from one secure platform. Built to help your team work faster, smarter, and from anywhere."
+      ],
+      "items": []
+    },
+    {
+      "type": "partners",
+      "title": "Our Partners"
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

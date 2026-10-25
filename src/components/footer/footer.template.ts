@@ -6,16 +6,17 @@
 //
 // Props: home — where the logo and links to the home page go (default "#top").
 import type { ComponentContext, Props } from '../../../plugins/components';
-import { localise } from '../../../plugins/components';
+import { siteLink } from '../../../plugins/components';
 import { escapeHtml } from '../../../plugins/html';
 import { ICONS } from '../../../plugins/icons';
 import { logo } from '../../../plugins/logo';
 import type { Footer, FooterGroup } from '../../../plugins/types';
 
-function renderColumns(footer: Footer, siteRoot: string, home: string): string {
+function renderColumns(footer: Footer, context: ComponentContext, home: string): string {
+  const { siteRoot } = context;
   const heading = (g: FooterGroup) => {
     // Headings that only point at the home page are labels, except "Home" itself.
-    const href = g.href && (g.href !== siteRoot || /^home$/i.test(g.label)) ? localise(g.href, siteRoot, home) : null;
+    const href = g.href && (g.href !== siteRoot || /^home$/i.test(g.label)) ? siteLink(g.href, context, home) : null;
     return href
       ? `<a class="footer__heading" href="${escapeHtml(href)}">${escapeHtml(g.label)}</a>`
       : `<span class="footer__heading">${escapeHtml(g.label)}</span>`;
@@ -28,7 +29,7 @@ function renderColumns(footer: Footer, siteRoot: string, home: string): string {
               (g) => `<div class="footer__group">
             ${heading(g)}${
               g.links.length
-                ? `\n            <ul>${g.links.map((l) => `<li><a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a></li>`).join('')}</ul>`
+                ? `\n            <ul>${g.links.map((l) => `<li><a href="${escapeHtml(siteLink(l.href, context, home))}">${escapeHtml(l.label)}</a></li>`).join('')}</ul>`
                 : ''
             }
           </div>`,
@@ -39,13 +40,14 @@ function renderColumns(footer: Footer, siteRoot: string, home: string): string {
     .join('\n        ');
 }
 
-export default function footer({ content, siteRoot, logoFile }: ComponentContext, props: Props): string {
+export default function footer(context: ComponentContext, props: Props): string {
+  const { content, logoFile } = context;
   const home = props.home ?? '#top';
   const { contact, footer: f } = content;
   const synced = new Date(content.syncedAt);
   const host = new URL(content.source).hostname.replace(/^www\./, '');
   const legal = f.legal
-    .map((l) => (l.href ? `<li><a href="${escapeHtml(l.href)}">${escapeHtml(l.label)}</a></li>` : `<li>${escapeHtml(l.label)}</li>`))
+    .map((l) => (l.href ? `<li><a href="${escapeHtml(siteLink(l.href, context, home))}">${escapeHtml(l.label)}</a></li>` : `<li>${escapeHtml(l.label)}</li>`))
     .join('');
   return `<footer class="footer" data-component="footer">
       <div class="footer__top">
@@ -59,7 +61,7 @@ export default function footer({ content, siteRoot, logoFile }: ComponentContext
           </ul>
         </div>
         <nav class="footer__columns" aria-label="Footer">
-        ${renderColumns(f, siteRoot, home)}
+        ${renderColumns(f, context, home)}
         </nav>
       </div>
       <div class="footer__bottom">

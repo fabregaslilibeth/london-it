@@ -1,0 +1,276 @@
+{
+  "slug": "business-broadband",
+  "url": "https://www.london-itsupport.co.uk/business-broadband",
+  "meta": {
+    "title": "Business Broadband London | Fast & Reliable SME Internet",
+    "description": "Fast, reliable business broadband in London with FTTC & FTTP options. Affordable, secure internet for SMEs to stay connected, productive, and growing."
+  },
+  "hero": {
+    "title": "Ultrafast Fibre Broadband for Businesses in London",
+    "subtitle": "Scalable FTTC & FTTP Broadband for London SMEs",
+    "buttons": [
+      {
+        "label": "Why Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "Reliable SME Broadband & FTTP Solutions in London",
+      "text": [
+        "London IT delivers high-performance business broadband for SMEs in London, powered by leading UK networks including BT, TalkTalk, and Vodafone. From cost-effective FTTC to full-fibre FTTP, we provide fast, stable, and scalable connectivity built for modern business operations.",
+        "With business-grade speeds from 40Mbps up to 1Gbps, we keep your team connected, productive, and ready to scale without bottlenecks or downtime.",
+        "Affordable, reliable business broadband for London SMEs",
+        "FTTC delivers fibre from the exchange to the local cabinet, with the final connection over copper. It’s a proven, cost-effective solution for businesses that need dependable performance without the cost of full fibre. Key Benefits",
+        "A smart choice for SMEs looking for reliable, affordable business broadband in London.",
+        "Ultrafast, future-proof business fibre for growing organisations",
+        "FTTP delivers fibre directly into your premises, removing copper lines entirely. This provides ultrafast, symmetrical speeds, superior reliability, and the performance required for cloud platforms, VoIP, and video conferencing. Key Benefits",
+        "As Openreach and alternative networks expand coverage, FTTP is now the gold standard for business fibre in London."
+      ],
+      "items": [
+        {
+          "title": "Fibre to the Cabinet (FTTC)",
+          "text": "Affordable, reliable business broadband for London SMEs FTTC delivers fibre from the exchange to the local cabinet, with the final connection over copper. It’s a proven, cost-effective solution for businesses that need dependable performance without the cost of full fibre. Key Benefits • Speeds typically up to 40–80Mbps • Wide availability across London • Ideal for email, cloud apps, VoIP, and day-to-day business use A smart choice for SMEs looking for reliable, affordable business broadband in London."
+        },
+        {
+          "title": "Fibre to the Premises (FTTP)",
+          "text": "Ultrafast, future-proof business fibre for growing organisations FTTP delivers fibre directly into your premises, removing copper lines entirely. This provides ultrafast, symmetrical speeds, superior reliability, and the performance required for cloud platforms, VoIP, and video conferencing. Key Benefits • Speeds from 100Mbps to 1Gbps • Consistent, uncontended performance • Future-proof connectivity for growing London businesses As Openreach and alternative networks expand coverage, FTTP is now the gold standard for business fibre in London."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Speeds up to 1 Gbps for fast downloads and streaming"
+        },
+        {
+          "title": "Reliable performance during peak hours with ultrafast fibre"
+        },
+        {
+          "title": "Simultaneous use support for video calls and file transfers"
+        },
+        {
+          "title": "Digital phone line upgrade moving to VoIP technology"
+        },
+        {
+          "title": "Reduced buffering for 4K streaming and high-quality calls"
+        },
+        {
+          "title": "Scalable plans tailored to your business broadband London needs"
+        },
+        {
+          "title": "Consistent uptime with minimal dropouts"
+        },
+        {
+          "title": "Future-proof connectivity ahead of the 2025 copper switch-off"
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "tagline": "Why Choose Us",
+      "title": "Your Business Broadband Partner in London",
+      "text": [
+        "London SMEs choose London IT for fast, reliable, business-grade broadband backed by expert support, clear pricing, and scalable connectivity built for growth."
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "Fixed Monthly Pricing for Business Broadband",
+          "text": "Enjoy clear, predictable monthly pricing for your business broadband in London. Your connectivity, proactive monitoring, and expert support are all covered under a defined Service Level Agreement (SLA) giving you cost certainty, reliability, and complete peace of mind.No surprises. No downtime excuses. Just dependable business internet."
+        },
+        {
+          "title": "Flexible Broadband Solutions for Growing SMEs",
+          "text": "Our business broadband solutions are built to scale as your organisation grows. We tailor packages around your requirements, making it simple to upgrade speeds, add locations, or move from FTTC to full fibre (FTTP) as your connectivity needs evolve. From startups to multi-site SMEs, we grow with you."
+        },
+        {
+          "title": "Transparent Pricing. No Hidden Fees.",
+          "text": "With London IT, what you see is what you pay. Our business broadband services are fully transparent, with no hidden charges, unexpected extras, or unnecessary add-ons. You only pay for the connectivity your business actually needs. Straightforward pricing. Honest advice. Enterprise-grade service."
+        }
+      ]
+    },
+    {
+      "type": "plans",
+      "tagline": "Business Fibre Broadband Packages",
+      "title": "Fibre to the Cabinet (FTTC)",
+      "text": [
+        "Reliable, cost-effective business broadband in London. Ideal for SMEs that need stable, always-on connectivity without the cost of full fibre.Perfect for email, cloud apps, VoIP calls, and day-to-day business operations."
+      ],
+      "items": [
+        {
+          "tagline": "Ideal for 1-6 Users",
+          "title": "FTTP 40/10",
+          "price": "£37 monthly",
+          "features": [
+            "Free business-grade router & delivery",
+            "Free activation & Openreach installation",
+            "Enhanced care level for faster fault resolution",
+            "Reliable SME broadband for small offices & startups",
+            "Best for: Small teams, home offices, light cloud usage"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 7-20 Users",
+          "title": "FTTP 80/20",
+          "price": "£42 monthly",
+          "features": [
+            "Free business-grade router & delivery",
+            "Free activation & Openreach installation",
+            "Enhanced care level for priority fault resolution",
+            "faster uploads for VoIP, Teams & cloud apps",
+            "Best for: Growing SMEs, multiple users, heavier workloads"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 41-60 Users",
+          "title": "FTTP 160/30",
+          "price": "£48 monthly",
+          "features": [
+            "High-capacity fibre for larger teams",
+            "Supports VoIP, VPNs, cloud platforms & video conferencing",
+            "Business-grade reliability with priority fault response",
+            "Future-proof connectivity ahead of copper switch-off",
+            "Best for: Busy offices, multi-device environments, scaling SMEs"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 41-60 Users",
+          "title": "FTTP 220/30",
+          "price": "£54 monthly",
+          "features": [
+            "Free business-grade router & delivery",
+            "Free activation & Openreach installation",
+            "Enhanced care level for fast fault resolution",
+            "Optimised for VoIP, Teams & cloud workloads",
+            "Best for: multi-department SMEs, shared offices, hybrid teams"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 61-80 users",
+          "title": "FTTP 330/50",
+          "price": "£60 monthly",
+          "features": [
+            "Free business-grade router & delivery",
+            "Free activation & Openreach installation",
+            "Enhanced care level for priority fault resolution",
+            "Smooth performance during peak usage",
+            "Best for: call-heavy teams, file sharing, CRM & VoIP environments"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 81-100 Users",
+          "title": "FTTP 550/75",
+          "price": "£80 monthly",
+          "features": [
+            "Free business-grade router & delivery",
+            "Free activation & Openreach installation",
+            "Enhanced care level with faster SLAs",
+            "Built for Microsoft Teams, cloud platforms & backups",
+            "Best for: scaling SMEs, professional services, multi-site teams"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        },
+        {
+          "tagline": "Ideal for 101-130 Users",
+          "title": "FTTP 1000/75",
+          "price": "£99 monthly",
+          "features": [
+            "Free business-grade router & delivery",
+            "Free activation & Openreach installation",
+            "Enhanced care level with priority fault handling",
+            "Designed for enterprise workloads & VoIP-heavy usage",
+            "Best for: high-growth businesses, large offices, tech-driven SMEs"
+          ],
+          "buttons": [
+            {
+              "label": "Check Availability",
+              "href": "https://www.london-itsupport.co.uk/contact-us"
+            },
+            {
+              "phone": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "tagline": "Add-Ons",
+      "title": "Add a Business VoIP Phone for Just £11.99 per User",
+      "text": [
+        "Perfect for hybrid teams, growing businesses, and organisations replacing traditional phone lines",
+        "No Long Contracts"
+      ],
+      "buttons": [
+        {
+          "label": "Add VoIP to My Broadband",
+          "href": "https://www.london-itsupport.co.uk/contact-us"
+        },
+        {
+          "phone": true
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

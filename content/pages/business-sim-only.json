@@ -1,0 +1,128 @@
+{
+  "slug": "business-sim-only",
+  "url": "https://www.london-itsupport.co.uk/business-sim-only",
+  "meta": {
+    "title": "Sim Only",
+    "description": "Flexible SIM Only plans for businesses in London. Save on mobile hardware, enjoy tailored data, calls, and texts, with expert support included."
+  },
+  "hero": {
+    "title": "Smart SIM-Only Deals for Modern Businesses",
+    "subtitle": "Flexible mobile contracts without the cost of new devices—perfect for growing teams.",
+    "buttons": [
+      {
+        "label": "View SIM-Only Options",
+        "href": "#sim-only-plans"
+      },
+      {
+        "label": "Speak to a Mobile Expert",
+        "href": "tel:02039886905"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "What Is a SIM-Only Deal & Why It Makes Sense for Businesses",
+      "text": [
+        "A SIM-only deal gives your business reliable mobile connectivity without the cost of new handsets. Simply insert the SIM into your existing device and benefit from competitive call, text, and data allowances. It’s a cost-effective, flexible solution ideal for SMEs, remote teams, and growing businesses that want freedom without long-term hardware commitments."
+      ],
+      "items": [
+        {
+          "title": "Flexible Mobile Contracts Built for SMEs",
+          "text": "Choose contract lengths and data allowances that match your business needs. SIM-only plans give you the flexibility to support temporary staff, remote workers, or expansion without locking you into unnecessary costs."
+        },
+        {
+          "title": "Superfast 4G & 5G Business Connectivity",
+          "text": "All business SIM-only plans include 4G and 5G as standard, delivering fast, reliable performance with no hidden charges. SIMs can be shipped directly to you or activated instantly via eSIM for quick deployment."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Unlimited calls and SMS included as standard"
+        },
+        {
+          "title": "2GB mobile data with the option to scale up to Unlimited"
+        },
+        {
+          "title": "Competitive international calling and global roaming add-ons"
+        },
+        {
+          "title": "Cost savings by removing the need for new hardware"
+        },
+        {
+          "title": "Flexible contract lengths to suit SMEs and growing teams"
+        },
+        {
+          "title": "Quick setup with SIM delivery or instant QR code activation"
+        },
+        {
+          "title": "Full support from London IT Support, no matter your chosen carrier"
+        },
+        {
+          "title": "Scalable plans that adapt as your business grows"
+        }
+      ]
+    },
+    {
+      "id": "sim-only-plans",
+      "type": "cards",
+      "title": "What’s Included With Our Business SIM-Only Plans",
+      "columns": 4,
+      "items": [
+        {
+          "title": "1 Month Plan, Cancel Anytime",
+          "text": "One-month plans with the freedom to cancel anytime. No long-term lock-ins."
+        },
+        {
+          "title": "Unlimited Calls and Texts",
+          "text": "Stay connected without limits across your business."
+        },
+        {
+          "title": "Sim, Micro Sim & Nano Sim Sizes",
+          "text": "Keeps you connected at maximum speeds for the coverage area."
+        },
+        {
+          "title": "Unrestricted Tethering in the UK",
+          "text": "Use your data freely for hotspotting and remote work."
+        },
+        {
+          "title": "Fast 5G, 4G & 3G",
+          "text": "Reliable coverage with access to the UK’s fastest mobile networks."
+        },
+        {
+          "title": "No Credit Check",
+          "text": "Quick, simple setup without unnecessary barriers."
+        },
+        {
+          "title": "No Speed Caps",
+          "text": "Enjoy consistent high-speed data with no artificial limits."
+        },
+        {
+          "title": "EU Roaming",
+          "text": "Use your SIM across Europe with confidence and control."
+        }
+      ]
+    },
+    {
+      "type": "intro",
+      "tagline": "Packages",
+      "title": "Business SIM-Only Packages Built for Flexibility",
+      "text": [
+        "Our business SIM-only plans include unlimited calls and texts with flexible data options starting from low usage and scaling up to unlimited data. We also offer international calling and global roaming add-ons, giving your business complete mobile freedom without unnecessary costs. With Intouch Tech, you benefit from competitive pricing, scalable solutions, and dedicated technical support you can rely on."
+      ],
+      "items": []
+    },
+    {
+      "type": "prose",
+      "title": "All The Data You Need For Less"
+    },
+    {
+      "type": "partners",
+      "title": "Our Partners"
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

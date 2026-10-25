@@ -1,5 +1,6 @@
-/* Dark is the default; index.html sets data-theme before first paint (a
-   saved choice, else the system setting) and the toggle switches it. */
+/* Three themes: dark (these tokens), light, and mix (below), the default.
+   The head component sets data-theme before first paint (a saved choice,
+   else mix) and the switch in the header changes it. */
 :root {
   color-scheme: dark;
   /* Tells index.html's inline styles the stylesheet has arrived. */
@@ -39,7 +40,8 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-:root[data-theme='light'] {
+:root[data-theme='light'],
+:root[data-theme='mix'] [data-tone='light'] {
   color-scheme: light;
   --bg: #f3f5fa;
   --card: rgba(255, 255, 255, 0.62);
@@ -59,6 +61,58 @@
   --accent-hover: #ffb733;
   --accent-wash: rgba(255, 170, 0, 0.16);
   --accent-text: #9c5c00;
+}
+
+/* Mix: London IT's navy, lighter than dark's near-black, behind the dots,
+   and the reading sections as floating cards of frosted light glass over
+   them — in no strict alternation. A section is light with data-tone="light":
+   set in index.html, by the enquiry and FAQ components, and by section type
+   on the synced pages (src/components/shared). The rest stay navy. */
+:root[data-theme='mix'] {
+  --bg: #001b41;
+  --panel: #0a2752;
+  /* Denser, so the menu bar stays navy over the light cards too. */
+  --bar: rgba(0, 27, 65, 0.9);
+  /* The light cards sit well inside the screen, so the dots show around them. */
+  --sheet-width: min(78vw, 1120px);
+  --sheet-radius: 28px;
+}
+
+@media (max-width: 991px) {
+  :root[data-theme='mix'] {
+    --sheet-width: 90vw;
+    --sheet-radius: 22px;
+  }
+}
+
+/* Anything light in mix sits on see-through white over the navy: darker
+   grey and amber text than on solid light, to stay legible (4.5:1). */
+:root[data-theme='mix'] [data-tone='light'] {
+  --muted: #3c475f;
+  --accent-text: #683d00;
+  color: var(--fg);
+}
+
+/* A light section is a card: frosted glass, brightest at the top left and
+   warming to amber at the far corner like the site's other glass, with a
+   fine white rim and a soft shadow lifting it off the navy. Mostly opaque,
+   so the dots show faintly through. */
+:root[data-theme='mix'] main > [data-tone='light'] {
+  /* Roughly how it reads over the navy, for anything that needs a solid match. */
+  --bg: #dce2ea;
+  /* Side spacing measured within the card, not the screen. */
+  --gutter: max(clamp(20px, 4vw, 56px), calc((var(--sheet-width) - var(--content-max)) / 2));
+  width: var(--sheet-width);
+  margin: clamp(20px, 4vh, 44px) auto;
+  padding-block: clamp(48px, 7vh, 84px);
+  border-radius: var(--sheet-radius);
+  background:
+    radial-gradient(640px circle at 100% 100%, rgba(255, 170, 0, 0.12), transparent 62%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.94), rgba(241, 245, 250, 0.88) 42%, rgba(228, 235, 244, 0.84));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 32px 80px -28px rgba(0, 6, 22, 0.6);
 }
 
 *,
@@ -334,6 +388,63 @@ main,
   color: var(--muted);
   font-size: 15px;
   line-height: 1.6;
+}
+
+/* Inner pages' sections (src/components): spacing, their heading block and
+   button rows. */
+.page-section {
+  padding: clamp(72px, 12vh, 140px) var(--gutter);
+}
+
+.section-head {
+  max-width: 820px;
+  margin-bottom: clamp(32px, 5vh, 56px);
+}
+
+.section-head .section-title {
+  max-width: 22ch;
+  font-size: clamp(30px, 3.6vw, 52px);
+  text-wrap: balance;
+}
+
+.section-lead {
+  max-width: 62ch;
+  margin: 20px 0 0;
+  color: var(--text-soft);
+  font-size: 16.5px;
+  line-height: 1.7;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.button-row .button svg {
+  transition: transform 0.45s var(--ease-out);
+}
+
+/* Inner pages: sections rise in as they arrive. Only once src/page.ts has
+   switched it on (has-reveal), so nothing stays hidden without the script. */
+.has-reveal .page-section,
+.has-reveal main > .enquiry,
+.has-reveal main > .faq {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 1.1s var(--ease-out);
+}
+
+.has-reveal .page-section.is-in,
+.has-reveal main > .enquiry.is-in,
+.has-reveal main > .faq.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.button-row .button:hover svg:not(.button__icon) {
+  transform: translateX(3px);
 }
 
 /* ---------- Hero ---------- */
@@ -844,9 +955,7 @@ main,
 
 /* ---------- Values ---------- */
 
-.values,
-.voices,
-.faq {
+.values {
   padding: 18vh var(--gutter);
 }
 
@@ -878,115 +987,6 @@ main,
   color: var(--muted);
   font-size: 14px;
   line-height: 1.6;
-}
-
-/* ---------- Testimonials ---------- */
-
-.voices__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 18px;
-  margin: 56px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.voice {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 30px 28px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--card-soft);
-}
-
-.voice__quote {
-  margin: 0;
-}
-
-.voice__quote p {
-  margin: 0;
-  font-size: 15px;
-  line-height: 1.65;
-}
-
-.voice__quote p::before {
-  content: '“';
-  color: var(--accent-text);
-}
-
-.voice__quote p::after {
-  content: '”';
-  color: var(--accent-text);
-}
-
-.voice__who {
-  margin: 0;
-  font-family: var(--heading);
-  font-weight: 500;
-  font-size: 14px;
-}
-
-.voice__who span {
-  font-family: var(--body);
-  font-weight: 400;
-  color: var(--muted);
-}
-
-/* ---------- FAQ ---------- */
-
-.faq {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: clamp(32px, 6vw, 96px);
-  align-items: start;
-}
-
-.faq__list {
-  border-top: 1px solid var(--line);
-}
-
-.faq__item {
-  border-bottom: 1px solid var(--line);
-}
-
-.faq__item summary {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 24px 0;
-  font-family: var(--heading);
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 1.35;
-  list-style: none;
-}
-
-.faq__item summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq__item summary::after {
-  content: '+';
-  flex: none;
-  color: var(--accent-text);
-  font-size: 22px;
-  line-height: 1;
-  transition: transform 0.3s var(--ease-out);
-}
-
-.faq__item[open] summary::after {
-  transform: rotate(45deg);
-}
-
-.faq__item p {
-  margin: -6px 0 26px;
-  max-width: 60ch;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.65;
 }
 
 /* ---------- Contact ---------- */
@@ -1142,9 +1142,6 @@ main,
     gap: 8px;
   }
 
-  .faq {
-    grid-template-columns: 1fr;
-  }
 
   /* One column; the map forms above the copy, which then scrolls over it. */
   .contact {

@@ -1,5 +1,6 @@
-// Pulls the homepage copy from london-itsupport.co.uk into content/site.json,
-// which plugins/site-content.ts renders into index.html at build time.
+// Pulls the copy from london-itsupport.co.uk: the homepage into content/site.json
+// and every other page in its sitemap into content/pages/<slug>.json (see
+// pages.mjs), which plugins/site-content.ts renders into the pages at build time.
 //
 //   npm run sync             fetch the live page and overwrite the snapshot
 //   npm run sync -- --soft   on any failure, keep the existing snapshot
@@ -8,11 +9,13 @@
 // Selectors follow the Webflow class names on the live page. If the page is
 // restructured and a section can't be found, the sync fails loudly rather than
 // writing half-empty content.
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises';
 import { parse } from 'node-html-parser';
+import { extractPage } from './pages.mjs';
 
 const SOURCE = process.env.SITE_URL || 'https://www.london-itsupport.co.uk/';
 const OUT = new URL('../content/site.json', import.meta.url);
+const PAGES = new URL('../content/pages/', import.meta.url);
 const soft = process.argv.includes('--soft');
 
 /** Decoded, whitespace-collapsed text; Webflow pads empty rich-text paragraphs with zero-width joiners. */
@@ -279,26 +282,59 @@ function validate(c) {
   if (problems.length) throw new Error(`Missing from ${SOURCE}: ${problems.join(', ')}`);
 }
 
-async function main() {
-  const response = await fetch(SOURCE, { headers: { 'user-agent': 'london-itsupport-site content sync' } });
-  if (!response.ok) throw new Error(`${SOURCE} answered ${response.status} ${response.statusText}`);
-  const content = extract(await response.text());
-  validate(content);
+const get = async (url) => {
+  const response = await fetch(url, { headers: { 'user-agent': 'london-itsupport-site content sync' } });
+  if (!response.ok) throw new Error(`${url} answered ${response.status} ${response.statusText}`);
+  return response.text();
+};
 
+/** Writes JSON, keeping the old file (and its timestamp) when only the timestamp would change. */
+async function save(file, content, label) {
+  const previous = await readFile(file, 'utf8').then(JSON.parse, () => null);
+  const comparable = (c) => JSON.stringify({ ...c, syncedAt: undefined });
+  if (previous && comparable(previous) === comparable(content)) return false;
+  await writeFile(file, `${JSON.stringify(content, null, 2)}\n`);
+  if (label) console.log(label);
+  return true;
+}
+
+/** Every other page in the site's sitemap, as typed sections (scripts/pages.mjs). */
+async function syncPages(syncedAt) {
+  const sitemap = await get(new URL('/sitemap.xml', SOURCE).href);
+  const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim()).filter((u) => new URL(u).pathname.replace(/\/$/, ''));
+  await mkdir(PAGES, { recursive: true });
+  const slugs = new Set();
+  let changed = 0;
+  for (const url of urls) {
+    const page = extractPage(await get(url), url);
+    if (!page.hero.title || !page.sections.length) throw new Error(`${url}: no hero title or sections found — has the page been restructured?`);
+    slugs.add(page.slug);
+    if (await save(new URL(`${page.slug}.json`, PAGES), { ...page, syncedAt })) changed++;
+  }
+  // Pages gone from the sitemap go from here too.
+  for (const file of await readdir(PAGES)) {
+    if (file.endsWith('.json') && !slugs.has(file.replace(/\.json$/, ''))) {
+      await unlink(new URL(file, PAGES));
+      changed++;
+    }
+  }
+  console.log(changed ? `[sync] content/pages: ${slugs.size} pages, ${changed} updated` : `[sync] content/pages already match (${slugs.size} pages)`);
+}
+
+async function main() {
+  const content = extract(await get(SOURCE));
+  validate(content);
   // Keep the old timestamp when nothing changed, so the snapshot only shows
   // up in git when the site's copy did.
-  const previous = await readFile(OUT, 'utf8').then(JSON.parse, () => null);
-  const comparable = (c) => JSON.stringify({ ...c, syncedAt: undefined });
-  if (previous && comparable(previous) === comparable(content)) {
-    console.log(`[sync] content/site.json already matches ${SOURCE}`);
-    return;
-  }
-  await writeFile(OUT, `${JSON.stringify(content, null, 2)}\n`);
-  console.log(
+  const wrote = await save(
+    OUT,
+    content,
     `[sync] wrote content/site.json from ${SOURCE}: ${content.services.items.length} services, ` +
       `${content.values.items.length} values, ${content.caseStudies.items.length} case studies, ` +
       `${content.testimonials.items.length} testimonials, ${content.faq.items.length} FAQs`,
   );
+  if (!wrote) console.log(`[sync] content/site.json already matches ${SOURCE}`);
+  await syncPages(content.syncedAt);
 }
 
 main().catch(async (error) => {

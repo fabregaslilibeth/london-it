@@ -498,3 +498,26 @@ function globeCloud(count: number): GlobeCloud {
   });
   return sorted;
 }
+
+/**
+ * Shapes for a page that shows only the silk (inner pages): every baked
+ * target sits at the origin, unused — the silk is built in the shader.
+ */
+export function emptyShapes(count: number): Shapes {
+  const cloud = (): PointCloud => ({ count, positions: new Float32Array(count * 3), luma: new Float32Array(count) });
+  return {
+    count,
+    logo: cloud(),
+    logoPad: 1,
+    map: cloud(),
+    mapAspect: 1,
+    office: null,
+    crystal: new Float32Array(count * 4),
+    globe: {
+      surface: new Float32Array(count * 3),
+      arcTo: new Float32Array(count * 4),
+      arcMeta: new Float32Array(count * 2),
+      luma: new Float32Array(count),
+    },
+  };
+}

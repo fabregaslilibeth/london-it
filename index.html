@@ -1,56 +1,9 @@
 <!doctype html>
-<!-- Double-brace placeholders are filled from content/site.json (synced from london-itsupport.co.uk) by plugins/site-content.ts -->
+<!-- The home page. Double-brace placeholders are filled from content/site.json (synced from
+     london-itsupport.co.uk) and ">" tags are components, by plugins/site-content.ts. -->
 <html lang="en-GB">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{metaTitle}}</title>
-    <meta name="description" content="{{metaDescription}}" />
-    <meta property="og:title" content="{{metaTitle}}" />
-    <meta property="og:description" content="{{metaDescription}}" />
-    <meta property="og:type" content="website" />
-    <meta name="theme-color" content="#000c20" />
-    <script>
-      // Theme before first paint, so there's no flash: a saved choice, else the system setting.
-      (function () {
-        var theme;
-        try {
-          theme = localStorage.getItem('theme');
-        } catch (e) {}
-        if (theme !== 'light' && theme !== 'dark') {
-          theme = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        }
-        document.documentElement.dataset.theme = theme;
-      })();
-    </script>
-    <style>
-      /* Until the stylesheet arrives (in dev it's injected by the script),
-         the preloader covers the page and its logo waits to be drawn —
-         otherwise the raw page shows for a moment. style.css sets --styled.
-         Kept low in specificity so style.css overrides all of it. */
-      html,
-      .preloader {
-        background: #000c20;
-      }
-      html:where([data-theme='light']),
-      :where([data-theme='light']) .preloader {
-        background: #f3f5fa;
-      }
-      .preloader {
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-      }
-      .preloader__logo {
-        opacity: var(--styled, 0);
-      }
-    </style>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+    {{> head}}
   </head>
   <body>
     <!-- The logo draws itself while the dots are prepared; its two rules are
@@ -66,7 +19,6 @@
       <span class="map-pin__address">{{addressShort}}</span>
     </p>
 
-    <!-- The double-brace tags with a ">" are components, rendered at build time from src/components/. -->
     {{> header}}
 
     <main id="top">
@@ -139,12 +91,12 @@
           </ol>
           <div class="services__foot">
             <div class="services__progress"><span data-service-progress></span></div>
-            <a class="services__more" href="{{servicesLink}}" target="_blank" rel="noopener" data-dissolve>Explore our services ↗</a>
+            <a class="services__more" href="{{servicesLink}}" data-dissolve>Explore our services →</a>
           </div>
         </div>
       </section>
 
-      <section class="results" id="results">
+      <section class="results" id="results" data-tone="light">
         <div class="results__head">
           <p class="eyebrow">{{casesTagline}}</p>
           <h2 class="section-title">{{casesTitle}}</h2>
@@ -163,23 +115,9 @@
         </ul>
       </section>
 
-      <section class="voices" id="voices">
-        <p class="eyebrow">{{voicesTitle}}</p>
-        <h2 class="section-title">{{voicesIntro}}</h2>
-        <ul class="voices__list">
-          {{voiceItems}}
-        </ul>
-      </section>
+      {{> testimonials}}
 
-      <section class="faq" id="faq">
-        <div class="faq__head">
-          <p class="eyebrow">{{faqTagline}}</p>
-          <h2 class="section-title">{{faqTitle}}</h2>
-        </div>
-        <div class="faq__list">
-          {{faqItems}}
-        </div>
-      </section>
+      {{> faq}}
 
       <!-- The particles form the London map again in the right-hand column. -->
       <section class="contact" id="contact">

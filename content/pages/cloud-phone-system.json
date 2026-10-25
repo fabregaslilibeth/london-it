@@ -1,0 +1,140 @@
+{
+  "slug": "cloud-phone-system",
+  "url": "https://www.london-itsupport.co.uk/cloud-phone-system",
+  "meta": {
+    "title": "Cloud Phone System London | London IT Support",
+    "description": "Reliable cloud phone system in London. Flexible, scalable VoIP solutions for SMEs, with seamless calls, video meetings, and expert support."
+  },
+  "hero": {
+    "title": "One Platform for Messaging, Video & Business Calls",
+    "subtitle": "Powerful cloud telephony and VoIP solutions designed to keep London SMEs connected anywhere.",
+    "buttons": [
+      {
+        "label": "Book a Demo",
+        "href": "https://www.london-itsupport.co.uk/contact-us"
+      },
+      {
+        "label": "Speak to a VoIP Expert",
+        "href": "tel:02039886905"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "Seamless SME VoIP Solutions & Cloud Telephony",
+      "text": [
+        "Our cloud phone systems keep London SMEs connected whether in the office, remote, or on the move. Designed for modern businesses, our VoIP solutions bring calls, messaging, and video together in one secure platform to boost communication and productivity."
+      ],
+      "items": [
+        {
+          "title": "Fast Setup. Simple Management.",
+          "text": "Deploy and manage your cloud phone system quickly with an all-in-one platform that unifies calls, messaging, and video. Built for SMEs, it scales effortlessly as your business grows."
+        },
+        {
+          "title": "Stay Connected Anywhere",
+          "text": "Make and receive calls, join meetings, and access voicemail from anywhere using mobile apps over 4G/5G or Wi-Fi. Your team stays connected at home, in the office, or abroad."
+        },
+        {
+          "title": "Actionable Call Insights",
+          "text": "Track call activity in real time, monitor missed calls, and analyse performance. Clear reporting helps improve response times and customer experience."
+        },
+        {
+          "title": "Smarter Workflows with CRM Integration",
+          "text": "ntegrate your cloud phone system with your CRM to automatically log calls and interactions reducing manual tasks and streamlining operations."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Unified mobile solution for calls, meetings, and collaboration"
+        },
+        {
+          "title": "Flexible remote access via mobile apps and desk phones"
+        },
+        {
+          "title": "Seamless integration with CRM and business tools"
+        },
+        {
+          "title": "Real-time call analytics for performance tracking"
+        },
+        {
+          "title": "Scalable plans tailored to business phone systems needs"
+        },
+        {
+          "title": "Reliable uptime with cloud telephony technology"
+        },
+        {
+          "title": "Global connectivity over 4G/5G and Wi-Fi"
+        },
+        {
+          "title": "Simplified management through a user-friendly portal"
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Everything Your Business Phone System Needs And More...",
+      "columns": 4,
+      "items": [
+        {
+          "title": "Call Forwarding"
+        },
+        {
+          "title": "Call Queueing"
+        },
+        {
+          "title": "HD Voice Calls"
+        },
+        {
+          "title": "On Hold Music"
+        },
+        {
+          "title": "Video Meetings"
+        },
+        {
+          "title": "Phone Extension"
+        },
+        {
+          "title": "Call Reports"
+        },
+        {
+          "title": "Mobile & Desktop Calling"
+        },
+        {
+          "title": "Local & National Numbers"
+        },
+        {
+          "title": "Call Recording"
+        },
+        {
+          "title": "Custom Call Menus (IVR)"
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "tagline": "Why Choose Us",
+      "title": "Business Broadband Built for London Companies",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Fixed Monthly Pricing",
+          "text": "One clear monthly cost for reliable business broadband. No surprises, no fluctuating bills just predictable pricing you can budget around."
+        },
+        {
+          "title": "Flexible Broadband Plans for SMEs",
+          "text": "Every business is different. Our broadband plans are designed to scale with your needs, whether you’re a small office or a growing London SME."
+        },
+        {
+          "title": "Transparent Pricing No Hidden Fees",
+          "text": "What you see is what you pay. Our business broadband comes with full transparency no hidden charges, no unexpected extras."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

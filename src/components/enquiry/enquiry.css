@@ -52,6 +52,19 @@
   overflow-wrap: anywhere;
 }
 
+.enquiry__nowrap {
+  white-space: nowrap;
+}
+
+/* On mix's narrower card, a little more room for the contact details
+   (phones stack it, below). */
+@media (min-width: 820px) {
+  :root[data-theme='mix'] .enquiry {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(28px, 4vw, 72px);
+  }
+}
+
 .enquiry__contact svg {
   align-self: center;
   width: 16px;
@@ -104,6 +117,14 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* Only where the form stands alone (the inner page banner). */
+.enquiry__form-title {
+  margin: 0 0 clamp(18px, 2.6vh, 26px);
+  font-size: clamp(22px, 1.9vw, 28px);
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 .enquiry__head {

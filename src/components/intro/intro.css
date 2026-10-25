@@ -1,0 +1,53 @@
+/* ---------- Intro: a page's opening statement ---------- */
+
+.page-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 104px);
+  align-items: start;
+}
+
+.page-intro__lead {
+  margin: 0 0 18px;
+  max-width: 62ch;
+  color: var(--text-soft);
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.page-intro__points {
+  margin: 30px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.page-intro__points li {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 12px 32px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-intro__points h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.page-intro__points p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+@media (max-width: 819px) {
+  .page-intro,
+  .page-intro__points li {
+    grid-template-columns: 1fr;
+  }
+}

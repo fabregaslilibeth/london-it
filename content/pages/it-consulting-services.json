@@ -1,0 +1,111 @@
+{
+  "slug": "it-consulting-services",
+  "url": "https://www.london-itsupport.co.uk/it-consulting-services",
+  "meta": {
+    "title": "IT Consulting Services London | London IT Support",
+    "description": "Professional IT consulting services in London. Expert guidance, tailored strategies, and scalable solutions that align with your business goals."
+  },
+  "hero": {
+    "title": "Expert IT Consulting Services in London",
+    "subtitle": "Strategic IT Consulting for SMEs . Clear Plans, Better Performance, Lower Risk",
+    "buttons": [
+      {
+        "label": "See How We Help",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "What Is IT Consulting for SMEs?",
+      "text": [
+        "IT consulting for SMEs provides expert guidance on selecting, implementing, and optimising business IT systems. London IT helps small and medium-sized businesses make confident technology decisions from cloud platforms and cyber security to infrastructure and compliance without unnecessary complexity or cost.",
+        "Our SME IT consulting services in London are designed to improve efficiency, reduce risk, and support sustainable growth."
+      ],
+      "items": [
+        {
+          "title": "SME IT Solutions & Cyber Security Expertise",
+          "text": "Choosing the right technology shouldn’t slow your business down. Many SMEs invest in tools that don’t align with their goals, leading to wasted time and budget.London IT delivers practical, tailored IT solutions backed by cyber security expertise, ensuring your technology supports productivity, resilience, and compliance as your business grows."
+        },
+        {
+          "title": "How We Simplify Your Technology Journey",
+          "text": "Our IT consultants take the time to understand your business challenges before recommending solutions. We focus on cost-effective, scalable technology from cloud services and secure networks to ongoing optimisation.By simplifying your IT environment, we help you streamline operations, reduce risk, and scale with confidence."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Remote Work Solutions: Efficient tools for a seamless remote setup."
+        },
+        {
+          "title": "Cloud Services: Customised options like Office 365 or G-suite."
+        },
+        {
+          "title": "Infrastructure: Cloud, on-premise, or hybrid setups tailored to you."
+        },
+        {
+          "title": "Network Connectivity: Fast, secure WiFi and point-to-point networks."
+        },
+        {
+          "title": "Cybersecurity & Compliance: Guidance on Cyber Essentials and threat protection."
+        },
+        {
+          "title": "Business Continuity & Backups: Safe data and uptime assurance."
+        },
+        {
+          "title": "Strategy & Project Planning: Long-term and project-specific strategies."
+        },
+        {
+          "title": "Licensing & Asset Management: Optimised compliance and resource use."
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "tagline": "Trust London IT Support for expert IT consulting London.",
+      "title": "Why Choose Us as Your IT Consultant",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Comprehensive Backup Support",
+          "text": "Our IT support London covers all operating systems and devices, ensuring robust disaster recovery for your business."
+        },
+        {
+          "title": "Knowledgeable SME Technology Experts",
+          "text": "Our team excels in market-leading cloud services, cybersecurity, and SME-focused technologies."
+        },
+        {
+          "title": "Transparent, Flexible Pricing",
+          "text": "Enjoy clear pricing with no hidden fees, tailored to your IT consulting London requirements."
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "tagline": "OUR PLAN OF ACTION",
+      "title": "How We Ensure You Get Technology Working The Way You Want It",
+      "items": [
+        {
+          "title": "LISTEN",
+          "text": "We listen to you and gain an understanding of how you want technology to work for your business , and what your budget is."
+        },
+        {
+          "title": "PLAN",
+          "text": "We build a detailed plan around your requirements including costs, timeframes, and expected downtime."
+        },
+        {
+          "title": "IMPLEMENT",
+          "text": "Our team will work around you to implement the agreed plan and then train you and your staff how to use any new technology implemented."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

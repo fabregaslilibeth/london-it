@@ -54,7 +54,8 @@
   filter: brightness(0) invert(1);
 }
 
-:root[data-theme='light'] .accreditations__logo--on-dark {
+:root[data-theme='light'] .accreditations__logo--on-dark,
+:root[data-theme='mix'] [data-tone='light'] .accreditations__logo--on-dark {
   filter: brightness(0);
   opacity: 0.72;
 }

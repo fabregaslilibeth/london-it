@@ -1,0 +1,28 @@
+<!doctype html>
+<!-- The template for every inner page synced from london-itsupport.co.uk
+     (content/pages/<slug>.json), built at /<slug>/ by plugins/site-content.ts.
+     ">" tags are components (src/components); the page's own content comes
+     through page-hero and page-sections. -->
+<html lang="en-GB">
+  <head>
+    {{> head}}
+  </head>
+  <body class="inner-page">
+    <!-- The silk particles, full screen behind the page (src/page.ts). -->
+    <div class="field" data-field aria-hidden="true"></div>
+
+    {{> header home="/" contact="#contact-form"}}
+
+    <main id="top">
+      {{> page-hero}}
+
+      {{> page-sections}}
+
+      {{> enquiry id="contact-form"}}
+    </main>
+
+    {{> footer home="/"}}
+
+    <script type="module" src="/src/page.ts"></script>
+  </body>
+</html>

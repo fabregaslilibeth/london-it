@@ -111,6 +111,9 @@
   position: absolute;
   top: calc(100% + 16px);
   left: 50%;
+  /* As wide as its items need: positioned against the narrow menu item, it
+     would otherwise shrink to its smallest and let the items spill out. */
+  width: max-content;
   min-width: 300px;
   padding: 20px;
   border: 1px solid var(--line);
@@ -159,11 +162,8 @@
 }
 
 .menu__heading {
-  display: flex;
-  align-items: center;
-  gap: 12px;
   margin: 0 0 12px;
-  padding: 0 4px 14px;
+  padding: 0 12px 14px;
   border-bottom: 1px solid var(--line);
   font-size: 12px;
   letter-spacing: 0.14em;
@@ -171,19 +171,25 @@
   color: var(--muted);
 }
 
+/* Each item's icon (plugins/menu-icons.ts), bare, in the accent. */
 .menu__icon {
   display: grid;
+  flex: none;
   place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 11px;
-  background: var(--accent-wash);
+  width: 22px;
+  height: 22px;
   color: var(--accent-text);
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
 }
 
 .menu__icon svg {
-  width: 18px;
-  height: 18px;
+  width: 100%;
+  height: 100%;
+}
+
+.menu__label {
+  flex: 1;
 }
 
 .menu__links {
@@ -202,16 +208,16 @@
 .menu__links a {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 14px;
-  padding: 11px 12px;
+  padding: 10px 12px;
   border-radius: 12px;
   font-size: 14.5px;
   white-space: nowrap;
   transition: background-color 0.2s ease;
 }
 
-.menu__links a svg {
+/* The arrow. */
+.menu__links a > svg {
   flex: none;
   width: 14px;
   height: 14px;
@@ -226,10 +232,15 @@
   background: var(--accent-wash);
 }
 
-.menu__links a:hover svg,
-.menu__links a:focus-visible svg {
+.menu__links a:hover > svg,
+.menu__links a:focus-visible > svg {
   opacity: 1;
   transform: none;
+}
+
+.menu__links a:hover .menu__icon,
+.menu__links a:focus-visible .menu__icon {
+  opacity: 1;
 }
 
 .topbar__actions {
@@ -273,38 +284,41 @@
   display: none;
 }
 
-.theme-toggle {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  padding: 0;
+/* Dark · mix · light, the current one lit. */
+.theme-switch {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
   border: 1px solid var(--line);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--fg);
-  cursor: pointer;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  border-radius: 999px;
 }
 
-.theme-toggle:hover {
-  border-color: var(--accent);
+.theme-switch button {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.theme-switch button:hover {
+  color: var(--fg);
+}
+
+.theme-switch button[aria-pressed='true'] {
+  background: var(--accent-wash);
   color: var(--accent-text);
 }
 
-.theme-toggle svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* Shows where it'll take you: the sun on the dark page, the moon on the light one. */
-.theme-toggle__moon,
-:root[data-theme='light'] .theme-toggle__sun {
-  display: none;
-}
-
-:root[data-theme='light'] .theme-toggle__moon {
-  display: block;
+.theme-switch svg {
+  width: 16px;
+  height: 16px;
 }
 
 html,
@@ -400,6 +414,7 @@ body {
   .menu__panel {
     position: static;
     display: none;
+    width: auto;
     min-width: 0;
     padding: 0 0 14px;
     border: 0;
@@ -431,7 +446,7 @@ body {
     white-space: normal;
   }
 
-  .menu__links a svg {
+  .menu__links a > svg {
     opacity: 1;
     transform: none;
   }

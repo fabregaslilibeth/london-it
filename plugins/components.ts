@@ -7,14 +7,23 @@
 // <name>.ts, if it has one, wires it up in the browser (src/components/index.ts).
 import accreditations from '../src/components/accreditations/accreditations.template';
 import enquiry from '../src/components/enquiry/enquiry.template';
+import faq from '../src/components/faq/faq.template';
 import footer from '../src/components/footer/footer.template';
+import head from '../src/components/head/head.template';
 import header from '../src/components/header/header.template';
+import pageHero from '../src/components/page-hero/page-hero.template';
+import pageSections from '../src/components/page-sections/page-sections.template';
 import partners from '../src/components/partners/partners.template';
-import type { SiteContent } from './types';
+import testimonials from '../src/components/testimonials/testimonials.template';
+import type { PageContent, SiteContent } from './types';
 
 export interface ComponentContext {
   content: SiteContent;
-  /** The live site's home page; links to it are made local. */
+  /** Every inner page synced from the live site. */
+  pages: PageContent[];
+  /** The page being built, for the page components; absent on hand-written pages. */
+  page?: PageContent;
+  /** The live site's home page; links into the live site are made local. */
   siteRoot: string;
   logoFile: string;
 }
@@ -24,7 +33,18 @@ export type Props = Record<string, string | undefined>;
 
 export type Template = (context: ComponentContext, props: Props) => string;
 
-export const templates: Record<string, Template> = { accreditations, enquiry, footer, header, partners };
+export const templates: Record<string, Template> = {
+  accreditations,
+  enquiry,
+  faq,
+  footer,
+  head,
+  header,
+  'page-hero': pageHero,
+  'page-sections': pageSections,
+  partners,
+  testimonials,
+};
 
 /** Replaces every {{> name key="value"}} tag with that component's HTML. */
 export function expandComponents(html: string, context: ComponentContext): string {
@@ -36,5 +56,29 @@ export function expandComponents(html: string, context: ComponentContext): strin
   });
 }
 
-/** Links to the live site's home page point at this site's `home` instead. */
-export const localise = (href: string, siteRoot: string, home: string) => (href === siteRoot ? home : href);
+/**
+ * A link into the live site made local: its home page → `home`, a page this
+ * site has → /<slug>/ (keeping any #anchor); anything else is left alone.
+ */
+export function siteLink(href: string, { siteRoot, pages }: ComponentContext, home = '/'): string {
+  if (!href.startsWith(siteRoot)) return href;
+  const url = new URL(href);
+  const slug = url.pathname.replace(/^\/|\/$/g, '');
+  if (!slug) return url.hash || home;
+  return pages.some((p) => p.slug === slug) ? `/${slug}/${url.hash}` : href;
+}
+
+/** The live site's contact pages; on this site every page ends with the enquiry form. */
+const CONTACT = /^\/(contact|contact-us)\/?$/;
+
+/** Where a call-to-action goes: contact links → the form on this page; others as siteLink. */
+export function actionLink(href: string, context: ComponentContext): string {
+  if (href.startsWith(context.siteRoot) && CONTACT.test(new URL(href).pathname)) return '#contact-form';
+  return siteLink(href, context);
+}
+
+/** The menu group a page sits under ("IT Services", "Connectivity"…), if any. */
+export function groupOf(slug: string, { content, siteRoot }: ComponentContext): string | undefined {
+  const target = new URL(slug, siteRoot).href.replace(/\/$/, '');
+  return content.nav.find((item) => 'links' in item && item.links.some((l) => l.href.replace(/\/$/, '') === target))?.label;
+}

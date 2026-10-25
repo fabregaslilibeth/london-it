@@ -8,6 +8,7 @@
 // Props: id — the section's id, also prefixing the form's field ids, so it
 // must be unique on the page (default "enquiry"); title (default the form's
 // title on the live site); partners="true" adds the partner logo strip.
+// In the mix theme it's always a light sheet.
 import type { ComponentContext, Props } from '../../../plugins/components';
 import { escapeHtml, slug } from '../../../plugins/html';
 import { ICONS } from '../../../plugins/icons';
@@ -71,30 +72,32 @@ function renderSteps(enquiry: Enquiry, prefix: string): string {
     .join('\n          ');
 }
 
-export default function enquiry(context: ComponentContext, props: Props): string {
+/** An (escaped) email that, if it must wrap, breaks after the @ — not at a hyphen in the domain. */
+function emailLines(email: string): string {
+  const at = email.indexOf('@');
+  return at < 0 ? email : `${email.slice(0, at + 1)}<wbr><span class="enquiry__nowrap">${email.slice(at + 1)}</span>`;
+}
+
+/**
+ * The form on its own: the frosted pane with its steps. `prefix` keeps its
+ * field ids unique on the page; `title`, if given, heads the pane (the
+ * enquiry section heads its aside instead). The inner page banner uses it too.
+ */
+export function renderEnquiryForm(context: ComponentContext, prefix: string, title?: string): string {
   const { enquiry: form, contact } = context.content;
-  const id = slug(props.id ?? 'enquiry') || 'enquiry';
   const steps = form.steps.length;
   const total = String(steps).padStart(2, '0');
   const phone = escapeHtml(contact.phone);
   const email = escapeHtml(contact.email);
-  return `<section class="enquiry" id="${id}" data-component="enquiry">
-        <div class="enquiry__aside">
-          <h2 class="section-title">${escapeHtml(props.title ?? form.title)}</h2>
-          <ul class="enquiry__contact">
-            <li><a href="${escapeHtml(contact.phoneHref)}"><span class="enquiry__label">Call</span><span class="enquiry__value">${phone}</span>${ICONS.arrow}</a></li>
-            <li><a href="mailto:${email}"><span class="enquiry__label">Email</span><span class="enquiry__value">${email}</span>${ICONS.arrow}</a></li>
-            <li><a href="${escapeHtml(contact.mapUrl)}" target="_blank" rel="noopener"><span class="enquiry__label">Visit</span><span class="enquiry__value">${escapeHtml(contact.address)}</span>${ICONS.arrow}</a></li>
-          </ul>
-          ${props.partners === 'true' ? partners(context, {}) : ''}
-        </div>
-        <form class="enquiry__form" data-enquiry data-mailto="${email}" data-phone="${phone}" novalidate>
+  const titleId = `${prefix}-title`;
+  return `<form class="enquiry__form" data-enquiry data-mailto="${email}" data-phone="${phone}" novalidate${title ? ` aria-labelledby="${titleId}"` : ''}>
+          ${title ? `<h2 class="enquiry__form-title" id="${titleId}">${escapeHtml(title)}</h2>` : ''}
           <div class="enquiry__head" aria-hidden="true">
             <p class="enquiry__count"><span data-step-number>01</span> / ${total}</p>
             <ol class="enquiry__progress">${form.steps.map((_, i) => `<li${i === 0 ? ' class="is-current"' : ''}></li>`).join('')}</ol>
           </div>
           <p class="visually-hidden" aria-live="polite" data-step-status>Step 1 of ${steps}</p>
-          ${renderSteps(form, id)}
+          ${renderSteps(form, prefix)}
           <p class="enquiry__error" data-error role="alert" hidden></p>
           <div class="enquiry__actions" data-actions>
             <button class="enquiry__back" type="button" data-back hidden>${ICONS.arrow}Back</button>
@@ -105,6 +108,24 @@ export default function enquiry(context: ComponentContext, props: Props): string
             <p class="enquiry__done-title">Thank you</p>
             <p data-done-text></p>
           </div>
-        </form>
+        </form>`;
+}
+
+export default function enquiry(context: ComponentContext, props: Props): string {
+  const { enquiry: form, contact } = context.content;
+  const id = slug(props.id ?? 'enquiry') || 'enquiry';
+  const phone = escapeHtml(contact.phone);
+  const email = escapeHtml(contact.email);
+  return `<section class="enquiry" id="${id}" data-component="enquiry" data-tone="light">
+        <div class="enquiry__aside">
+          <h2 class="section-title">${escapeHtml(props.title ?? form.title)}</h2>
+          <ul class="enquiry__contact">
+            <li><a href="${escapeHtml(contact.phoneHref)}"><span class="enquiry__label">Call</span><span class="enquiry__value">${phone}</span>${ICONS.arrow}</a></li>
+            <li><a href="mailto:${email}"><span class="enquiry__label">Email</span><span class="enquiry__value">${emailLines(email)}</span>${ICONS.arrow}</a></li>
+            <li><a href="${escapeHtml(contact.mapUrl)}" target="_blank" rel="noopener"><span class="enquiry__label">Visit</span><span class="enquiry__value">${escapeHtml(contact.address)}</span>${ICONS.arrow}</a></li>
+          </ul>
+          ${props.partners === 'true' ? partners(context, {}) : ''}
+        </div>
+        ${renderEnquiryForm(context, id)}
       </section>`;
 }

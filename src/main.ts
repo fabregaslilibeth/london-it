@@ -10,7 +10,7 @@ import { attachDissolve } from './effects/dissolve';
 import { revealOnScroll, setupReveals } from './effects/reveal';
 import { createPreloader } from './effects/preloader';
 import { createZoneClock } from './effects/clock';
-import { MENU_LOCK_EVENT, THEME_EVENT, currentTheme, type Theme } from './components';
+import { MENU_LOCK_EVENT, TESTIMONIAL_EVENT, THEME_EVENT, currentTheme, type Theme } from './components';
 
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const coarsePointer = matchMedia('(pointer: coarse)').matches;
@@ -54,6 +54,13 @@ async function boot(): Promise<void> {
   document.addEventListener(MENU_LOCK_EVENT, (e) => {
     if ((e as CustomEvent<boolean>).detail) lenis?.stop();
     else lenis?.start();
+  });
+  // Each new testimonial turns the galaxy on a third (its arms come round to
+  // where they were): the core gets there fast, the rim follows.
+  const galaxy = { target: 0, core: 0, rim: 0 };
+  document.addEventListener(TESTIMONIAL_EVENT, (e) => {
+    galaxy.target += (e as CustomEvent<number>).detail * ((Math.PI * 2) / 3);
+    if (reducedMotion) galaxy.core = galaxy.rim = galaxy.target;
   });
 
   const preloader = createPreloader(el('[data-preloader]'), skipIntro ? 0 : config.intro.loaderSeconds);
@@ -328,9 +335,20 @@ async function boot(): Promise<void> {
 
     // Dim the map behind the statement.
     u.uExposure.value = look.exposure * (1 - 0.45 * recede * (1 - toSignal));
+    // The galaxy swirls round to the next testimonial, brightening as it turns.
+    galaxy.core = damp(galaxy.core, galaxy.target, 0.35, dt);
+    galaxy.rim = damp(galaxy.rim, galaxy.target, 1.1, dt);
+    u.uGalaxySpin.value.set(galaxy.core, galaxy.rim);
+    const turning = clamp01(Math.abs(galaxy.target - galaxy.rim) / ((Math.PI * 2) / 3));
     // Dots behind copy — the backdrops, and the closing map on phones —
-    // stay dim, more so on phones and in light mode.
-    u.uBackdropDim.value = (layout.narrow ? 0.34 : 0.5) * look.behindText;
+    // stay dim, more so on phones and in light mode; less behind mix's
+    // see-through sheets, which dim them already. (Which backdrop is showing:
+    // each owns the dots from its section's arrival to the next's.)
+    const owns = [b0 * (1 - b1), b1 * (1 - b2), b2 * (1 - b3), b3 * (1 - toMapEnd)];
+    const owned = owns.reduce((a, b) => a + b, 0);
+    const sheetBoost = (i: number) => (look.behindSheet && sections.backdrops[i].dataset.tone === 'light' ? look.behindSheet : 1);
+    const behindSheet = owned ? owns.reduce((sum, o, i) => sum + o * sheetBoost(i), 0) / owned : 1;
+    u.uBackdropDim.value = (layout.narrow ? 0.34 : 0.5) * look.behindText * behindSheet * (1 + 0.6 * turning);
     u.uEndDim.value = layout.narrow ? 0.55 * look.behindText : 1;
 
     // --- DOM ---

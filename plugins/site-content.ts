@@ -1,18 +1,24 @@
-// Fills the pages with the copy synced from london-itsupport.co.uk
-// (content/site.json, written by `npm run sync`): first the components
-// ({{> header}} and so on, see components.ts), then the page's own
-// {{placeholders}}. The text lands in the real HTML at build time, so it's
-// there for search engines and link previews.
-import { readFileSync } from 'node:fs';
+// Fills the pages with the copy synced from london-itsupport.co.uk (written
+// by `npm run sync`): first the components ({{> header}} and so on, see
+// components.ts), then the page's own {{placeholders}}. The text lands in the
+// real HTML at build time, so it's there for search engines and link previews.
+//
+// Besides the hand-written pages (index.html…), every synced inner page
+// (content/pages/<slug>.json) is built at /<slug>/ from one template,
+// src/pages/page.html — served on the fly in dev, emitted as
+// <slug>/index.html in the build. No HTML file per page.
+import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Plugin, ResolvedConfig } from 'vite';
-import { expandComponents } from './components';
+import { expandComponents, siteLink, type ComponentContext } from './components';
 import { escapeHtml } from './html';
 import { ICONS } from './icons';
 import { loaderLogo } from './logo';
-import type { SiteContent, Titled, Value } from './types';
+import type { PageContent, SiteContent, Titled, Value } from './types';
 
 const CONTENT_FILE = 'content/site.json';
+const PAGES_DIR = 'content/pages';
+const PAGE_TEMPLATE = 'src/pages/page.html';
 const LOGO_FILE = 'src/assets/logo.svg';
 
 /** Escaped text with the first occurrence of `phrase` set in the accent colour. */
@@ -95,34 +101,12 @@ function renderValues(items: Value[]): string {
     .join('\n          ');
 }
 
-function renderVoices(items: SiteContent['testimonials']['items']): string {
-  return items
-    .map(
-      (t) => `<li class="voice">
-            <blockquote class="voice__quote"><p>${escapeHtml(t.text)}</p></blockquote>
-            <p class="voice__who">${escapeHtml(t.name)} <span>· ${escapeHtml(t.source)}</span></p>
-          </li>`,
-    )
-    .join('\n          ');
-}
-
-function renderFaq(items: SiteContent['faq']['items']): string {
-  return items
-    .map(
-      (f) => `<details class="faq__item">
-            <summary>${escapeHtml(f.question)}</summary>
-            <p>${escapeHtml(f.answer)}</p>
-          </details>`,
-    )
-    .join('\n          ');
-}
-
-function render(page: string, c: SiteContent, logoFile: string): string {
+function render(template: string, c: SiteContent, pages: PageContent[], logoFile: string, page?: PageContent): string {
   const support = pick(c.values.items, /24\/7|support/i, 0);
   const security = pick(c.values.items, /cyber|secur/i, c.values.items.length - 1);
   const cloud = pick(c.services.items, /cloud/i, 3);
-  const siteRoot = new URL('/', c.source).href;
-  const html = expandComponents(page, { content: c, siteRoot, logoFile });
+  const context: ComponentContext = { content: c, pages, page, siteRoot: new URL('/', c.source).href, logoFile };
+  const html = expandComponents(template, context);
 
   const values: Record<string, string> = {
     loaderLogo: loaderLogo(logoFile),
@@ -143,7 +127,7 @@ function render(page: string, c: SiteContent, logoFile: string): string {
     servicesTagline: escapeHtml(c.services.tagline),
     servicesTitle: escapeHtml(c.services.title),
     servicesIntro: escapeHtml(c.services.intro),
-    servicesLink: escapeHtml(c.services.link),
+    servicesLink: escapeHtml(siteLink(c.services.link, context)),
     serviceItems: renderSlides(c.services.items, 'service'),
     pillarItems: renderPillars(c.about.pillars),
     serviceCount: String(c.services.items.length).padStart(2, '0'),
@@ -155,12 +139,6 @@ function render(page: string, c: SiteContent, logoFile: string): string {
     valuesTitle: escapeHtml(c.values.title),
     // The two featured in the particle panels aren't repeated here.
     valueItems: renderValues(c.values.items.filter((v) => v !== support && v !== security)),
-    voicesTitle: escapeHtml(c.testimonials.title),
-    voicesIntro: escapeHtml(c.testimonials.intro),
-    voiceItems: renderVoices(c.testimonials.items),
-    faqTagline: escapeHtml(c.faq.tagline),
-    faqTitle: escapeHtml(c.faq.title),
-    faqItems: renderFaq(c.faq.items),
     assessTagline: escapeHtml(c.assessment.tagline),
     assessTitle: accent(c.assessment.title, 'Free'),
     assessText: c.assessment.paragraphs.map((p) => `<p class="contact__text">${escapeHtml(p)}</p>`).join('\n        '),
@@ -181,36 +159,92 @@ function render(page: string, c: SiteContent, logoFile: string): string {
   });
 }
 
+const readJson = <T>(file: string): T => {
+  try {
+    return JSON.parse(readFileSync(file, 'utf8')) as T;
+  } catch (error) {
+    throw new Error(`Couldn't read ${file} (${(error as Error).message}). Run \`npm run sync\` first.`);
+  }
+};
+
+/** The synced inner pages, by file name. */
+function readPages(dir: string): PageContent[] {
+  let files: string[] = [];
+  try {
+    files = readdirSync(dir).filter((f) => f.endsWith('.json'));
+  } catch {
+    return [];
+  }
+  return files.map((f) => readJson<PageContent>(resolve(dir, f)));
+}
+
+/** "/managed-it-support/", "/managed-it-support/index.html" → its slug. */
+const slugOf = (path: string) => path.split('?')[0].replace(/^\/|\/?(index\.html)?$/g, '');
+
 export function siteContent(): Plugin {
-  let file = '';
-  let logoFile = '';
-  const read = (): SiteContent => {
-    try {
-      return JSON.parse(readFileSync(file, 'utf8')) as SiteContent;
-    } catch (error) {
-      throw new Error(`Couldn't read ${CONTENT_FILE} (${(error as Error).message}). Run \`npm run sync\` first.`);
-    }
+  let root = process.cwd();
+  const at = (path: string) => resolve(root, path);
+  const pages = () => readPages(at(PAGES_DIR));
+  /** The page an HTML request or entry is for, if it's one of the synced pages. */
+  const pageFor = (path: string) => {
+    const slug = slugOf(path);
+    return slug ? pages().find((p) => p.slug === slug) : undefined;
   };
+  /** Build entries look like <root>/<slug>/index.html, though no such file exists. */
+  const entryFor = (slug: string) => resolve(root, slug, 'index.html');
+  const isEntry = (id: string) => pages().some((p) => entryFor(p.slug) === resolve(id));
 
   return {
     name: 'site-content',
+    enforce: 'pre',
+
+    config(config) {
+      root = resolve(config.root ?? process.cwd());
+      const input = Object.fromEntries(pages().map((p) => [`pages/${p.slug}`, entryFor(p.slug)]));
+      return { build: { rollupOptions: { input } } };
+    },
 
     configResolved(config: ResolvedConfig) {
-      file = resolve(config.root, CONTENT_FILE);
-      logoFile = resolve(config.root, LOGO_FILE);
+      root = config.root;
+    },
+
+    resolveId(id) {
+      return isEntry(id) ? resolve(id) : null;
+    },
+
+    load(id) {
+      return isEntry(id) ? readFileSync(at(PAGE_TEMPLATE), 'utf8') : null;
     },
 
     configureServer(server) {
-      // A fresh `npm run sync` reloads the open page.
-      server.watcher.add(file);
+      // A fresh `npm run sync` (or a template edit) reloads the open page.
+      server.watcher.add([at(CONTENT_FILE), at(PAGES_DIR), at(PAGE_TEMPLATE)]);
       server.watcher.on('change', (changed) => {
-        if (resolve(changed) === file) server.ws.send({ type: 'full-reload' });
+        const file = resolve(changed);
+        if (file === at(CONTENT_FILE) || file === at(PAGE_TEMPLATE) || file.startsWith(at(PAGES_DIR))) {
+          server.ws.send({ type: 'full-reload' });
+        }
+      });
+      // Serve the synced pages at /<slug>/ from the template.
+      server.middlewares.use(async (req, res, next) => {
+        const url = (req.url ?? '').split('?')[0];
+        if (!/^\/[a-z0-9-]+(\/(index\.html)?)?$/.test(url) || !pageFor(url)) return next();
+        if (!url.endsWith('/') && !url.endsWith('.html')) {
+          res.writeHead(301, { Location: `${url}/` }).end();
+          return;
+        }
+        try {
+          const html = await server.transformIndexHtml(url, readFileSync(at(PAGE_TEMPLATE), 'utf8'), req.originalUrl);
+          res.writeHead(200, { 'Content-Type': 'text/html' }).end(html);
+        } catch (error) {
+          next(error);
+        }
       });
     },
 
     transformIndexHtml: {
       order: 'pre',
-      handler: (html) => render(html, read(), logoFile),
+      handler: (html, ctx) => render(html, readJson<SiteContent>(at(CONTENT_FILE)), pages(), at(LOGO_FILE), pageFor(ctx.path)),
     },
   };
 }

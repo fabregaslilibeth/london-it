@@ -1,0 +1,136 @@
+{
+  "slug": "it-services",
+  "url": "https://www.london-itsupport.co.uk/it-services",
+  "meta": {
+    "title": "IT Services | London IT Support",
+    "description": "Secure SME Backup & Fast Disaster Recovery Services"
+  },
+  "hero": {
+    "title": "Backup & Disaster Recovery Solutions in London",
+    "subtitle": "Secure SME Backup & Fast Disaster Recovery Services",
+    "buttons": [
+      {
+        "label": "Contact Us",
+        "href": "https://www.london-itsupport.co.uk/contact"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "cards",
+      "tagline": "SERVICES",
+      "title": "All In One IT & Management Solutions",
+      "columns": 4,
+      "items": [
+        {
+          "title": "IT Support Services",
+          "text": "ScalableFlexible to adapt to any business size in any location."
+        },
+        {
+          "title": "Cyber Security",
+          "text": "Installation can be completed within 48 hours."
+        },
+        {
+          "title": "Cloud Services",
+          "text": "Keeps you connected at maximum speeds for the coverage area."
+        },
+        {
+          "title": "Broadband & VOIP",
+          "text": "We’ll manage the service end-to-end, giving you peace of mind."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "IT Support Services",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Managed IT Support",
+          "text": "We offer flexible, tailored IT support plans that scale with your business, ensuring reliable, disruption-free operations."
+        },
+        {
+          "title": "Backup & Continuity",
+          "text": "Robust backups and continuity plans are essential for quick recovery and GDPR compliance during cyberattacks."
+        },
+        {
+          "title": "IT Consulting Services",
+          "text": "Our consulting service helps SMEs choose cost-effective technology solutions that drive growth and deliver maximum value."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Cyber Security Services",
+      "columns": 2,
+      "items": [
+        {
+          "title": "Cyber Essentials",
+          "text": "Cyber Essentials, a UK Government-backed certification, protects against cyber threats, strengthens defences, and ensures GDPR compliance."
+        },
+        {
+          "title": "Managed Cybersecurity",
+          "text": "Cyber attacks risk financial loss, damage, and disruption. We protect your business with firewalls, antivirus, monitoring, and staff training."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Cloud Services",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Microsoft 365",
+          "text": "Moving to Microsoft 365 is easy! We will manage the entire process for you and ensure all of your emails and data is safely moved over."
+        },
+        {
+          "title": "Microsoft Teams",
+          "text": "Connect and collaborate work in a protected and accommodating way, all in one virtual phone system for you and your teams."
+        },
+        {
+          "title": "Cloud Phone System",
+          "text": "Our all-in-one Cloud VoIP solution lets you seamlessly switch between video calls, messaging, and phone calls on one platform."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Broadband & VOIP Services",
+      "columns": 2,
+      "items": [
+        {
+          "title": "Contact Centre",
+          "text": "Transform customer and employees experiences through intelligent routing, conversational AI, agent assistance, and insights & analytics."
+        },
+        {
+          "title": "Leased Lines",
+          "text": "Simple, smart, and affordable with instant setup & award-winning care – ideal for freelancers, start-ups & small businesses."
+        },
+        {
+          "title": "Sim Only",
+          "text": "Skip the added costs of paying off hardware and allow flexibility with your mobile contracts, including 4G and 5G at no extra cost."
+        },
+        {
+          "title": "Mobile With Handset",
+          "text": "With one tap, switch calls between a desk phone, a mobile device, and a softphone. One-click converts phone calls to video conferences."
+        },
+        {
+          "title": "Mobile Internet",
+          "text": "Mobile broadband offers secure 4G and 5G connectivity. We provide tailored solutions and great deals for your business needs."
+        },
+        {
+          "title": "Guest WiFi",
+          "text": "A quick, cloud-based overlay for your existing WiFi, requiring no extra hardware and managed easily through an online portal."
+        },
+        {
+          "title": "Business Broadband",
+          "text": "Ultra-fast fibre broadband packages, ranging from 40Mbps to 1000Mbps, through partnerships with BT, TalkTalk, and Vodafone."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

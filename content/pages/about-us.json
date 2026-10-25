@@ -1,0 +1,109 @@
+{
+  "slug": "about-us",
+  "url": "https://www.london-itsupport.co.uk/about-us",
+  "meta": {
+    "title": "About London IT Support | Trusted IT Support in London",
+    "description": "Discover London IT Support. We provide expert IT support in London, helping businesses stay secure, efficient, and focused on growth."
+  },
+  "hero": {
+    "title": "About Our Expert IT Support Services in London",
+    "subtitle": "Discover Why We're Trusted Business IT, Cybersecurity & Cloud Experts",
+    "buttons": [
+      {
+        "label": "Our Services",
+        "href": "https://www.london-itsupport.co.uk/contact-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "tagline": "Who we are?",
+      "title": "About London IT Support",
+      "text": [
+        "Managed IT services support SMEs by providing tailored SME IT support from our IT support London team. We handle technology challenges, ensuring flexible, reliable solutions that boost productivity and growth. With proactive management, SMEs can focus on business success while we optimise your IT infrastructure."
+      ],
+      "items": [
+        {
+          "title": "Our Services for London Businesses",
+          "text": "We pride ourselves on delivering top-tier business IT support and telecom solutions across London and surrounding areas. Our services cater to businesses of all sizes, from startups to established enterprises, including managed IT solutions, cloud services, and robust cybersecurity. We ensure your technology supports your growth in a competitive market."
+        },
+        {
+          "title": "Our Commitment to Innovation",
+          "text": "As technology evolves, London IT Support stays ahead, offering innovative cloud services and cybersecurity solutions. Our committed team delivers cost-effective, high-quality IT services tailored to your business goals, fostering long-term partnerships built on trust and excellence."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "tagline": "Our Core Values",
+      "title": "Why Choose Us As Your IT Provider",
+      "text": [
+        "Choosing London IT Support means partnering with a team that understands your business and is invested in your success. We manage the complexities of technology— from IT support London to managed IT solutions—so you can focus on growing your business and achieving your objectives."
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "24/7 Support",
+          "text": "We’re here for your business around the clock, providing support and monitoring whenever you need it."
+        },
+        {
+          "title": "Think of us as your team",
+          "text": "We’re more than just an IT provider; consider us part of your team, your very own IT department."
+        },
+        {
+          "title": "We go the extra mile",
+          "text": "We don’t believe in saying something can’t be done. Instead, we work hard to find solutions that fit."
+        },
+        {
+          "title": "Built to support small businesses",
+          "text": "We understand small businesses because we’re one, too, and we’re passionate about helping others succeed."
+        },
+        {
+          "title": "No tech jargon",
+          "text": "We keep it simple and speak in plain, everyday language, so there’s no confusing tech talk."
+        },
+        {
+          "title": "Cybersecurity experts",
+          "text": "Our team holds some of the industry’s top cybersecurity qualifications, ensuring your business is well-protected."
+        }
+      ]
+    },
+    {
+      "type": "stats",
+      "tagline": "Stats",
+      "title": "How we performed Last Year",
+      "items": [
+        {
+          "value": "96",
+          "unit": "%",
+          "text": "Calls Answered Within 10 Seconds"
+        },
+        {
+          "value": "30",
+          "unit": "MIN",
+          "text": "Average Time to Respond"
+        },
+        {
+          "value": "60",
+          "unit": "MIN",
+          "text": "Average Time to Resolution"
+        },
+        {
+          "value": "82",
+          "unit": "%",
+          "text": "First Contact Resolution"
+        },
+        {
+          "value": "98",
+          "unit": "%",
+          "text": "Customer Satisfaction"
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:33:09.926Z"
+}

@@ -34,6 +34,7 @@ export const vertexShader = /* glsl */ `
   uniform vec4 uBackdrops[4];
   uniform vec4 uTilt;        // map yaw, map pitch, signal lean, crystal lean
   uniform float uBackdropYaw;
+  uniform vec2 uGalaxySpin;  // extra turn of the galaxy's core, and of its rim
   uniform vec2 uGlobeRot;    // yaw, pitch
   uniform vec2 uOffice;      // office, in map coordinates
   uniform vec4 uWork;        // the "how we work" silk ribbon
@@ -229,11 +230,12 @@ export const vertexShader = /* glsl */ `
     vec3 back1 = place(ring, uBackdrops[1], uBackdropYaw);
 
     // Testimonials: a slow spiral galaxy — three arms winding out from a
-    // bright core, seen at a tilt.
+    // bright core, seen at a tilt. Each new quote turns it on a third: the
+    // core leads and the rim follows (uGalaxySpin), so it swirls.
     float reach = pow(aSeed.y, 0.7);
     float arm = floor(aSeed.w * 3.0);
     float drift = (fract(aSeed.w * 3.0) - 0.5) * mix(1.5, 0.35, reach);
-    float swirl = arm * TAU / 3.0 + reach * 5.0 + drift - uTime * 0.06;
+    float swirl = arm * TAU / 3.0 + reach * 5.0 + drift - uTime * 0.06 - mix(uGalaxySpin.x, uGalaxySpin.y, reach);
     vec3 galaxy = vec3(cos(swirl) * reach, (aSeed.z - 0.5) * 0.06 * (1.0 - reach), sin(swirl) * reach);
     float galaxyLuma = 0.25 + 0.75 * pow(1.0 - reach, 1.5);
     vec3 back2 = place(rotateX(galaxy, 1.15), uBackdrops[2], uBackdropYaw);

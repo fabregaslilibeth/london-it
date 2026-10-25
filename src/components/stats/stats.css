@@ -1,0 +1,41 @@
+/* ---------- Stats: figures ---------- */
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.stat {
+  padding: 30px 28px 34px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.stat__value {
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(44px, 4.6vw, 68px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat__value span {
+  margin-left: 4px;
+  font-size: 0.42em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--accent-text);
+}
+
+.stat__label {
+  margin: 14px 0 0;
+  max-width: 24ch;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}

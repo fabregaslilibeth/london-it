@@ -1,0 +1,107 @@
+{
+  "slug": "guest-wifi-london",
+  "url": "https://www.london-itsupport.co.uk/guest-wifi-london",
+  "meta": {
+    "title": "Guest Wifi",
+    "description": "Boost customer experience with secure Guest WiFi in London. Fast, reliable, and fully managed solutions that deliver insights and marketing opportunities."
+  },
+  "hero": {
+    "title": "Welcome More Customers With Secure Guest Wi-Fi",
+    "subtitle": "Deliver fast, reliable guest Wi-Fi that enhances customer experience and gives you valuable business insights.",
+    "buttons": [
+      {
+        "label": "Why Choose Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "How Guest WiFi Supports SMEs",
+      "text": [
+        "Guest WiFi gives SMEs more than internet access. It’s a secure, cloud-based solution that improves customer experience while delivering valuable insights. With branded login pages, social sign-ins, and detailed reporting, Guest WiFi helps businesses engage customers, strengthen their brand, and unlock new marketing opportunities."
+      ],
+      "items": [
+        {
+          "title": "Enhance the Customer Experience",
+          "text": "Create a smooth, professional first impression with fast, secure Guest WiFi. Branded login pages and simple access show customers your business values convenience, connectivity, and modern service."
+        },
+        {
+          "title": "Turn Data Into Business Growth",
+          "text": "Guest WiFi captures visitor data in a GDPR-compliant way, helping you understand customer behaviour. Use these insights to personalise offers, run targeted campaigns, and drive repeat visits and increased revenue."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Quick setup with no additional hardware required"
+        },
+        {
+          "title": "Cloud-based management through an easy-to-use online portal"
+        },
+        {
+          "title": "GDPR-compliant data capture and reporting"
+        },
+        {
+          "title": "Insights into visitor demographics and behaviour"
+        },
+        {
+          "title": "Custom branding with splash pages and login options"
+        },
+        {
+          "title": "“Connect with Social” for seamless customer access"
+        },
+        {
+          "title": "Tools to launch targeted marketing campaigns"
+        },
+        {
+          "title": "Improved customer loyalty and increased revenue opportunities"
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Enjoy These Features and More...",
+      "columns": 2,
+      "items": [
+        {
+          "title": "Hassle Free Connection",
+          "text": "Get your customers online with one click from any device. No password is needed."
+        },
+        {
+          "title": "Improve Your Sales",
+          "text": "Bring new customers through your doors and gain more sales when you offer fast free internet access."
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "prose",
+      "tagline": "why Choose Us",
+      "title": "Turn Visitor Data Into Smarter Decisions and Higher Revenue",
+      "text": [
+        "Guest WiFi analytics give you clear insights into customer behaviour helping you understand how visitors use your space, improve operational efficiency, and run targeted marketing that drives repeat visits and increases revenue. All data is captured securely and in a GDPR-compliant way."
+      ],
+      "buttons": [
+        {
+          "label": "Book a Free Consultation",
+          "href": "https://www.london-itsupport.co.uk/contact-us"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "type": "partners",
+      "title": "Our Partners"
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

@@ -1,0 +1,429 @@
+/* ---------- Testimonials: a showcase ---------- */
+
+/* The heading and the people on the left; the quote, large on a glass
+   stage, on the right, with the galaxy of dots turning behind it. */
+.testimonials {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(36px, 6vw, 104px);
+  align-items: center;
+  padding: 18vh var(--gutter);
+  --testimonial-seconds: 8s;
+}
+
+/* The people: a list, the current one lit, its timer filling along its rule. */
+.testimonials__people {
+  margin: clamp(32px, 5vh, 56px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.testimonials__person {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.testimonials__person:hover,
+.testimonials__person.is-active {
+  color: var(--fg);
+}
+
+.testimonials__avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  font-family: var(--heading);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.testimonials__person.is-active .testimonials__avatar {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--accent-text);
+}
+
+.testimonials__person-text {
+  display: grid;
+  gap: 3px;
+}
+
+.testimonials__name {
+  font-family: var(--heading);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.testimonials__source {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.testimonials__timer {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.testimonials__person.is-active .testimonials__timer {
+  animation: testimonials-timer var(--testimonial-seconds) linear forwards;
+}
+
+.testimonials.is-paused .testimonials__timer {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-timer {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* The stage: frosted glass with the site's hairline edge, a soft glow that
+   follows the cursor, and an outlined quote mark that turns with each quote. */
+.testimonials__stage {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: clamp(40px, 5.5vw, 80px) clamp(28px, 4.5vw, 72px) clamp(32px, 4vw, 56px);
+  border-radius: 32px;
+  background: linear-gradient(160deg, var(--glass-strong), var(--glass) 55%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow);
+  touch-action: pan-y;
+}
+
+.testimonials__stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(150deg, var(--glass-edge), var(--line) 38%, var(--line) 70%, rgba(255, 170, 0, 0.5));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.testimonials__stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(480px circle at var(--gx, 75%) var(--gy, 15%), rgba(255, 170, 0, 0.13), transparent 62%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.testimonials__stage:hover::after {
+  opacity: 1;
+}
+
+.testimonials__mark {
+  position: absolute;
+  top: clamp(-18px, -1.2vw, -6px);
+  right: clamp(22px, 3.4vw, 56px);
+  z-index: -1;
+  font-family: var(--heading);
+  font-size: clamp(150px, 15vw, 250px);
+  font-weight: 300;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--accent);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.testimonials__stage.is-turning .testimonials__mark {
+  animation: testimonials-mark 0.9s var(--ease-out);
+}
+
+@keyframes testimonials-mark {
+  from {
+    opacity: 0;
+    transform: translateY(18px) rotate(-8deg) scale(0.92);
+  }
+}
+
+/* All quotes share one cell, so the stage is as tall as the longest and
+   never jumps; only the current one shows. */
+.testimonials__slides {
+  display: grid;
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(28px, 4.5vh, 48px);
+  grid-area: 1 / 1;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+
+.testimonial.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease;
+}
+
+.testimonial__quote {
+  margin: 0;
+}
+
+.testimonial__quote p {
+  max-width: 34ch;
+  margin: 0;
+  font-family: var(--heading);
+  font-size: clamp(22px, 2.3vw, 34px);
+  font-weight: 300;
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+}
+
+.testimonial__quote--long p {
+  max-width: 44ch;
+  font-size: clamp(19px, 1.75vw, 26px);
+  line-height: 1.45;
+}
+
+/* Word by word, rising out of their own clipping boxes. */
+.testimonial__word {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+  vertical-align: top;
+}
+
+.testimonial__word > span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.8s var(--ease-out);
+}
+
+.testimonial.is-active .testimonial__word > span {
+  transform: none;
+  transition-delay: calc(0.12s + min(var(--i), 48) * 14ms);
+}
+
+.testimonial__who {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.6s var(--ease-out);
+}
+
+.testimonial.is-active .testimonial__who {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.35s;
+}
+
+.testimonial__avatar {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, var(--accent-hover), var(--accent));
+  box-shadow: 0 0 0 5px var(--accent-wash);
+  color: var(--navy);
+  font-family: var(--heading);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.testimonial__name {
+  display: block;
+  font-family: var(--heading);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.testimonial__source {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Count, prev / next and pause under the stage. */
+.testimonials__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.testimonials__count {
+  margin: 0 auto 0 4px;
+  font-family: var(--heading);
+  font-size: 14px;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.testimonials__count span {
+  font-size: 22px;
+  color: var(--fg);
+}
+
+.testimonials__button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.testimonials__button:hover {
+  border-color: var(--accent);
+  background: var(--accent-wash);
+  color: var(--accent-text);
+}
+
+.testimonials__button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.testimonials__button--prev svg {
+  transform: rotate(180deg);
+}
+
+.testimonials__play,
+.testimonials.is-stopped .testimonials__pause {
+  display: none;
+}
+
+.testimonials.is-stopped .testimonials__play {
+  display: block;
+}
+
+/* Phones and tablets: heading, then the people as a row of chips, then the stage. */
+@media (max-width: 899px) {
+  .testimonials {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+
+  .testimonials__people {
+    display: flex;
+    gap: 8px;
+    margin-top: 28px;
+    margin-right: calc(var(--gutter) * -1);
+    padding-right: var(--gutter);
+    overflow-x: auto;
+    border-top: 0;
+    scrollbar-width: none;
+  }
+
+  .testimonials__people::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials__people li {
+    flex: none;
+  }
+
+  .testimonials__person {
+    overflow: hidden;
+    width: auto;
+    padding: 6px 16px 6px 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+
+  .testimonials__person.is-active {
+    border-color: var(--line-strong);
+  }
+
+  .testimonials__avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
+  }
+
+  .testimonials__source {
+    display: none;
+  }
+
+  .testimonials__timer {
+    bottom: 0;
+  }
+
+  .testimonials__stage {
+    border-radius: 24px;
+  }
+
+  .testimonials__mark {
+    top: -10px;
+    right: 18px;
+    font-size: 104px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials__person.is-active .testimonials__timer {
+    animation: none;
+    transform: scaleX(1);
+  }
+
+  .testimonial__word > span,
+  .testimonial__who {
+    transform: none;
+    transition: none;
+  }
+
+  .testimonials__stage.is-turning .testimonials__mark {
+    animation: none;
+  }
+}

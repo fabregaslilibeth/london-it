@@ -1,0 +1,110 @@
+{
+  "slug": "microsoft-365",
+  "url": "https://www.london-itsupport.co.uk/microsoft-365",
+  "meta": {
+    "title": "Microsoft 365 Support London | London IT Support",
+    "description": "Unlock the power of Microsoft 365 with expert IT support in London. Flexible, secure, tailored solutions to boost productivity for SMEs and growing businesses."
+  },
+  "hero": {
+    "title": "Empower Your Team with Microsoft 365 in London",
+    "subtitle": "Reliable SME Microsoft 365 & Cloud Support",
+    "buttons": [
+      {
+        "label": "Why Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "Seamless Microsoft 365 & IT Solutions for London SMEs",
+      "text": [
+        "London IT delivers Microsoft 365 solutions for SMEs in London, helping businesses boost productivity, strengthen security, and collaborate more effectively. Our Microsoft 365 services are built to support remote and hybrid working, protect business data, and scale as your organisation grows.",
+        "Microsoft 365 enables your team to work securely from anywhere. With Microsoft Teams, Outlook, Word, Excel, SharePoint, and OneDrive, your staff can collaborate in real time, share files effortlessly, and stay connected across offices, locations, and time zones.",
+        "Our London-based IT specialists ensure your Microsoft 365 environment is configured for performance, reliability, and business continuity.",
+        "We offer cost-effective Microsoft 365 plans for London SMEs , with clear per-user monthly pricing and no unnecessary add-ons. As your business grows, your Microsoft 365 services scale seamlessly from core productivity tools to advanced security and compliance features.",
+        "London IT helps you select the right Microsoft 365 plan to maximise value while keeping costs under control.",
+        "Microsoft 365 includes enterprise-grade security to protect against modern cyber threats. Features such as multi-factor authentication, data encryption, and advanced threat protection help defend your organisation from phishing, ransomware, and unauthorised access.",
+        "Our Microsoft 365 security support in London ensures your setup aligns with best-practice cyber security and compliance standards.",
+        "Migrating to Microsoft 365 doesn’t need to disrupt your business. London IT manages your Microsoft 365 migration end to end including planning, data transfer, configuration, and post-migration support.",
+        "We deliver a smooth transition with minimal downtime, so your team can start benefiting from Microsoft 365 immediately."
+      ],
+      "items": [
+        {
+          "title": "Work Anywhere with Modern Collaboration Tools",
+          "text": "Microsoft 365 enables your team to work securely from anywhere. With Microsoft Teams, Outlook, Word, Excel, SharePoint, and OneDrive, your staff can collaborate in real time, share files effortlessly, and stay connected across offices, locations, and time zones. Our London-based IT specialists ensure your Microsoft 365 environment is configured for performance, reliability, and business continuity."
+        },
+        {
+          "title": "Affordable, Scalable Microsoft 365 Plans",
+          "text": "We offer cost-effective Microsoft 365 plans for London SMEs, with clear per-user monthly pricing and no unnecessary add-ons. As your business grows, your Microsoft 365 services scale seamlessly from core productivity tools to advanced security and compliance features. London IT helps you select the right Microsoft 365 plan to maximise value while keeping costs under control."
+        },
+        {
+          "title": "Advanced Security for Your Business Data",
+          "text": "Microsoft 365 includes enterprise-grade security to protect against modern cyber threats. Features such as multi-factor authentication, data encryption, and advanced threat protection help defend your organisation from phishing, ransomware, and unauthorised access. Our Microsoft 365 security support in London ensures your setup aligns with best-practice cyber security and compliance standards."
+        },
+        {
+          "title": "Effortless Migration to Microsoft 365",
+          "text": "Migrating to Microsoft 365 doesn’t need to disrupt your business. London IT manages your Microsoft 365 migration end to end including planning, data transfer, configuration, and post-migration support. We deliver a smooth transition with minimal downtime, so your team can start benefiting from Microsoft 365 immediately."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Seamless remote collaboration with Microsoft Teams and real-time editing"
+        },
+        {
+          "title": "Cost-effective subscription plans scalable for SME growth with Microsoft 365 London"
+        },
+        {
+          "title": "Advanced cybersecurity with multi-factor authentication and threat protection"
+        },
+        {
+          "title": "Smooth cloud migration managed by IT support London experts"
+        },
+        {
+          "title": "Integrated productivity tools like Word, Excel, and PowerPoint for efficiency"
+        },
+        {
+          "title": "Regular updates ensuring the latest business IT solutions features"
+        },
+        {
+          "title": "Compliance support to meet regulatory requirements for SMEs"
+        },
+        {
+          "title": "24/7 access support via a simple self-service portal"
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "tagline": "Why Choose Us",
+      "title": "Your Trusted Microsoft 365 Partner in London",
+      "text": [
+        "Here are three reasons London SMEs choose London IT to manage and support their Microsoft 365 environment."
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "Fixed Monthly Pricing for Microsoft 365",
+          "text": "Enjoy clear, predictable monthly pricing for your Microsoft 365 services. All licences, user management, and support are covered under a defined ServiceLevel Agreement (SLA), giving your business full cost certainty and control."
+        },
+        {
+          "title": "Flexible Microsoft 365 Plans That Scale With You",
+          "text": "Our Microsoft 365 solutions are built to grow with your business. We tailor plans to your needs, making it easy to add or remove users, enhance security, and scale services as your organisation evolves."
+        },
+        {
+          "title": "Transparent Pricing. No Hidden Fees",
+          "text": "With London IT, there are no surprise charges. Our Microsoft 365 support services are fully transparent, so you only pay for what you need delivering straightforward, value-driven IT support."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

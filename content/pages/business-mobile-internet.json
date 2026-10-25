@@ -1,0 +1,106 @@
+{
+  "slug": "business-mobile-internet",
+  "url": "https://www.london-itsupport.co.uk/business-mobile-internet",
+  "meta": {
+    "title": "Mobile Internet | London IT Support",
+    "description": "Reliable mobile internet in London for SMEs. Fast 4G & 5G connectivity, flexible plans, and expert support to keep your team connected on the move."
+  },
+  "hero": {
+    "title": "Fast, Reliable Mobile Internet for London SMEs",
+    "subtitle": "Enterprise-grade 4G and 5G to keep your business connected anywhere.",
+    "buttons": [
+      {
+        "label": "Get Connected Today",
+        "href": "https://www.london-itsupport.co.uk/contact-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "Mobile Broadband Solutions for Flexible Business Connectivity",
+      "text": [
+        "Mobile broadband delivers fast, secure 4G and 5G connectivity without relying on fixed fibre lines. It keeps London SMEs productive in the office, on the road, or on client sites providing reliable access to cloud services, communications tools, and business-critical apps wherever you work."
+      ],
+      "items": [
+        {
+          "title": "Work Seamlessly, Anywhere",
+          "text": "When fibre isn’t available, mobile broadband is a reliable alternative. Connect laptops, tablets, and business devices securely over 4G and 5G, making it ideal for remote teams, temporary locations, and backup connectivity."
+        },
+        {
+          "title": "Expert Mobile Connectivity Guidance",
+          "text": "Our London IT specialists work with all major UK networks to deliver the right mobile broadband solution for your business. From primary connectivity to office backup internet, we provide clear advice, competitive tariffs, and solutions tailored to your needs."
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "title": "Everything You Need And More...",
+      "columns": 4,
+      "items": [
+        {
+          "title": "Scalable",
+          "text": "Flexible mobile broadband solutions that scale easily to suit businesses of any size, across any location."
+        },
+        {
+          "title": "Rapid",
+          "text": "Get connected quickly with installations typically completed within 48 hours, keeping downtime to a minimum."
+        },
+        {
+          "title": "Resilient",
+          "text": "Reliable 4G and 5G connectivity designed to deliver the fastest possible speeds within your coverage area."
+        },
+        {
+          "title": "Fully Managed",
+          "text": "We handle everything end to end. Setup, management, and ongoing support so you can stay focused on your business."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Reliable 4G and 5G connectivity for business use"
+        },
+        {
+          "title": "Portable internet access for remote teams and travel"
+        },
+        {
+          "title": "Added security compared to standard mobile phone data"
+        },
+        {
+          "title": "Flexible plans to suit growing SMEs"
+        },
+        {
+          "title": "Cost-effective backup solution when fibre broadband is down"
+        },
+        {
+          "title": "Quick and easy setup with minimal hardware required"
+        },
+        {
+          "title": "Nationwide coverage with leading UK networks"
+        },
+        {
+          "title": "Expert support to help you choose the best deal"
+        }
+      ]
+    },
+    {
+      "type": "intro",
+      "tagline": "INTEGRATIONS",
+      "title": "Work Seamlessly With Your Team. Anywhere",
+      "text": [
+        "Modern businesses aren’t tied to one location. Our integrated communication solutions let your team connect, collaborate, and manage calls from anywhere keeping productivity high whether staff are in the office, remote, or on the move."
+      ],
+      "items": []
+    },
+    {
+      "type": "partners",
+      "title": "Our Partners"
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

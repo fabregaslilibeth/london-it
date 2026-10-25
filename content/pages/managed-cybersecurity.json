@@ -1,0 +1,126 @@
+{
+  "slug": "managed-cybersecurity",
+  "url": "https://www.london-itsupport.co.uk/managed-cybersecurity",
+  "meta": {
+    "title": "Managed Cyber Security",
+    "description": "Expert managed IT support in London for SMEs. Affordable, scalable solutions with 24/7 support to keep your business secure, connected, and running smoothly."
+  },
+  "hero": {
+    "title": "Trusted Managed Cybersecurity in London",
+    "subtitle": "Reliable SME Microsoft 365 & Cloud Support",
+    "buttons": [
+      {
+        "label": "Why Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "What Is Managed Cyber Security for SMEs?",
+      "text": [
+        "Managed cyber security provides expert-led, continuous protection against modern cyber threats. London IT delivers managed cyber security services for SMEs in London, including 24/7 monitoring, ransomware protection, endpoint security, and staff awareness training.",
+        "Our tailored approach ensures your business remains secure, compliant, and resilient, allowing you to focus on growth with confidence.|",
+        "We implement multi-layered cyber defences to protect your organisation at every level:"
+      ],
+      "items": [
+        {
+          "title": "Secure SME Cyber Security & IT Protection",
+          "text": "Cyber threats from phishing and data breaches to ransomware affect businesses of all sizes. London IT provides robust, managed cyber security solutions designed specifically for SMEs.We safeguard your digital infrastructure, devices, and cloud environments with layered protection that reduces risk and strengthens operational resilience."
+        },
+        {
+          "title": "How We Safeguard Your Business",
+          "text": "We implement multi-layered cyber defences to protect your organisation at every level: • Enterprise-grade firewalls and endpoint protection • 24/7 monitoring and threat detection • Proactive patching and vulnerability management • Staff cyber awareness training to reduce human risk"
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "tagline": "Think Of Us As Your Dedicated In-House Cyber Security Team.",
+      "title": "Comprehensive Cyber Security Protection",
+      "text": [
+        "We protect UK businesses with proactive cyber security delivered by in-house experts. From ransomware and phishing defence to 24/7 monitoring, endpoint protection and compliance-ready controls, we reduce risk and respond fast when it matters. Stay secure, stay compliant, and keep your business running without disruption."
+      ],
+      "items": [
+        {
+          "title": "Managed antivirus with ransomware protection"
+        },
+        {
+          "title": "Full disk and file-based encryption"
+        },
+        {
+          "title": "24/7 infrastructure monitoring, 365 days a year"
+        },
+        {
+          "title": "Advanced content and DNS filtering"
+        },
+        {
+          "title": "Cyber awareness training for your team"
+        },
+        {
+          "title": "Managed software and hardware firewalls"
+        },
+        {
+          "title": "24/7 dark web monitoring"
+        },
+        {
+          "title": "Two-factor authentication management"
+        },
+        {
+          "title": "Next-gen email security and phishing protection"
+        },
+        {
+          "title": "Automated patch management and updates"
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "tagline": "Why Choose Us",
+      "title": "Your IT Provider in London",
+      "text": [
+        "Here are three key reasons to trust London IT Support for your business needs:"
+      ],
+      "columns": 3,
+      "items": [
+        {
+          "title": "Fixed Monthly Pricing for Managed Cybersecurity",
+          "text": "Our IT support London covers all operating systems and deviEnjoy a fixed monthly price for comprehensive managed cybersecurity in London. All your IT infrastructure is fully supported under our Service Level Agreement (SLA), ensuring predictable costs.ces, ensuring robust disaster recovery for your business."
+        },
+        {
+          "title": "Flexible Pricing for SME Cybersecurity",
+          "text": "We offer a simple, flexible pricing structure for SME cybersecurity, tailored to your unique business requirements, allowing you to scale business IT security as needed."
+        },
+        {
+          "title": "Transparent Pricing with No Hidden Fees",
+          "text": "Experience complete transparency with our IT support London services. Our managed cybersecurity includes no hidden fees, pay only for what you need, avoiding unexpected costs."
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "tagline": "Business Security",
+      "title": "Our 3 Step Process Designed To Help Secure Your Business",
+      "items": [
+        {
+          "title": "MONITOR",
+          "text": "We proactively monitor your devices, servers, network and Microsoft 365 to spot issues early before they cause downtime or disrupt your team."
+        },
+        {
+          "title": "OPTIMISE",
+          "text": "We improve performance and reliability with patching, updates and best-practice settings keeping everything fast, stable and secure as your business grows."
+        },
+        {
+          "title": "SUPPORT",
+          "text": "When you need help, you reach our in-house UK support team with fast response, clear communication, and fixes that stick not temporary workarounds."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}

@@ -1,0 +1,121 @@
+{
+  "slug": "managed-it-support",
+  "url": "https://www.london-itsupport.co.uk/managed-it-support",
+  "meta": {
+    "title": "Managed IT Support London | London IT Support",
+    "description": "Expert managed IT support in London for SMEs. Affordable, scalable solutions with 24/7 support to keep your business secure, connected, and running smoothly."
+  },
+  "hero": {
+    "title": "Managed IT Support Services in London",
+    "subtitle": "Expert Managed IT & Business Solutions for London",
+    "buttons": [
+      {
+        "label": "Why Us",
+        "href": "#why-choose-us"
+      },
+      {
+        "phone": true
+      }
+    ]
+  },
+  "sections": [
+    {
+      "type": "intro",
+      "title": "How Managed IT Services Empower London SMEs",
+      "text": [
+        "Strong IT keeps your business moving. Our managed IT services give London SMEs reliable, secure, and proactive support reducing downtime, improving productivity, and ensuring your systems always perform at their best."
+      ],
+      "items": [
+        {
+          "title": "Expert Managed IT Solutions for SMEs",
+          "text": "Your business depends on IT that works. We deliver expert, scalable IT support for London SMEs keeping your systems secure, efficient, and ready to support your growth."
+        },
+        {
+          "title": "Customised Support Plans",
+          "text": "Every SME is different. We build tailored IT support plans that adapt as you grow, ensuring smooth operations, minimal disruption, and technology that works as hard as you do."
+        }
+      ]
+    },
+    {
+      "type": "benefits",
+      "items": [
+        {
+          "title": "Inclusive remote & on-site support across London"
+        },
+        {
+          "title": "Support for Windows and Mac systems"
+        },
+        {
+          "title": "24/7 infrastructure monitoring 365 days a year"
+        },
+        {
+          "title": "Managed anti-virus & backups for data security"
+        },
+        {
+          "title": "Proactive ransomware protection and cybersecurity"
+        },
+        {
+          "title": "Automated patch and update management"
+        },
+        {
+          "title": "Simple self-service portal for ticket management"
+        },
+        {
+          "title": "Licencing & asset management solutions"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "buttons": [
+        {
+          "label": "Book Your Free IT Review",
+          "href": "https://www.london-itsupport.co.uk/contact-us"
+        },
+        {
+          "phone": true
+        }
+      ]
+    },
+    {
+      "id": "why-choose-us",
+      "type": "cards",
+      "title": "Why Choose Us as Your IT Provider in London",
+      "columns": 3,
+      "items": [
+        {
+          "title": "Comprehensive Backup Support",
+          "text": "Our IT support London covers all operating systems and devices, ensuring robust disaster recovery for your business."
+        },
+        {
+          "title": "Flexible Pricing for SMEs",
+          "text": "Enjoy a straightforward, flexible pricing structure for SME backup, customised to your needs with no hidden costs."
+        },
+        {
+          "title": "Round-the-Clock Monitoring",
+          "text": "Benefit from 24/7 monitoring of our backup solutions, with scalable options to protect your data effectively."
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "tagline": "PROACTIVE IT SUPPORT",
+      "title": "How we keep your technology running smoothly. Every single day",
+      "items": [
+        {
+          "title": "MONITOR",
+          "text": "We proactively monitor your devices, servers, network and Microsoft 365 to spot issues early before they cause downtime or disrupt your team."
+        },
+        {
+          "title": "OPTIMISE",
+          "text": "We improve performance and reliability with patching, updates and best-practice settings keeping everything fast, stable and secure as your business grows."
+        },
+        {
+          "title": "SUPPORT",
+          "text": "When you need help, you reach our in-house UK support team with fast response, clear communication, and fixes that stick not temporary workarounds."
+        }
+      ]
+    }
+  ],
+  "syncedAt": "2026-10-25T06:17:48.593Z"
+}
