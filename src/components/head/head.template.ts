@@ -21,6 +21,7 @@ export default function head({ content, page }: ComponentContext, props: Props):
     <meta property="og:description" content="${description}" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://london-it.vercel.app/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#001b41" />
     <script>
       // Theme before first paint, so there's no flash: a saved choice, else mix.
