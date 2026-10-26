@@ -1,6 +1,8 @@
 // The contents of every page's <head>: title and description (the page's own
-// from the live site, else the home page's), the theme before first paint,
-// the fonts, and a guard against the raw page flashing up.
+// from the live site, else the home page's), the share image (public/og-image.png,
+// from london-itsupport.co.uk), the theme before first paint, the fonts, and a
+// guard against the raw page flashing up.
+// shortcut: og:image URL is absolute to london-it.vercel.app, change it if the site moves domain.
 //
 //   <head>{{> head}}</head>
 //
@@ -18,6 +20,7 @@ export default function head({ content, page }: ComponentContext, props: Props):
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://london-it.vercel.app/og-image.png" />
     <meta name="theme-color" content="#001b41" />
     <script>
       // Theme before first paint, so there's no flash: a saved choice, else mix.
